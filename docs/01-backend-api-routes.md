@@ -28,9 +28,6 @@ Returns global site config and the landing-page "now" block.
 {
   "version": "1.0",
   "updated": "2026-05-17",
-  "role": "Software Developer",
-  "status": "online",
-  "scope": ["systems", "photo", "CVEs"],
   "hero": {
     "prompts": ["cat manifest", "whoami", "tail -f log"],
     "tagline": "I build, break, then photograph what's left."
