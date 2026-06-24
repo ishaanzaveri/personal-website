@@ -1,0 +1,122 @@
+/* Global shell styles ported from the prototype's Website.html <style> block. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { min-height: 100vh; }
+
+/* Document container */
+.doc {
+  max-width: var(--doc-max);
+  margin: 0 auto;
+  padding: 28px var(--doc-pad) 80px;
+}
+@media (max-width: 760px) {
+  .doc { padding: 16px 20px 60px; }
+}
+
+/* Scanlines overlay (fixed CRT layer) */
+.scan {
+  position: fixed; inset: 0; pointer-events: none; z-index: 100;
+  background-image: repeating-linear-gradient(
+    0deg, transparent 0, transparent 2px,
+    rgba(232, 246, 249, 0.012) 2px, rgba(232, 246, 249, 0.012) 3px
+  );
+}
+
+/* Footer */
+footer.shell {
+  padding: 28px 0 0; color: var(--text-dim); font-size: 11px;
+  display: flex; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; align-items: baseline;
+  border-top: 1px solid var(--rule); margin-top: 56px;
+}
+footer.shell a { color: var(--teal-hi); }
+footer.shell a:hover { color: var(--text-hi); border-bottom: 1px solid var(--teal-hi); }
+
+/* Block cursor blink */
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Photo modal entrance */
+@keyframes photoModalIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Section fade-in */
+@keyframes sectionIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section-in { animation: sectionIn var(--t-page) var(--ease) both; }
+
+a { cursor: pointer; }
+
+/* Photo gallery — frames hover state (EXIF only on hover) */
+.frame .frame-veil,
+.frame .frame-exif {
+  opacity: 0;
+  transition: opacity var(--t-reveal) var(--ease);
+}
+.frame .frame-id {
+  opacity: 0.55;
+  transition: opacity var(--t-reveal) var(--ease);
+}
+.frame::after {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  outline: 1px solid transparent; outline-offset: 2px;
+  transition: outline-color var(--t-default) var(--ease);
+}
+.frame:hover .frame-veil,
+.frame:hover .frame-exif { opacity: 1; }
+.frame:hover .frame-id   { opacity: 1; }
+.frame:hover::after      { outline-color: var(--teal); }
+.frame:focus-visible::after { outline-color: var(--teal-hi); }
+
+/* Blog post-row hover */
+.post-row { transition: background var(--t-default) var(--ease); }
+.post-row:hover { background: var(--panel-hi); }
+
+/* Visible focus rings for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--teal-hi);
+  outline-offset: 2px;
+}
+
+/* Generic markdown rendering (styling refined in a later pass). */
+.markdown-body { color: var(--text); font-size: 14px; line-height: 1.75; }
+.markdown-body > :first-child { margin-top: 0; }
+.markdown-body h1 { font-size: 28px; margin: 28px 0 12px; }
+.markdown-body h2 { font-size: 20px; margin: 26px 0 10px; color: var(--text-hi); }
+.markdown-body h3 { font-size: 16px; margin: 22px 0 8px; }
+.markdown-body p { margin: 0 0 14px; }
+.markdown-body ul,
+.markdown-body ol { margin: 0 0 14px; padding-left: 22px; }
+.markdown-body li { margin: 4px 0; }
+.markdown-body a { color: var(--teal-hi); }
+.markdown-body a:hover { color: var(--text-hi); border-bottom: 1px solid var(--teal-hi); }
+.markdown-body blockquote {
+  margin: 0 0 16px;
+  padding: 4px 16px;
+  border-left: 2px solid var(--teal-mute);
+  color: var(--text-mid);
+  font-style: italic;
+}
+.markdown-body pre {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 16px;
+}
+.markdown-body pre code {
+  background: transparent;
+  color: var(--text);
+  padding: 0;
+  font-size: 13px;
+}
+.markdown-body hr { border: none; border-top: 1px dashed var(--rule); margin: 24px 0; }
+.markdown-body table { border-collapse: collapse; margin: 0 0 16px; width: 100%; }
+.markdown-body th,
+.markdown-body td { border: 1px solid var(--rule); padding: 6px 10px; text-align: left; }

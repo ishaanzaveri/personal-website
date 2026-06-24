@@ -1,0 +1,65 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(4, 8, 10, 0.78);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18vh 16px 0;
+}
+.pal {
+  width: 100%;
+  max-width: 560px;
+  background: var(--panel);
+  border: 1px solid var(--rule-hi);
+  border-radius: var(--r-2);
+  padding: 14px;
+  box-shadow: 0 0 0 1px var(--bg);
+}
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.input {
+  width: 100%;
+  background: transparent;
+  color: var(--text-hi);
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 4px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px;
+  border-radius: var(--r-2);
+  cursor: pointer;
+  font-size: 13px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+}
+.rowOn { background: var(--panel-hi); }
+.row:hover { background: var(--panel-hi); }
+.hint { color: var(--text-dim); font-size: 10px; letter-spacing: 0.06em; }
+.empty { padding: 12px; color: var(--text-dim); font-style: italic; font-size: 12px; }
+.foot {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}

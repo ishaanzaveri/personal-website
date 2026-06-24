@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "honeycache",
+    "name": "honeycache",
+    "blurb": "honeypot cache that watches and learns. single binary, ~2k LOC; it serves real traffic while profiling who is probing it.",
+    "stack": ["C", "eBPF", "sqlite"],
+    "status": "shipped",
+    "metric": "2.1k samples · 412 ★",
+    "readmeUrl": "/api/projects/honeycache/readme",
+    "order": 1,
+    "readme": "# honeycache\n\nA caching layer that doubles as a honeypot. It keeps hot keys fast and quietly fingerprints anything that looks like enumeration.\n\n## why\n\nMost caches throw away the most interesting signal — *who asked for what, and how often*. honeycache keeps a tiny rolling profile per client and uses it to decide what is worth keeping.\n\n```c\nbool cache_should_keep(struct entry *e) {\n  return e->hits > 2 || e->source_is_suspicious;\n}\n```\n\nSingle static binary, eBPF for the fast path, sqlite for the slow truth."
+  },
+  {
+    "slug": "lattice-notes",
+    "name": "lattice-notes",
+    "blurb": "a from-scratch, heavily-commented implementation of Kyber-style lattice KEM, written to be read, not deployed.",
+    "stack": ["Rust", "crypto"],
+    "status": "progress",
+    "metric": "ring-LWE · WIP",
+    "readmeUrl": "/api/projects/lattice-notes/readme",
+    "order": 2,
+    "readme": "# lattice-notes\n\nA teaching implementation of post-quantum lattice cryptography. Every step has a comment explaining the *why*, not just the *what*.\n\n> Do not use this for anything real. It exists so I (and you) can understand Kyber without hand-waving."
+  },
+  {
+    "slug": "frame-exif",
+    "name": "frame-exif",
+    "blurb": "tiny service that ingests RAW/JPEG, extracts EXIF, generates thumbnails + blurhash, and writes the photo API this site reads.",
+    "stack": ["Go", "libvips"],
+    "status": "shipped",
+    "metric": "35 frames · 6 albums",
+    "readmeUrl": "/api/projects/frame-exif/readme",
+    "order": 3,
+    "readme": "# frame-exif\n\nThe pipeline behind the [photo](./photo) page. Drop a file in, get back structured EXIF, responsive variants, and a blurhash placeholder.\n\n## flow\n\n1. Watch an inbox directory.\n2. Parse EXIF (camera, lens, aperture, shutter, ISO).\n3. Emit `webp`/`avif` variants + a blurhash.\n4. Write the `/api/frames` record."
+  },
+  {
+    "slug": "tinytrace",
+    "name": "tinytrace",
+    "blurb": "a 600-line distributed tracer. no agents, no sidecars — just a header, a ring buffer, and a flamegraph you can read.",
+    "stack": ["Go", "observability"],
+    "status": "shipped",
+    "metric": "600 LOC · 0 deps",
+    "readmeUrl": "/api/projects/tinytrace/readme",
+    "order": 4,
+    "readme": "# tinytrace\n\nDistributed tracing for people who think OpenTelemetry is a lot. One header, one ring buffer, one flamegraph."
+  },
+  {
+    "slug": "crt-term",
+    "name": "crt-term",
+    "blurb": "the terminal theme this whole site is built on, packaged as CSS variables + a scanline shader you can drop into anything.",
+    "stack": ["CSS", "design"],
+    "status": "progress",
+    "metric": "tokens · v1",
+    "readmeUrl": "/api/projects/crt-term/readme",
+    "order": 5,
+    "readme": "# crt-term\n\nThe design tokens powering this site, extracted into a portable theme: dark surfaces, a restrained text ramp, flat signal colors, and an optional scanline overlay."
+  },
+  {
+    "slug": "old-scheduler",
+    "name": "old-scheduler",
+    "blurb": "an experimental userspace scheduler from a previous life. archived, but the ideas about latency budgets aged well.",
+    "stack": ["C", "Linux"],
+    "status": "archived",
+    "metric": "archived 2023",
+    "readmeUrl": "/api/projects/old-scheduler/readme",
+    "order": 6,
+    "readme": "# old-scheduler\n\nArchived. A userspace cooperative scheduler that tried to enforce per-task latency budgets. Superseded, but I still reach for these ideas."
+  }
+]

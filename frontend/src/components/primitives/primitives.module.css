@@ -1,0 +1,105 @@
+/* Design-system primitives — token-backed, ported from the prototype's
+   src/components.jsx (which used inline-style objects). */
+
+/* ---- Bracket: panel with hairline corner brackets ---- */
+.bracket {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  padding: var(--s-5);
+  position: relative;
+}
+.bracket::before,
+.bracket::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 0 solid var(--teal);
+}
+.bracket::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+.bracket::after { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+/* ---- Tile: plain bordered panel with hover transition ---- */
+.tile {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  padding: 18px;
+  transition: border-color var(--t-default) var(--ease), background var(--t-default) var(--ease);
+}
+
+/* ---- Tag: small uppercase outlined chip ---- */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border: 1px solid currentColor;
+  border-radius: var(--r-2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---- Btn ---- */
+.btn {
+  background: transparent;
+  color: var(--teal-hi);
+  border: 1px solid var(--teal);
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--r-2);
+  transition: all 0.15s var(--ease);
+}
+.btn:hover { background: var(--panel-hi); }
+.sizeSm { padding: 6px 12px; font-size: 11px; }
+.sizeMd { padding: 9px 16px; font-size: 12px; }
+.sizeLg { padding: 14px 24px; font-size: 14px; }
+.variantPri { background: var(--teal); color: var(--bg); border-color: var(--teal); font-weight: 600; }
+.variantPri:hover { background: var(--teal-hi); }
+.variantGhost { color: var(--text-mid); border-color: var(--rule); }
+.variantWarn { color: var(--amber); border-color: var(--amber); }
+.variantDanger { color: var(--rose); border-color: var(--rose); }
+
+/* ---- Kbd: keycap glyph ---- */
+.kbd {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid var(--rule-hi);
+  border-bottom-width: 2px;
+  background: var(--panel);
+  color: var(--teal-hi);
+  border-radius: var(--r-2);
+  font-size: 11px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+/* ---- Cursor: blinking block ---- */
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.95em;
+  background: var(--teal-hi);
+  vertical-align: -0.05em;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+/* ---- SectionH: numbered header with dashed rule ---- */
+.sectionH {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 18px;
+}
+.sectionHNum { color: var(--teal); font-size: 11px; letter-spacing: 0.18em; white-space: nowrap; }
+.sectionHTitle {
+  color: var(--text-hi);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 0;
+  white-space: nowrap;
+}
+.sectionHRule { flex: 1; border-bottom: 1px dashed var(--rule); align-self: center; min-width: 24px; }
+.sectionHSide { color: var(--text-dim); font-size: 11px; letter-spacing: 0.1em; white-space: nowrap; }

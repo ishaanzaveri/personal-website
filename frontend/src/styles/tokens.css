@@ -1,0 +1,125 @@
+/* ============================================================
+   Ishaan Zaveri Design System · Terminal Pilot v1.0
+   Color tokens + Typography
+   Ported from the prototype's colors_and_type.css. The Google
+   Fonts @import is intentionally dropped — JetBrains Mono is
+   self-hosted via @fontsource (imported in main.tsx).
+   ============================================================ */
+
+:root {
+  /* ---- Surface (dark-first) ---- */
+  --bg:        #04080a;   /* page bg — the deepest plate */
+  --bg-2:      #070d10;   /* sticky nav, secondary surfaces */
+  --panel:     #0a1014;   /* cards, tiles, code blocks */
+  --panel-hi:  #0e161b;   /* hover state on panels and rows */
+  --rule:      #142329;   /* default border / divider */
+  --rule-hi:   #1f3439;   /* hover border, kbd outlines */
+
+  /* ---- Text ---- */
+  --text-dim:  #3d5a63;   /* comments, timestamps, muted prompt */
+  --text-mid:  #6b8a93;   /* secondary copy, captions, metadata */
+  --text:      #a8c4cc;   /* default body */
+  --text-hi:   #e6f6f9;   /* headlines and emphasis (use sparingly) */
+
+  /* ---- Signal — flat, no glow ---- */
+  --teal:      #14b8a6;   /* brand. links, prompts, primary buttons */
+  --teal-hi:   #2dd4bf;   /* hover, accents in code, hairline brackets */
+  --teal-mute: #0e6b62;   /* muted teal — backgrounds, borders w/o volume */
+  --amber:     #f59e0b;   /* warn · CVE · WIP · the Z in the wordmark */
+  --rose:      #f43f5e;   /* error / destructive only */
+  --violet:    #a78bfa;   /* annotation in code (preprocessor / macros) */
+
+  /* ---- Code syntax tokens ---- */
+  --c-pre:     var(--violet);  /* preprocessor: #include #define */
+  --c-kw:      var(--teal-hi); /* keywords: for if return while */
+  --c-typ:     var(--amber);   /* types: int uint64_t struct void */
+  --c-fn:      var(--text-hi); /* function names */
+  --c-num:     var(--rose);    /* numeric literals */
+  --c-str:     #95d3a4;        /* strings */
+  --c-com:     var(--text-dim);/* comments (italic) */
+  --c-pun:     var(--text-mid);/* punctuation / operators */
+
+  /* ---- Radii — sharp by default ---- */
+  --r-1: 0px;   /* default */
+  --r-2: 2px;   /* buttons / kbd / inputs */
+  --r-3: 4px;   /* max — rare */
+
+  /* ---- Spacing scale (base 4) ---- */
+  --s-1:  4px;  /* inline gap (between tag chips) */
+  --s-2:  8px;  /* compact stack */
+  --s-3: 12px;
+  --s-4: 16px;  /* default stack */
+  --s-5: 24px;  /* card padding */
+  --s-6: 32px;  /* section gap */
+  --s-7: 48px;  /* top-level vertical rhythm */
+  --s-8: 56px;  /* outer page padding (desktop) */
+
+  /* ---- Layout ---- */
+  --doc-max: 1180px;
+  --doc-pad: 56px;          /* mobile: 24px */
+
+  /* ---- Motion ---- */
+  --t-micro:   120ms;       /* kbd hover, button bg */
+  --t-default: 180ms;       /* link, tile hover */
+  --t-reveal:  250ms;       /* EXIF fade in */
+  --t-page:    400ms;       /* section in */
+  --ease:      cubic-bezier(.2, .7, .3, 1);
+
+  /* ---- Type family ---- */
+  --ff-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --ff: var(--ff-mono);  /* one family for everything */
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff);
+  font-size: 14px;
+  line-height: 1.6;
+  font-feature-settings: 'ss01', 'ss02', 'zero'; /* slashed zero, single-storey a */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Semantic type roles — apply as classes or copy declarations */
+.t-display  { font-family: var(--ff); font-weight: 700; font-size: 56px; letter-spacing: -0.02em;  line-height: 1.05; color: var(--text-hi); }
+.t-h1       { font-family: var(--ff); font-weight: 700; font-size: 36px; letter-spacing: -0.015em; line-height: 1.1;  color: var(--text-hi); }
+.t-h2       { font-family: var(--ff); font-weight: 600; font-size: 22px; line-height: 1.2;  color: var(--text-hi); }
+.t-h3       { font-family: var(--ff); font-weight: 600; font-size: 16px; line-height: 1.3;  color: var(--text-hi); }
+.t-body     { font-family: var(--ff); font-weight: 400; font-size: 14px; line-height: 1.6;  color: var(--text); }
+.t-caption  { font-family: var(--ff); font-weight: 400; font-size: 12px; line-height: 1.5;  color: var(--text-mid); }
+.t-micro    { font-family: var(--ff); font-weight: 400; font-size: 11px; letter-spacing: 0.05em; color: var(--text-dim); }
+.t-label    { font-family: var(--ff); font-weight: 400; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); }
+
+/* Semantic element baselines */
+h1 { font: 700 36px/1.1 var(--ff); letter-spacing: -0.015em; color: var(--text-hi); margin: 0; }
+h2 { font: 600 22px/1.2 var(--ff); color: var(--text-hi); margin: 0; }
+h3 { font: 600 16px/1.3 var(--ff); color: var(--text-hi); margin: 0; }
+p  { font: 400 14px/1.6 var(--ff); color: var(--text); margin: 0; }
+
+code, pre, kbd, samp { font-family: var(--ff); }
+
+/* Inline code: panel-hi bg, teal-hi text */
+code {
+  color: var(--teal-hi);
+  background: var(--panel-hi);
+  padding: 1px 6px;
+  border-radius: var(--r-2);
+  font-size: 13px;
+}
+
+/* Comment / aside (italic = comment only — never emphasis) */
+.com { color: var(--text-dim); font-style: italic; }
+.key { color: var(--teal-hi); }
+.acc { color: var(--amber); }
+.hi  { color: var(--text-hi); }
+
+/* Links — teal.hi, underline on hover */
+a { color: var(--teal-hi); text-decoration: none; }
+a:hover { color: var(--text-hi); border-bottom: 1px solid var(--teal-hi); }
+
+::selection { background: var(--teal); color: var(--bg); }
+
+/* Reduced motion: kill all transitions and the cursor blink */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
