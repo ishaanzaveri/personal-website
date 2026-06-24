@@ -12,8 +12,11 @@ is optional). Auth is only needed for the private authoring/admin surface.
 - Base URL: `/api`
 - Format: JSON (`Content-Type: application/json`)
 - Versioning: prefix with `/api/v1` if you expect the shape to churn
-- List endpoints return a plain JSON array. The dataset is small and single-author,
-  so each list returns everything; no pagination.
+- Most list endpoints return a plain JSON array. The dataset is small and
+  single-author, so each list returns everything; no pagination.
+- The **photo** list endpoints (`/api/albums`, `/api/frames`) are the exception:
+  they wrap the array in `{ "data": [...], "meta": {...} }`, where `meta` carries
+  the result counts and active filters the gallery UI needs.
 
 ---
 
@@ -179,22 +182,26 @@ This is the richest data domain. Today it lives in `src/photo/data.jsx` as
 
 ### `GET /api/albums`
 ```json
-[
-  {
-    "id": "dumbo-dusk",
-    "title": "DUMBO Dusk",
-    "subtitle": "Brooklyn waterfront",
-    "location": "Brooklyn, NY",
-    "date": "2025-08-12",
-    "count": 6,
-    "coverFrameId": "p001"
-  }
-]
+{
+  "data": [
+    {
+      "id": "dumbo-dusk",
+      "title": "DUMBO Dusk",
+      "subtitle": "Brooklyn waterfront",
+      "location": "Brooklyn, NY",
+      "date": "2025-08-12",
+      "count": 6,
+      "coverFrameId": "p001"
+    }
+  ],
+  "meta": { "total": 6 }
+}
 ```
 
 ### `GET /api/albums/:id`
 Album metadata plus its frames (for the album hero band + scoped gallery).
-Equivalent to `FRAMES_BY_ALBUM[id]` joined with the album record.
+Equivalent to `FRAMES_BY_ALBUM[id]` joined with the album record. Returns the
+album fields alongside a `frames` array and a `meta` block (`{ "total": <count> }`).
 
 ### `GET /api/frames`
 The master photo list. Backs the all-photos gallery, the landing "recent frames"
@@ -208,31 +215,34 @@ Query params:
 - `sort` — default `-date`
 
 ```json
-[
-  {
-    "id": "p001",
-    "album": "dumbo-dusk",
-    "aspectRatio": "3/2",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ2.0",
-    "shutter": "1/125",
-    "iso": "ISO 400",
-    "location": "Brooklyn · Front St",
-    "date": "2025-08-12",
-    "tags": ["street", "color", "golden hour"],
-    "image": {
-      "src": "https://cdn.example.com/frames/p001.jpg",
-      "blurhash": "…",
-      "placeholder": { "hue": 30, "lightness": 0.40 }
-    },
-    "caption": {
-      "title": "Front Street, the hour the brick turns gold.",
-      "paragraphs": ["DUMBO empties out right before sunset…"],
-      "note": "// metered for the highlights, let the shadows fall."
+{
+  "data": [
+    {
+      "id": "p001",
+      "album": "dumbo-dusk",
+      "aspectRatio": "3/2",
+      "camera": "Leica Q3",
+      "lens": "28mm Summilux",
+      "aperture": "ƒ2.0",
+      "shutter": "1/125",
+      "iso": "ISO 400",
+      "location": "Brooklyn · Front St",
+      "date": "2025-08-12",
+      "tags": ["street", "color", "golden hour"],
+      "image": {
+        "src": "https://cdn.example.com/frames/p001.jpg",
+        "blurhash": "…",
+        "placeholder": { "hue": 30, "lightness": 0.40 }
+      },
+      "caption": {
+        "title": "Front Street, the hour the brick turns gold.",
+        "paragraphs": ["DUMBO empties out right before sunset…"],
+        "note": "// metered for the highlights, let the shadows fall."
+      }
     }
-  }
-]
+  ],
+  "meta": { "total": 35, "filteredBy": { "tag": [], "q": "" } }
+}
 ```
 
 Notes
