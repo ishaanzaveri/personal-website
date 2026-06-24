@@ -82,3 +82,41 @@ a { cursor: pointer; }
   outline: 2px solid var(--teal-hi);
   outline-offset: 2px;
 }
+
+/* Generic markdown rendering (styling refined in a later pass). */
+.markdown-body { color: var(--text); font-size: 14px; line-height: 1.75; }
+.markdown-body > :first-child { margin-top: 0; }
+.markdown-body h1 { font-size: 28px; margin: 28px 0 12px; }
+.markdown-body h2 { font-size: 20px; margin: 26px 0 10px; color: var(--text-hi); }
+.markdown-body h3 { font-size: 16px; margin: 22px 0 8px; }
+.markdown-body p { margin: 0 0 14px; }
+.markdown-body ul,
+.markdown-body ol { margin: 0 0 14px; padding-left: 22px; }
+.markdown-body li { margin: 4px 0; }
+.markdown-body a { color: var(--teal-hi); }
+.markdown-body a:hover { color: var(--text-hi); border-bottom: 1px solid var(--teal-hi); }
+.markdown-body blockquote {
+  margin: 0 0 16px;
+  padding: 4px 16px;
+  border-left: 2px solid var(--teal-mute);
+  color: var(--text-mid);
+  font-style: italic;
+}
+.markdown-body pre {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 16px;
+}
+.markdown-body pre code {
+  background: transparent;
+  color: var(--text);
+  padding: 0;
+  font-size: 13px;
+}
+.markdown-body hr { border: none; border-top: 1px dashed var(--rule); margin: 24px 0; }
+.markdown-body table { border-collapse: collapse; margin: 0 0 16px; width: 100%; }
+.markdown-body th,
+.markdown-body td { border: 1px solid var(--rule); padding: 6px 10px; text-align: left; }

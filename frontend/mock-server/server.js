@@ -130,9 +130,11 @@ app.get('/api/frames', (req, res) => {
   const q = req.query.q || '';
   let list = FRAMES;
   if (req.query.album) list = list.filter((f) => f.album === req.query.album);
+  // `total` is the scope size (after album scoping, before tag/q filters), so
+  // the gallery can show "N frames / total".
+  const total = list.length;
   if (tags.length) list = list.filter((f) => tags.some((t) => f.tags.includes(t))); // OR-match
   if (q) list = list.filter((f) => matchesQuery(f, q));
-  const total = list.length;
   list = applySort(list, req.query.sort);
   list = applyLimit(list, req.query.limit);
   res.json({ data: list, meta: { total, filteredBy: { tag: tags, q } } });
