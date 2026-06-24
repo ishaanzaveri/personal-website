@@ -12,8 +12,8 @@ is optional). Auth is only needed for the private authoring/admin surface.
 - Base URL: `/api`
 - Format: JSON (`Content-Type: application/json`)
 - Versioning: prefix with `/api/v1` if you expect the shape to churn
-- All list endpoints return `{ "data": [...], "meta": {...} }` so pagination and
-  counts have a home.
+- List endpoints return a plain JSON array. The dataset is small and single-author,
+  so each list returns everything; no pagination.
 
 ---
 
@@ -88,22 +88,22 @@ Query params:
 - `limit` — default 12 (home shows 3, with a "3 of 12 →" affordance)
 
 ```json
-{
-  "data": [
-    {
-      "slug": "honeycache",
-      "name": "honeycache",
-      "blurb": "honeypot cache that watches and learns. single binary, ~2k LOC…",
-      "stack": ["C", "eBPF", "sqlite"],
-      "status": "shipped",
-      "metric": "2.1k samples · 412 ★",
-      "readmeUrl": "/api/projects/honeycache/readme",
-      "order": 1
-    }
-  ],
-  "meta": { "total": 12, "limit": 3 }
-}
+[
+  {
+    "slug": "honeycache",
+    "name": "honeycache",
+    "blurb": "honeypot cache that watches and learns. single binary, ~2k LOC…",
+    "stack": ["C", "eBPF", "sqlite"],
+    "status": "shipped",
+    "metric": "2.1k samples · 412 ★",
+    "readmeUrl": "/api/projects/honeycache/readme",
+    "order": 1
+  }
+]
 ```
+
+The home page shows the first 3 and labels it "3 of 12 →"; the client derives that
+total from the array length.
 
 ### `GET /api/projects/:slug`
 Single project detail (for the "cat readme →" action).
@@ -120,31 +120,25 @@ List endpoint backing both the landing "writing" section and the `./blog` page.
 
 Query params:
 - `tag` — `systems | security | photo | notes` (the filter row; `all` omits it)
-- `limit`, `cursor` — pagination (landing shows 5, blog shows all)
+- `limit` — optional cap (landing shows 5, blog shows all)
 - `sort` — default `-date` (newest first; the UI labels this `ls -t`)
 
 ```json
-{
-  "data": [
-    {
-      "slug": "a-honeypot-cache-that-watches-and-learns",
-      "date": "2026-05-12",
-      "tag": "systems",
-      "title": "a honeypot cache that watches and learns",
-      "blurb": "single binary, ~2k LOC. how the cache decides what is worth keeping…",
-      "readMinutes": 8
-    }
-  ],
-  "meta": { "total": 23, "tags": {
-    "all": 23, "systems": 8, "security": 6, "photo": 5, "notes": 4
-  } }
-}
+[
+  {
+    "slug": "a-honeypot-cache-that-watches-and-learns",
+    "date": "2026-05-12",
+    "tag": "systems",
+    "title": "a honeypot cache that watches and learns",
+    "blurb": "single binary, ~2k LOC. how the cache decides what is worth keeping…",
+    "readMinutes": 8
+  }
+]
 ```
 
 Notes
-- `meta.tags` gives the per-tag counts shown in the filter pills, e.g.
-  `systems (8)`. Compute server-side so the badges are correct without fetching
-  every post.
+- The filter pills show per-tag counts, e.g. `systems (8)`. Since the blog page
+  fetches the full list, the client derives those counts from the array.
 - `readMinutes` is an integer; the UI renders `8 min`. The BlogPost view also
   derives an approximate word count (`readMinutes * 230`) — optionally return a
   real `words` field instead.
@@ -192,20 +186,17 @@ This is the richest data domain. Today it lives in `src/photo/data.jsx` as
 
 ### `GET /api/albums`
 ```json
-{
-  "data": [
-    {
-      "id": "dumbo-dusk",
-      "title": "DUMBO Dusk",
-      "subtitle": "Brooklyn waterfront",
-      "location": "Brooklyn, NY",
-      "date": "2025-08-12",
-      "count": 6,
-      "coverFrameId": "p001"
-    }
-  ],
-  "meta": { "total": 6 }
-}
+[
+  {
+    "id": "dumbo-dusk",
+    "title": "DUMBO Dusk",
+    "subtitle": "Brooklyn waterfront",
+    "location": "Brooklyn, NY",
+    "date": "2025-08-12",
+    "count": 6,
+    "coverFrameId": "p001"
+  }
+]
 ```
 
 ### `GET /api/albums/:id`
@@ -224,34 +215,31 @@ Query params:
 - `sort` — default `-date`
 
 ```json
-{
-  "data": [
-    {
-      "id": "p001",
-      "album": "dumbo-dusk",
-      "aspectRatio": "3/2",
-      "camera": "Leica Q3",
-      "lens": "28mm Summilux",
-      "aperture": "ƒ2.0",
-      "shutter": "1/125",
-      "iso": "ISO 400",
-      "location": "Brooklyn · Front St",
-      "date": "2025-08-12",
-      "tags": ["street", "color", "golden hour"],
-      "image": {
-        "src": "https://cdn.example.com/frames/p001.jpg",
-        "blurhash": "…",
-        "placeholder": { "hue": 30, "lightness": 0.40 }
-      },
-      "caption": {
-        "title": "Front Street, the hour the brick turns gold.",
-        "paragraphs": ["DUMBO empties out right before sunset…"],
-        "note": "// metered for the highlights, let the shadows fall."
-      }
+[
+  {
+    "id": "p001",
+    "album": "dumbo-dusk",
+    "aspectRatio": "3/2",
+    "camera": "Leica Q3",
+    "lens": "28mm Summilux",
+    "aperture": "ƒ2.0",
+    "shutter": "1/125",
+    "iso": "ISO 400",
+    "location": "Brooklyn · Front St",
+    "date": "2025-08-12",
+    "tags": ["street", "color", "golden hour"],
+    "image": {
+      "src": "https://cdn.example.com/frames/p001.jpg",
+      "blurhash": "…",
+      "placeholder": { "hue": 30, "lightness": 0.40 }
+    },
+    "caption": {
+      "title": "Front Street, the hour the brick turns gold.",
+      "paragraphs": ["DUMBO empties out right before sunset…"],
+      "note": "// metered for the highlights, let the shadows fall."
     }
-  ],
-  "meta": { "total": 35, "filteredBy": { "tag": [], "q": "" } }
-}
+  }
+]
 ```
 
 Notes
@@ -324,7 +312,6 @@ Auth
 | Concern | Recommendation |
 |---|---|
 | Caching | Public `GET`s are highly cacheable. Send `Cache-Control: public, max-age=300, stale-while-revalidate=86400` and `ETag`s. |
-| Pagination | Cursor-based on `frames` and `posts`; lists return `meta.total`. |
 | Errors | Consistent shape: `{ "error": { "code": "not_found", "message": "…" } }` with correct HTTP status. |
 | CORS | Lock to the site origin(s). |
 | Rate limiting | Required on `POST /api/contact`; light limits elsewhere. |
