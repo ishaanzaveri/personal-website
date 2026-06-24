@@ -1,0 +1,56 @@
+[
+  {
+    "id": "dumbo-dusk",
+    "title": "DUMBO Dusk",
+    "subtitle": "Brooklyn waterfront",
+    "location": "Brooklyn, NY",
+    "date": "2025-08-12",
+    "count": 6,
+    "coverFrameId": "p001"
+  },
+  {
+    "id": "tokyo",
+    "title": "Tokyo · Shibuya",
+    "subtitle": "Neon, late nights",
+    "location": "Tokyo, JP",
+    "date": "2025-04-22",
+    "count": 7,
+    "coverFrameId": "p007"
+  },
+  {
+    "id": "rooftops",
+    "title": "Rooftops",
+    "subtitle": "Above the city, mostly",
+    "location": "New York, NY",
+    "date": "2024-11-03",
+    "count": 6,
+    "coverFrameId": "p014"
+  },
+  {
+    "id": "portraits",
+    "title": "Portraits — Spring",
+    "subtitle": "Studio + natural light",
+    "location": "Various",
+    "date": "2026-03-18",
+    "count": 5,
+    "coverFrameId": "p020"
+  },
+  {
+    "id": "bw",
+    "title": "Untitled — B&W",
+    "subtitle": "Ongoing series",
+    "location": "Various",
+    "date": "2025-12-04",
+    "count": 6,
+    "coverFrameId": "p025"
+  },
+  {
+    "id": "iceland",
+    "title": "Iceland",
+    "subtitle": "Highlands & coast",
+    "location": "Iceland",
+    "date": "2024-09-21",
+    "count": 5,
+    "coverFrameId": "p031"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "updated": "2026-05-17",
+  "hero": {
+    "prompts": ["cat manifest", "whoami", "tail -f log"],
+    "tagline": "I build, break, then photograph what's left."
+  },
+  "now": {
+    "updatedCadence": "weekly",
+    "body": "Reading about post-quantum lattices. Editing a recent batch of shots from a late-night walk through Shibuya. Slowly rewriting the cache eviction loop in honeycache.",
+    "tags": ["kyber", "exposure", "ebpf"]
+  },
+  "socials": [
+    { "key": "linkedin",  "label": "linkedin",  "url": "https://www.linkedin.com/in/ishaanzaveri/" },
+    { "key": "instagram", "label": "instagram", "url": "https://www.instagram.com/ishaanzaveriphotography/" },
+    { "key": "github",    "label": "github",    "url": "https://ishaanzaveri.github.io/" }
+  ],
+  "build": { "branch": "main", "lastCommit": "2026-05-17T10:00:00Z" }
+}

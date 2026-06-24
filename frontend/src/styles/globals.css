@@ -1,0 +1,84 @@
+/* Global shell styles ported from the prototype's Website.html <style> block. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { min-height: 100vh; }
+
+/* Document container */
+.doc {
+  max-width: var(--doc-max);
+  margin: 0 auto;
+  padding: 28px var(--doc-pad) 80px;
+}
+@media (max-width: 760px) {
+  .doc { padding: 16px 20px 60px; }
+}
+
+/* Scanlines overlay (fixed CRT layer) */
+.scan {
+  position: fixed; inset: 0; pointer-events: none; z-index: 100;
+  background-image: repeating-linear-gradient(
+    0deg, transparent 0, transparent 2px,
+    rgba(232, 246, 249, 0.012) 2px, rgba(232, 246, 249, 0.012) 3px
+  );
+}
+
+/* Footer */
+footer.shell {
+  padding: 28px 0 0; color: var(--text-dim); font-size: 11px;
+  display: flex; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; align-items: baseline;
+  border-top: 1px solid var(--rule); margin-top: 56px;
+}
+footer.shell a { color: var(--teal-hi); }
+footer.shell a:hover { color: var(--text-hi); border-bottom: 1px solid var(--teal-hi); }
+
+/* Block cursor blink */
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Photo modal entrance */
+@keyframes photoModalIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Section fade-in */
+@keyframes sectionIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section-in { animation: sectionIn var(--t-page) var(--ease) both; }
+
+a { cursor: pointer; }
+
+/* Photo gallery — frames hover state (EXIF only on hover) */
+.frame .frame-veil,
+.frame .frame-exif {
+  opacity: 0;
+  transition: opacity var(--t-reveal) var(--ease);
+}
+.frame .frame-id {
+  opacity: 0.55;
+  transition: opacity var(--t-reveal) var(--ease);
+}
+.frame::after {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  outline: 1px solid transparent; outline-offset: 2px;
+  transition: outline-color var(--t-default) var(--ease);
+}
+.frame:hover .frame-veil,
+.frame:hover .frame-exif { opacity: 1; }
+.frame:hover .frame-id   { opacity: 1; }
+.frame:hover::after      { outline-color: var(--teal); }
+.frame:focus-visible::after { outline-color: var(--teal-hi); }
+
+/* Blog post-row hover */
+.post-row { transition: background var(--t-default) var(--ease); }
+.post-row:hover { background: var(--panel-hi); }
+
+/* Visible focus rings for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--teal-hi);
+  outline-offset: 2px;
+}
