@@ -144,8 +144,8 @@ Notes
   real `words` field instead.
 
 ### `GET /api/posts/:slug`
-Full post, used by the `BlogPost` detail view. Body is a typed block model so the
-renderer stays simple and safe (no raw HTML injection).
+Full post, used by the `BlogPost` detail view. `body` is a raw markdown string;
+the client renders it (and must sanitize the output before injecting HTML).
 
 ```json
 {
@@ -158,20 +158,13 @@ renderer stays simple and safe (no raw HTML injection).
   "words": 1840,
   "commit": "a1b2c3d",
   "tags": ["cache", "go", "systems", "eviction"],
-  "body": [
-    { "type": "p", "text": "The cache started as a joke…" },
-    { "type": "h", "text": "the first three designs were wrong" },
-    { "type": "ol", "items": ["LRU with a twist…", "A scoring model…"] },
-    { "type": "code", "lang": "go", "filename": "eviction.go",
-      "lines": ["func (c *Cache) shouldKeep(e *entry) bool {", "…"] },
-    { "type": "quote", "text": "A cache that forgets on a timer tells you nothing…" }
-  ]
+  "body": "The cache started as a joke…\n\n## the first three designs were wrong\n\n1. LRU with a twist…\n\n```go\nfunc (c *Cache) shouldKeep(e *entry) bool {\n  …\n}\n```\n\n> A cache that forgets on a timer tells you nothing…"
 }
 ```
 
-Block `type` enum: `p`, `h`, `ol`, `code`, `quote` (matches `POST_BODY` in
-`src/BlogPost.jsx`). `commit` can be a real git short-hash or a stable hash of the
-slug.
+`body` is standard markdown (headings, lists, fenced code blocks, blockquotes —
+the constructs the prototype's `POST_BODY` already covers). `commit` can be a real
+git short-hash or a stable hash of the slug.
 
 ### `GET /feed.xml`
 RSS feed. The UI advertises `/feed.xml` ("plain RSS, no tracking") in two places.
