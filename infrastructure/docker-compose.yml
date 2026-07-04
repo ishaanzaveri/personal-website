@@ -7,7 +7,9 @@
 # systemd service), which dials this local port from inside the box.
 #
 # The image is built and published to GHCR by
-# .github/workflows/deploy-backend.yml. On the box, deploy with:
+# .github/workflows/build-mock-backend.yml. Deployment is pull-based: the
+# mock-api-update systemd timer (see install-timer.sh / update.sh) polls GHCR
+# every 5 min and redeploys when a new image lands. To deploy by hand:
 #   docker compose pull && docker compose up -d
 #
 # NOTE: this runs the *mock* backend. Swap the image / add a SQLite volume when
