@@ -1,0 +1,67 @@
+# Build the mock API image and publish it to GHCR.
+#
+# Deployment is PULL-BASED: the VPS polls GHCR on a systemd timer and redeploys
+# itself when a new image appears (see infrastructure/). CI never reaches into
+# the box — no SSH, no inbound port, no deploy secrets live here. This job's
+# only job is to build the image and push it; the box takes it from there.
+#
+# This builds the *mock* backend (frontend/mock-server), NOT the handwritten Go
+# API in backend/ (see AGENTS.md). Repoint IMAGE / build context when the Go
+# service is ready.
+
+name: Build & publish backend image (mock API)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "frontend/mock-server/**"
+      - ".github/workflows/build-mock-backend.yml"
+  workflow_dispatch: {}
+
+concurrency:
+  # One publish at a time; let an in-flight build finish rather than cancel it.
+  group: build-mock-backend
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}/mock-api
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive image tags & labels
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: frontend/mock-server
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
