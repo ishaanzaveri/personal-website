@@ -231,6 +231,15 @@ Query params:
       "tags": ["street", "color", "golden hour"],
       "image": {
         "src": "https://cdn.example.com/frames/p001.jpg",
+        "variants": [
+          { "width": 480,  "src": "https://cdn.example.com/frames/p001-480.jpg" },
+          { "width": 960,  "src": "https://cdn.example.com/frames/p001-960.jpg" },
+          { "width": 1440, "src": "https://cdn.example.com/frames/p001-1440.jpg" },
+          { "width": 2048, "src": "https://cdn.example.com/frames/p001-2048.jpg" }
+        ],
+        "width": 6625,
+        "height": 4417,
+        "filename": "p001.jpg",
         "blurhash": "…",
         "placeholder": { "hue": 30, "lightness": 0.40 }
       },
@@ -249,6 +258,10 @@ Notes
 - The current build has **no real images** — it draws gradient placeholders from
   `hue`/`lightness`. Keep `placeholder` in the payload as a graceful fallback /
   loading shim, but `image.src` is the real field once photos exist.
+- `image.src` is the canonical web JPEG URL. `image.variants` powers responsive
+  `srcset`; each variant is a resized JPEG keyed by max width. `width` and
+  `height` are the original image dimensions after orientation metadata is
+  applied, and `filename` is useful for search/debugging.
 - `caption` is the editorial story used on the full-detail page. Most frames have
   a generated caption; return `null` and let the client synthesize from EXIF when
   there's no hand-written one (mirrors `captionFor`).

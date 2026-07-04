@@ -2,16 +2,49 @@ import type { CSSProperties } from 'react';
 import type { Frame } from '../types';
 import { frameBg, frameAlt } from '../lib/format';
 
+type FramePlateIntent = 'masonry' | 'home' | 'albumHero' | 'albumPeek' | 'modal' | 'detail' | 'thumb';
+
+const SIZES: Record<FramePlateIntent, string> = {
+  masonry: '(max-width: 759px) 50vw, 33vw',
+  home: '(max-width: 759px) 50vw, 25vw',
+  albumHero: '100vw',
+  albumPeek: '(max-width: 759px) 33vw, 20vw',
+  modal: '100vw',
+  detail: '(max-width: 1100px) 100vw, 980px',
+  thumb: '(max-width: 759px) 33vw, 160px',
+};
+
 // Frame placeholder surface: a deterministic gradient + subtle diagonal grain.
 // When real images land, render the <img> (with srcset) and keep this as the
-// blurhash/LQIP loading shim. For now image.src is null, so the gradient is it.
-export function FramePlate({ frame, style }: { frame: Frame; style?: CSSProperties }) {
+// blurhash/LQIP loading shim.
+export function FramePlate({
+  frame,
+  intent = 'masonry',
+  loading,
+  style,
+}: {
+  frame: Frame;
+  intent?: FramePlateIntent;
+  loading?: 'eager' | 'lazy';
+  style?: CSSProperties;
+}) {
   if (frame.image.src) {
+    const srcSet = frame.image.variants
+      ?.filter((variant) => variant.src && variant.width > 0)
+      .sort((a, b) => a.width - b.width)
+      .map((variant) => `${variant.src} ${variant.width}w`)
+      .join(', ');
+
     return (
       <img
         src={frame.image.src}
+        srcSet={srcSet || undefined}
+        sizes={srcSet ? SIZES[intent] : undefined}
+        width={frame.image.width}
+        height={frame.image.height}
         alt={frameAlt(frame)}
-        loading="lazy"
+        loading={loading ?? (intent === 'modal' || intent === 'detail' || intent === 'albumHero' ? 'eager' : 'lazy')}
+        decoding="async"
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', ...style }}
       />
     );

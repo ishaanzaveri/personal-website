@@ -24,7 +24,7 @@ export function MasonryFrame({ f, onOpen }: { f: Frame; onOpen: (f: Frame) => vo
       }}
     >
       <div style={{ width: '100%', aspectRatio: f.aspectRatio }}>
-        <FramePlate frame={f} />
+        <FramePlate frame={f} intent="masonry" />
       </div>
       <div
         className="frame-veil"
