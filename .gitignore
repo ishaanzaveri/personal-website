@@ -6,6 +6,10 @@ dist/
 build/
 *.tsbuildinfo
 
+# Local photo sources and generated upload artifacts
+images/
+images-web/
+
 # Secrets & local env — never commit these
 .env
 .env.*
