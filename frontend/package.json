@@ -8,6 +8,9 @@
     "dev:web": "vite",
     "dev:api": "node mock-server/server.js",
     "build": "tsc -b && vite build",
+    "photos:assets": "node scripts/photo-pipeline.mjs assets",
+    "photos:seed": "node scripts/photo-pipeline.mjs seed",
+    "photos:all": "node scripts/photo-pipeline.mjs all",
     "preview": "vite preview",
     "lint": "eslint ."
   },
