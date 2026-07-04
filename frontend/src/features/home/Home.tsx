@@ -151,7 +151,7 @@ export default function Home() {
               aria-label={`open frame ${f.id}`}
             >
               <div style={{ width: '100%', aspectRatio: f.aspectRatio }}>
-                <FramePlate frame={f} />
+                <FramePlate frame={f} intent="home" />
               </div>
               <div className={`frame-veil ${styles.frameVeil}`} />
               <div className={`frame-id ${styles.frameId}`}>▸ {f.id.toUpperCase()}</div>

@@ -112,7 +112,7 @@ export function PhotoModal({
 
       <div onClick={(e) => e.stopPropagation()} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', maxWidth: 1500 }}>
         <div style={{ position: 'relative', aspectRatio: f.aspectRatio, maxWidth: '100%', maxHeight: 'calc(100% - 64px)', width: 'auto', height: '100%', boxShadow: '0 40px 120px -20px rgba(0,0,0,0.95)' }}>
-          <FramePlate frame={f} />
+          <FramePlate frame={f} intent="modal" />
         </div>
         <div
           style={{

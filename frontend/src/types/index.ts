@@ -66,6 +66,10 @@ export interface Album {
 
 export interface FrameImage {
   src: string | null;
+  variants?: { width: number; src: string }[];
+  width?: number;
+  height?: number;
+  filename?: string;
   blurhash: string | null;
   placeholder: { hue: number; lightness: number };
 }

@@ -267,7 +267,7 @@ function AlbumTeaserBlock({ album, frames, onOpen }: { album: Album; frames: Fra
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 8 }}>
         <button className="frame" onClick={onOpen} aria-label={`open album ${album.id}`} style={{ position: 'relative', margin: 0, overflow: 'hidden', cursor: 'pointer', border: 'none', padding: 0, background: 'transparent' }}>
           <div style={{ width: '100%', aspectRatio: hero.aspectRatio }}>
-            <FramePlate frame={hero} />
+            <FramePlate frame={hero} intent="albumHero" />
           </div>
           <div className="frame-veil" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(180deg, transparent 50%, rgba(4,8,10,0.85) 100%)' }} />
           <div className="frame-id" style={{ position: 'absolute', top: 10, left: 12, fontSize: 10, color: 'var(--teal-hi)', letterSpacing: '0.18em' }}>▸ {hero.id.toUpperCase()}</div>
@@ -276,7 +276,7 @@ function AlbumTeaserBlock({ album, frames, onOpen }: { album: Album; frames: Fra
           {peek.map((f) => (
             <button key={f.id} className="frame" onClick={onOpen} aria-label={`open album ${album.id}`} style={{ position: 'relative', margin: 0, overflow: 'hidden', cursor: 'pointer', border: 'none', padding: 0, background: 'transparent' }}>
               <div style={{ width: '100%', height: '100%', minHeight: 96 }}>
-                <FramePlate frame={f} />
+                <FramePlate frame={f} intent="albumPeek" />
               </div>
               <div className="frame-id" style={{ position: 'absolute', top: 6, left: 8, fontSize: 9, color: 'var(--teal-hi)', letterSpacing: '0.14em' }}>{f.id.toUpperCase()}</div>
             </button>
@@ -314,7 +314,7 @@ function AlbumView(props: {
   return (
     <div>
       <div style={{ position: 'relative', border: '1px solid var(--rule-hi)', overflow: 'hidden', marginBottom: 22, aspectRatio: '21/9', minHeight: 360 }}>
-        {hero && <FramePlate frame={hero} />}
+        {hero && <FramePlate frame={hero} intent="albumHero" />}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(4,7,10,0.85) 0%, rgba(4,7,10,0.45) 50%, transparent 100%)' }} />
         <div style={{ position: 'absolute', top: 24, left: 28, right: 28, bottom: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>

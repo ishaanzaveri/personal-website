@@ -88,7 +88,7 @@ export default function PhotoDetailPage() {
 
       <div style={{ background: '#02050a', border: '1px solid var(--rule)', padding: 'clamp(24px, 5vw, 60px)', display: 'flex', justifyContent: 'center' }}>
         <div style={{ position: 'relative', aspectRatio: f.aspectRatio, maxWidth: '100%', width: 980, maxHeight: 620, boxShadow: '0 30px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px var(--rule-hi)' }}>
-          <FramePlate frame={f} />
+          <FramePlate frame={f} intent="detail" />
         </div>
       </div>
 
@@ -138,7 +138,7 @@ export default function PhotoDetailPage() {
                 aria-label={`open frame ${r.id}`}
                 style={{ position: 'relative', aspectRatio: '3/2', border: '1px solid var(--rule)', cursor: 'pointer', overflow: 'hidden', padding: 0, background: 'transparent' }}
               >
-                <FramePlate frame={r} />
+                <FramePlate frame={r} intent="thumb" />
               </button>
             ))}
           </div>

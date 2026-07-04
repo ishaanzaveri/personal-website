@@ -110,9 +110,13 @@ app.get('/api/albums/:id', (req, res) => {
 // Free-text search across id, camera, lens, location, EXIF, tags (mirrors filterFrames).
 function matchesQuery(frame, q) {
   if (!q) return true;
+  const caption = frame.caption
+    ? [frame.caption.title, ...(frame.caption.paragraphs || []), frame.caption.note].filter(Boolean)
+    : [];
   const hay = [
     frame.id, frame.camera, frame.lens, frame.aperture, frame.shutter,
-    frame.iso, frame.location, frame.date, ...(frame.tags || []),
+    frame.iso, frame.location, frame.date, frame.image?.filename, frame.image?.src,
+    ...(frame.tags || []), ...caption,
   ].join(' ').toLowerCase();
   return hay.includes(q.toLowerCase());
 }
