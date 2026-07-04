@@ -24,8 +24,9 @@ Sizing follows from the workload, and the workload here is tiny. The VPS runs
 | **`cloudflared`** | Dials out to Cloudflare, terminates the tunnel | ~15–30 MB RSS |
 | **Litestream** | Streams the SQLite WAL to R2 continuously | Negligible |
 
-Plus `tailscaled` for admin SSH. That's it. Things this box **does not** do,
-which is why it can be the smallest instance on the menu:
+Admin SSH rides the **same `cloudflared` tunnel** (see §4.3), so there's no
+separate VPN daemon — it's genuinely just these three. Things this box **does
+not** do, which is why it can be the smallest instance on the menu:
 
 - **No image serving.** Derivatives live in R2 behind Cloudflare's CDN. The VPS
   never touches a 30 MB master or a 500 KB WebP.
@@ -140,7 +141,7 @@ long-lived, low-maintenance**.
   pairs perfectly with `unattended-upgrades` — the box patches itself and almost
   never changes underneath you.
 - The most heavily documented server distro: every tool here (Docker,
-  cloudflared, Tailscale, Litestream) publishes Ubuntu/`apt` install paths first,
+  cloudflared, Litestream) publishes Ubuntu/`apt` install paths first,
   and DO ships a clean, well-maintained Ubuntu image that's the platform default.
 - One nit worth a habit: Ubuntu leans on **snap** for some packages. Install
   Docker from the **official Docker apt repo** (not the snap) so the container
@@ -169,25 +170,42 @@ expanded version of Phase 3 in the architecture doc. **The end state is a box
 with zero open inbound ports** — SSH included.
 
 ### 4.1 Provision & first login
-- [ ] Create a **Basic 1 GB Droplet**, region **NYC** (or SFO), **Ubuntu LTS** image.
-- [ ] Add your **SSH public key** at create time (never a password).
+- [x] Create a **Basic 1 GB Droplet**, region **NYC** (or SFO), **Ubuntu LTS** image.
+- [x] Add your **SSH public key** at create time (never a password).
 - [ ] (Optional) Attach a **DigitalOcean Cloud Firewall** set to deny all
       inbound — free, and a good belt-and-suspenders alongside host `ufw`.
-- [ ] First login as root; confirm you're in.
+- [x] First login as root; confirm you're in.
 
 ### 4.2 Base hardening (before anything is exposed)
-- [ ] Create a **non-root sudo user**; copy your SSH key to it.
-- [ ] **Key-only SSH**: in `/etc/ssh/sshd_config` set `PasswordAuthentication no`,
+- [x] Create a **non-root sudo user**; copy your SSH key to it.
+- [x] **Key-only SSH**: in `/etc/ssh/sshd_config` set `PasswordAuthentication no`,
       `PermitRootLogin no`; reload sshd.
-- [ ] **Automatic security updates**: install and enable `unattended-upgrades`.
-- [ ] **Firewall default-deny inbound**: `ufw default deny incoming`,
-      `default allow outgoing`. Temporarily `ufw allow 22` only until Tailscale is
-      up (next step), then remove it.
+- [x] **Automatic security updates**: install and enable `unattended-upgrades`.
+- [x] **Firewall default-deny inbound**: `ufw default deny incoming`,
+      `default allow outgoing`. Temporarily `ufw allow 22` only until the
+      Cloudflare SSH route is up (next step), then remove it.
 
-### 4.3 Admin access without an open port
-- [ ] Install **Tailscale**; `tailscale up`. SSH to the box over its Tailscale IP.
-- [ ] Verify Tailscale SSH works, then **`ufw delete allow 22`** — port 22 is now
-      closed to the public internet. Admin access is Tailscale-only.
+### 4.3 Admin access without an open port (Cloudflare Tunnel + Access)
+Instead of a separate VPN, admin SSH rides the **same tunnel** that will carry
+the API. You set the tunnel up here; §4.5 just adds the API route to it.
+
+- [x] Install **`cloudflared`** on the box (official Cloudflare apt repo).
+- [x] `cloudflared tunnel login`, then **create a named tunnel** — this one
+      tunnel carries both SSH and the API.
+- [x] Add an **ingress rule** routing `ssh.yoursite.com` → `ssh://localhost:22`.
+- [x] Install `cloudflared` as a **systemd service** so it survives reboots.
+- [x] In the Cloudflare dashboard (**Zero Trust → Access → Applications**), add a
+      **self-hosted application** for `ssh.yoursite.com` with a policy that allows
+      **only your identity** (email one-time-PIN, or Google/GitHub SSO). This is
+      the gate — without a passing Access policy, no one reaches port 22.
+- [x] **On your laptop:** install `cloudflared`, then add to `~/.ssh/config`:
+      ```
+      Host ssh.yoursite.com
+        ProxyCommand cloudflared access ssh --hostname %h
+      ```
+- [x] Test: `ssh iz@ssh.yoursite.com` → a browser opens for the Access login →
+      you land in a shell. Now **`ufw delete allow 22`** — port 22 is closed to
+      the public internet. Admin access is **Cloudflare Access-only**.
 
 ### 4.4 Runtime
 - [ ] Install **Docker Engine + compose plugin** (official Docker apt repo).
@@ -196,11 +214,12 @@ with zero open inbound ports** — SSH included.
       `docker compose up -d`. The Go service listens on **localhost only**
       (e.g. `127.0.0.1:8080`) — it is never bound to a public interface.
 
-### 4.5 Ingress via Cloudflare Tunnel (the keystone)
-- [ ] Install **`cloudflared`**.
-- [ ] `cloudflared tunnel login`, then create a named tunnel.
-- [ ] Route **`api.yoursite.com` → `http://localhost:8080`** in the tunnel config.
-- [ ] Install it as a **systemd service** so it survives reboots.
+### 4.5 API ingress via Cloudflare Tunnel (the keystone)
+`cloudflared` and the named tunnel already exist from §4.3 — here you just add
+the API route to the same tunnel.
+
+- [ ] Add an **ingress rule** routing `api.yoursite.com` → `http://localhost:8080`
+      (alongside the `ssh.yoursite.com` rule from §4.3), then restart the service.
 - [ ] Confirm `https://api.yoursite.com/health` responds **through Cloudflare**,
       and that hitting the droplet IP directly on 80/443 gives **nothing**.
 
@@ -213,9 +232,10 @@ with zero open inbound ports** — SSH included.
 
 ### 4.7 Verify the security posture
 - [ ] From off-network, `nmap` the public IP: **no open ports** (no 22/80/443).
-- [ ] SSH from a non-Tailscale network fails; over Tailscale succeeds.
-- [ ] `docker ps` shows API + (optionally) Litestream healthy; `cloudflared` and
-      `tailscaled` are `systemctl enable`d.
+- [ ] Direct SSH to the droplet IP on 22 fails; SSH via
+      `cloudflared access` (through Cloudflare Access) succeeds.
+- [ ] `docker ps` shows API + (optionally) Litestream healthy; `cloudflared` is
+      `systemctl enable`d.
 
 ### 4.8 Hygiene (later, from Phase 4)
 - [ ] Cloudflare **rate-limit rule** on `/api` and **Turnstile** on the contact form.
@@ -237,4 +257,4 @@ with zero open inbound ports** — SSH included.
 | Why not AWS/GCP/Azure? | 5–6× the cost | Metered IPv4 + unbundled transfer make a comparable VM ~$27–34/mo on-demand for infra this box doesn't use. |
 | Which host OS? | **Ubuntu LTS** | Boring, 5-yr support, self-patching, best-documented; static Go binary makes userland irrelevant. |
 | Container base? | **distroless/scratch** | Single static binary → minimal image, minimal attack surface. |
-| Open ports? | **Zero** | API reachable only via Cloudflare Tunnel; SSH only via Tailscale. |
+| Open ports? | **Zero** | Both API and admin SSH reachable only via the Cloudflare Tunnel (SSH gated by Cloudflare Access). |
