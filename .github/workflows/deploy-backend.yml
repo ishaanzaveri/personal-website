@@ -1,0 +1,130 @@
+# Build the mock API image and deploy it to the VPS.
+#
+# ┌── STUB ─────────────────────────────────────────────────────────────────┐
+# │ The build-and-push job is complete and works as-is. The deploy job is a  │
+# │ scaffold: it encodes the *shape* of the deploy (reach the box over the   │
+# │ Cloudflare Tunnel — the droplet has no open inbound port — then pull &   │
+# │ restart compose) but needs real infrastructure values wired in via the   │
+# │ repo secrets listed below before it will run. See                        │
+# │ docs/decision-points/vps.md §4 for how the box is set up.                 │
+# └──────────────────────────────────────────────────────────────────────────┘
+#
+# This deploys the *mock* backend (frontend/mock-server), NOT the handwritten
+# Go API in backend/ (see AGENTS.md). Repoint IMAGE / build context when the Go
+# service is ready.
+#
+# Required repo secrets for the deploy job (Settings → Secrets and variables →
+# Actions):
+#   SSH_HOST                  hostname of the SSH route on the tunnel, e.g. ssh.yoursite.com
+#   SSH_USER                  the non-root sudo user on the droplet, e.g. iz
+#   SSH_PRIVATE_KEY           private key whose public half is on the droplet
+#   CF_ACCESS_CLIENT_ID       Cloudflare Access service-token client id
+#   CF_ACCESS_CLIENT_SECRET   Cloudflare Access service-token client secret
+#   DEPLOY_DIR                path on the droplet holding docker-compose.yml, e.g. /opt/personal-website/deploy
+
+name: Deploy backend (mock API)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "frontend/mock-server/**"
+      - "deploy/docker-compose.yml"
+      - ".github/workflows/deploy-backend.yml"
+  workflow_dispatch: {}
+
+concurrency:
+  # Never let two deploys race on the box; cancel the older one.
+  group: deploy-backend
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}/mock-api
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image-ref: ${{ steps.meta.outputs.tags }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive image tags & labels
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: frontend/mock-server
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    # Gate on a protected GitHub Environment so deploys can require approval and
+    # scope the secrets. Create it under Settings → Environments.
+    environment: production
+    steps:
+      # The droplet has ZERO open inbound ports — SSH is reachable only through
+      # the Cloudflare Tunnel, gated by Cloudflare Access. cloudflared is the
+      # ProxyCommand; a Cloudflare Access *service token* authenticates CI
+      # non-interactively (no browser SSO). See vps.md §4.3.
+      - name: Install cloudflared
+        run: |
+          curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 \
+            -o /usr/local/bin/cloudflared
+          chmod +x /usr/local/bin/cloudflared
+
+      - name: Configure SSH over the Cloudflare Tunnel
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          cat >> ~/.ssh/config <<EOF
+          Host ${{ secrets.SSH_HOST }}
+            User ${{ secrets.SSH_USER }}
+            IdentityFile ~/.ssh/id_deploy
+            IdentitiesOnly yes
+            StrictHostKeyChecking accept-new
+            ProxyCommand cloudflared access ssh --hostname %h \
+              --service-token-id ${{ secrets.CF_ACCESS_CLIENT_ID }} \
+              --service-token-secret ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          EOF
+          chmod 600 ~/.ssh/config
+
+      # GHCR packages are private by default; the box needs to authenticate to
+      # pull. A read-only PAT (or a deploy token) stored on the droplet is the
+      # usual approach — TODO: log the droplet's docker into ghcr.io once, or
+      # pass a token here and `docker login` over SSH before the pull.
+      - name: Pull & restart on the droplet
+        run: |
+          ssh ${{ secrets.SSH_HOST }} bash -euo pipefail <<'REMOTE'
+            cd "${{ secrets.DEPLOY_DIR }}"
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker image prune -f
+          REMOTE

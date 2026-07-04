@@ -1,0 +1,29 @@
+# docker-compose for the VPS — runs the mock API stand-in for the Go backend.
+#
+# This is the compose file that lives on the droplet (docs/decision-points/vps.md
+# §4.4). Per that runbook the service listens on localhost ONLY (127.0.0.1) and
+# is never bound to a public interface — the box keeps zero open inbound ports.
+# The only ingress is the Cloudflare Tunnel (`cloudflared`, run separately as a
+# systemd service), which dials this local port from inside the box.
+#
+# The image is built and published to GHCR by
+# .github/workflows/deploy-backend.yml. On the box, deploy with:
+#   docker compose pull && docker compose up -d
+#
+# NOTE: this runs the *mock* backend. Swap the image / add a SQLite volume when
+# the handwritten Go API in ../backend/ is ready.
+
+services:
+  mock-api:
+    # Pinned by the deploy workflow to a specific SHA tag; :latest here is the
+    # human-friendly default for a manual `docker compose pull`.
+    image: ghcr.io/ishaanzaveri/personal-website/mock-api:latest
+    container_name: mock-api
+    restart: unless-stopped
+    environment:
+      # Container-internal port; the mock server reads PORT (defaults to 8787).
+      PORT: "8787"
+    ports:
+      # host 127.0.0.1:8080 -> container 8787. Bound to loopback so nothing is
+      # exposed publicly; the Cloudflare Tunnel routes api.<domain> here.
+      - "127.0.0.1:8080:8787"
