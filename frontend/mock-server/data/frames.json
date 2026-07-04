@@ -1,893 +1,2298 @@
 [
   {
-    "id": "p001",
-    "album": "dumbo-dusk",
+    "id": "2023-iz-bgr-1023",
+    "album": "bgr",
     "aspectRatio": "3/2",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ2.0",
-    "shutter": "1/125",
-    "iso": "ISO 400",
-    "location": "Brooklyn · Front St",
-    "date": "2025-08-12",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/400",
+    "iso": "ISO 4000",
+    "location": "BGR",
+    "date": "2023-08-15",
     "tags": [
-      "street",
-      "color",
-      "golden hour"
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1023.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1023-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1023-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1023-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1023-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 189,
+        "lightness": 0.28
+      },
+      "filename": "2023-IZ-BGR-1023.jpg"
+    },
+    "caption": {
+      "title": "BGR - 2023 IZ BGR 1023",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-15.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/400, ISO 4000."
+      ],
+      "note": "// generated from BGR/2023-IZ-BGR-1023.jpg"
+    }
+  },
+  {
+    "id": "2023-iz-bgr-1038",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/200",
+    "iso": "ISO 2500",
+    "location": "BGR",
+    "date": "2023-08-15",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1038.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1038-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1038-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1038-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/2023-IZ-BGR-1038-2048.jpg"
+        }
+      ],
+      "width": 6870,
+      "height": 4580,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 206,
+        "lightness": 0.305
+      },
+      "filename": "2023-IZ-BGR-1038.jpg"
+    },
+    "caption": {
+      "title": "BGR - 2023 IZ BGR 1038",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-15.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/200, ISO 2500."
+      ],
+      "note": "// generated from BGR/2023-IZ-BGR-1038.jpg"
+    }
+  },
+  {
+    "id": "23-iz-bgr-closing-1006",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/320",
+    "iso": "ISO 3200",
+    "location": "BGR",
+    "date": "2023-08-19",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1006.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1006-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1006-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1006-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1006-2048.jpg"
+        }
+      ],
+      "width": 6846,
+      "height": 4564,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 223,
+        "lightness": 0.33
+      },
+      "filename": "23-IZ-BGR-Closing-1006.jpg"
+    },
+    "caption": {
+      "title": "BGR - 23 IZ BGR Closing 1006",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-19.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/320, ISO 3200."
+      ],
+      "note": "// generated from BGR/23-IZ-BGR-Closing-1006.jpg"
+    }
+  },
+  {
+    "id": "23-iz-bgr-closing-1009",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 17-28mm F2.8-2.8",
+    "aperture": "f/2.8",
+    "shutter": "1/200",
+    "iso": "ISO 5000",
+    "location": "BGR",
+    "date": "2023-08-19",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1009.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1009-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1009-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1009-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Closing-1009-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 240,
+        "lightness": 0.355
+      },
+      "filename": "23-IZ-BGR-Closing-1009.jpg"
+    },
+    "caption": {
+      "title": "BGR - 23 IZ BGR Closing 1009",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-19.",
+        "SONY ILCE-7M4 with E 17-28mm F2.8-2.8; f/2.8, 1/200, ISO 5000."
+      ],
+      "note": "// generated from BGR/23-IZ-BGR-Closing-1009.jpg"
+    }
+  },
+  {
+    "id": "23-iz-bgr-fountain-all-1021",
+    "album": "bgr",
+    "aspectRatio": "5677/3785",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/9",
+    "shutter": "1/30",
+    "iso": "ISO 400",
+    "location": "BGR",
+    "date": "2023-08-18",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Fountain-All-1021.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Fountain-All-1021-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Fountain-All-1021-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Fountain-All-1021-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-Fountain-All-1021-2048.jpg"
+        }
+      ],
+      "width": 5677,
+      "height": 3785,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 257,
+        "lightness": 0.38
+      },
+      "filename": "23-IZ-BGR-Fountain-All-1021.jpg"
+    },
+    "caption": {
+      "title": "BGR - 23 IZ BGR Fountain All 1021",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-18.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/9, 1/30, ISO 400."
+      ],
+      "note": "// generated from BGR/23-IZ-BGR-Fountain-All-1021.jpg"
+    }
+  },
+  {
+    "id": "23-iz-bgr-fountainfest-1004",
+    "album": "bgr",
+    "aspectRatio": "5806/3871",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/320",
+    "iso": "ISO 400",
+    "location": "BGR",
+    "date": "2023-08-18",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1004.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1004-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1004-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1004-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1004-2048.jpg"
+        }
+      ],
+      "width": 5806,
+      "height": 3871,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 274,
+        "lightness": 0.28
+      },
+      "filename": "23-IZ-BGR-FountainFest-1004.jpg"
+    },
+    "caption": {
+      "title": "BGR - 23 IZ BGR FountainFest 1004",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-18.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/320, ISO 400."
+      ],
+      "note": "// generated from BGR/23-IZ-BGR-FountainFest-1004.jpg"
+    }
+  },
+  {
+    "id": "23-iz-bgr-fountainfest-1005",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/9",
+    "shutter": "1/30",
+    "iso": "ISO 400",
+    "location": "BGR",
+    "date": "2023-08-18",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1005.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1005-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1005-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1005-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FountainFest-1005-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 291,
+        "lightness": 0.305
+      },
+      "filename": "23-IZ-BGR-FountainFest-1005.jpg"
+    },
+    "caption": {
+      "title": "BGR - 23 IZ BGR FountainFest 1005",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-18.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/9, 1/30, ISO 400."
+      ],
+      "note": "// generated from BGR/23-IZ-BGR-FountainFest-1005.jpg"
+    }
+  },
+  {
+    "id": "23-iz-bgr-freedomofexprerssion-1006",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/200",
+    "iso": "ISO 25600",
+    "location": "BGR",
+    "date": "2023-08-17",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FreedomOfExprerssion-1006.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FreedomOfExprerssion-1006-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FreedomOfExprerssion-1006-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FreedomOfExprerssion-1006-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/23-IZ-BGR-FreedomOfExprerssion-1006-2048.jpg"
+        }
+      ],
+      "width": 6816,
+      "height": 4544,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 308,
+        "lightness": 0.33
+      },
+      "filename": "23-IZ-BGR-FreedomOfExprerssion-1006.jpg"
+    },
+    "caption": {
+      "title": "BGR - 23 IZ BGR FreedomOfExprerssion 1006",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-17.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/200, ISO 25600."
+      ],
+      "note": "// generated from BGR/23-IZ-BGR-FreedomOfExprerssion-1006.jpg"
+    }
+  },
+  {
+    "id": "ish-bgr23-slayer-1000",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/640",
+    "iso": "ISO 4000",
+    "location": "BGR",
+    "date": "2023-08-16",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1000.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1000-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1000-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1000-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1000-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 325,
+        "lightness": 0.355
+      },
+      "filename": "ISH_BGR23_Slayer_1000.jpg"
+    },
+    "caption": {
+      "title": "BGR - ISH BGR23 Slayer 1000",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-16.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/640, ISO 4000."
+      ],
+      "note": "// generated from BGR/ISH_BGR23_Slayer_1000.jpg"
+    }
+  },
+  {
+    "id": "ish-bgr23-slayer-1002",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/400",
+    "iso": "ISO 3200",
+    "location": "BGR",
+    "date": "2023-08-16",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1002.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1002-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1002-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1002-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1002-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 342,
+        "lightness": 0.38
+      },
+      "filename": "ISH_BGR23_Slayer_1002.jpg"
+    },
+    "caption": {
+      "title": "BGR - ISH BGR23 Slayer 1002",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-16.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/400, ISO 3200."
+      ],
+      "note": "// generated from BGR/ISH_BGR23_Slayer_1002.jpg"
+    }
+  },
+  {
+    "id": "ish-bgr23-slayer-1006",
+    "album": "bgr",
+    "aspectRatio": "2851/4277",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/250",
+    "iso": "ISO 6400",
+    "location": "BGR",
+    "date": "2023-08-16",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1006.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1006-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1006-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1006-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1006-2048.jpg"
+        }
+      ],
+      "width": 2851,
+      "height": 4277,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 359,
+        "lightness": 0.28
+      },
+      "filename": "ISH_BGR23_Slayer_1006.jpg"
+    },
+    "caption": {
+      "title": "BGR - ISH BGR23 Slayer 1006",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-16.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/250, ISO 6400."
+      ],
+      "note": "// generated from BGR/ISH_BGR23_Slayer_1006.jpg"
+    }
+  },
+  {
+    "id": "ish-bgr23-slayer-1007",
+    "album": "bgr",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/250",
+    "iso": "ISO 6400",
+    "location": "BGR",
+    "date": "2023-08-16",
+    "tags": [
+      "photo",
+      "bgr",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1007.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1007-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1007-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1007-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/BGR/ISH_BGR23_Slayer_1007-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 16,
+        "lightness": 0.305
+      },
+      "filename": "ISH_BGR23_Slayer_1007.jpg"
+    },
+    "caption": {
+      "title": "BGR - ISH BGR23 Slayer 1007",
+      "paragraphs": [
+        "A frame from BGR, captured on 2023-08-16.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/250, ISO 6400."
+      ],
+      "note": "// generated from BGR/ISH_BGR23_Slayer_1007.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1008",
+    "album": "chicago22",
+    "aspectRatio": "2/3",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/14",
+    "shutter": "1/15",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-02",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1008.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1008-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1008-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1008-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1008-2048.jpg"
+        }
+      ],
+      "width": 3622,
+      "height": 5433,
       "blurhash": null,
       "placeholder": {
         "hue": 30,
-        "lightness": 0.4
-      }
+        "lightness": 0.33
+      },
+      "filename": "ISH_CHIC22_1008.jpg"
     },
-    "caption": null
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1008",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-02.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/14, 1/15, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1008.jpg"
+    }
   },
   {
-    "id": "p002",
-    "album": "dumbo-dusk",
-    "aspectRatio": "2/3",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ2.8",
-    "shutter": "1/250",
-    "iso": "ISO 400",
-    "location": "Brooklyn · Washington St",
-    "date": "2025-08-12",
-    "tags": [
-      "architecture",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 20,
-        "lightness": 0.36
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p003",
-    "album": "dumbo-dusk",
+    "id": "ish-chic22-1018",
+    "album": "chicago22",
     "aspectRatio": "3/2",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ4.0",
-    "shutter": "1/500",
-    "iso": "ISO 200",
-    "location": "Brooklyn · Pebble Beach",
-    "date": "2025-08-12",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/4.5",
+    "shutter": "1/100",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
     "tags": [
+      "photo",
+      "chicago22",
+      "2022",
       "landscape",
-      "color",
-      "golden hour"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 50,
-        "lightness": 0.42
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p004",
-    "album": "dumbo-dusk",
-    "aspectRatio": "1/1",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ1.7",
-    "shutter": "1/60",
-    "iso": "ISO 1600",
-    "location": "Brooklyn · Front St diner",
-    "date": "2025-08-12",
-    "tags": [
-      "street",
-      "color",
-      "night"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 10,
-        "lightness": 0.32
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p005",
-    "album": "dumbo-dusk",
-    "aspectRatio": "3/2",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ2.0",
-    "shutter": "1/125",
-    "iso": "ISO 800",
-    "location": "Brooklyn · Manhattan Bridge",
-    "date": "2025-08-12",
-    "tags": [
-      "architecture",
       "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1018.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1018-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1018-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1018-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1018-2048.jpg"
+        }
+      ],
+      "width": 6000,
+      "height": 4000,
       "blurhash": null,
       "placeholder": {
-        "hue": 40,
+        "hue": 47,
+        "lightness": 0.355
+      },
+      "filename": "ISH_CHIC22_1018.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1018",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/4.5, 1/100, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1018.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1021",
+    "album": "chicago22",
+    "aspectRatio": "2/3",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/4.5",
+    "shutter": "1/3200",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1021.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1021-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1021-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1021-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1021-2048.jpg"
+        }
+      ],
+      "width": 3516,
+      "height": 5274,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 64,
         "lightness": 0.38
-      }
+      },
+      "filename": "ISH_CHIC22_1021.jpg"
     },
-    "caption": null
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1021",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/4.5, 1/3200, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1021.jpg"
+    }
   },
   {
-    "id": "p006",
-    "album": "dumbo-dusk",
+    "id": "ish-chic22-1022",
+    "album": "chicago22",
     "aspectRatio": "2/3",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ2.8",
-    "shutter": "1/250",
-    "iso": "ISO 400",
-    "location": "Brooklyn · DUMBO",
-    "date": "2025-08-12",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/7.1",
+    "shutter": "1/1600",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
     "tags": [
-      "street",
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
       "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1022.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1022-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1022-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1022-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1022-2048.jpg"
+        }
+      ],
+      "width": 4000,
+      "height": 6000,
       "blurhash": null,
       "placeholder": {
-        "hue": 60,
-        "lightness": 0.34
-      }
+        "hue": 81,
+        "lightness": 0.28
+      },
+      "filename": "ISH_CHIC22_1022.jpg"
     },
-    "caption": null
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1022",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/7.1, 1/1600, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1022.jpg"
+    }
   },
   {
-    "id": "p007",
-    "album": "tokyo",
-    "aspectRatio": "3/2",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ1.4",
-    "shutter": "1/60",
-    "iso": "ISO 1600",
-    "location": "Tokyo · Shibuya Crossing",
-    "date": "2025-04-22",
-    "tags": [
-      "street",
-      "night",
-      "neon"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 320,
-        "lightness": 0.3
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p008",
-    "album": "tokyo",
+    "id": "ish-chic22-1041",
+    "album": "chicago22",
     "aspectRatio": "2/3",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ2.0",
-    "shutter": "1/125",
-    "iso": "ISO 3200",
-    "location": "Tokyo · Golden Gai",
-    "date": "2025-04-22",
+    "camera": "SONY ILCE-6600",
+    "lens": "100-400mm F5-6.3 DG DN OS | Contemporary 020",
+    "aperture": "f/6.3",
+    "shutter": "1/1000",
+    "iso": "ISO 400",
+    "location": "Chicago22",
+    "date": "2022-12-03",
     "tags": [
-      "street",
-      "night",
-      "neon"
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1041.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1041-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1041-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1041-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1041-2048.jpg"
+        }
+      ],
+      "width": 4000,
+      "height": 6000,
       "blurhash": null,
       "placeholder": {
-        "hue": 300,
-        "lightness": 0.26
-      }
+        "hue": 98,
+        "lightness": 0.305
+      },
+      "filename": "ISH_CHIC22_1041.jpg"
     },
-    "caption": null
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1041",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with 100-400mm F5-6.3 DG DN OS | Contemporary 020; f/6.3, 1/1000, ISO 400."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1041.jpg"
+    }
   },
   {
-    "id": "p009",
-    "album": "tokyo",
+    "id": "ish-chic22-1052",
+    "album": "chicago22",
     "aspectRatio": "3/2",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ1.4",
-    "shutter": "1/60",
-    "iso": "ISO 1600",
-    "location": "Tokyo · Shinjuku Station",
-    "date": "2025-04-23",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/1600",
+    "iso": "ISO 400",
+    "location": "Chicago22",
+    "date": "2022-12-03",
     "tags": [
-      "street",
-      "night"
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1052.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1052-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1052-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1052-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1052-2048.jpg"
+        }
+      ],
+      "width": 3834,
+      "height": 2556,
       "blurhash": null,
       "placeholder": {
-        "hue": 340,
-        "lightness": 0.32
-      }
+        "hue": 115,
+        "lightness": 0.33
+      },
+      "filename": "ISH_CHIC22_1052.jpg"
     },
-    "caption": null
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1052",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/1600, ISO 400."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1052.jpg"
+    }
   },
   {
-    "id": "p010",
-    "album": "tokyo",
-    "aspectRatio": "4/5",
-    "camera": "Sony A7iv",
-    "lens": "FE 85 GM",
-    "aperture": "ƒ1.8",
-    "shutter": "1/125",
-    "iso": "ISO 2500",
-    "location": "Tokyo · Omoide Yokocho",
-    "date": "2025-04-23",
+    "id": "ish-chic22-1057",
+    "album": "chicago22",
+    "aspectRatio": "3989/2659",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/8",
+    "shutter": "1/3200",
+    "iso": "ISO 400",
+    "location": "Chicago22",
+    "date": "2022-12-03",
     "tags": [
-      "street",
-      "night",
-      "portrait"
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1057.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1057-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1057-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1057-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1057-2048.jpg"
+        }
+      ],
+      "width": 3989,
+      "height": 2659,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 132,
+        "lightness": 0.355
+      },
+      "filename": "ISH_CHIC22_1057.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1057",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/8, 1/3200, ISO 400."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1057.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1058",
+    "album": "chicago22",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/80",
+    "iso": "ISO 400",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1058.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1058-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1058-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1058-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1058-2048.jpg"
+        }
+      ],
+      "width": 6000,
+      "height": 4000,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 149,
+        "lightness": 0.38
+      },
+      "filename": "ISH_CHIC22_1058.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1058",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/80, ISO 400."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1058.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1060",
+    "album": "chicago22",
+    "aspectRatio": "2/3",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/1600",
+    "iso": "ISO 400",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1060.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1060-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1060-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1060-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1060-2048.jpg"
+        }
+      ],
+      "width": 4000,
+      "height": 6000,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 166,
+        "lightness": 0.28
+      },
+      "filename": "ISH_CHIC22_1060.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1060",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/1600, ISO 400."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1060.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1073",
+    "album": "chicago22",
+    "aspectRatio": "2/3",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/14",
+    "shutter": "1/320",
+    "iso": "ISO 400",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1073.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1073-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1073-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1073-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1073-2048.jpg"
+        }
+      ],
+      "width": 4000,
+      "height": 6000,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 183,
+        "lightness": 0.305
+      },
+      "filename": "ISH_CHIC22_1073.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1073",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/14, 1/320, ISO 400."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1073.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1077",
+    "album": "chicago22",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/4",
+    "shutter": "1/500",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1077.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1077-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1077-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1077-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1077-2048.jpg"
+        }
+      ],
+      "width": 5463,
+      "height": 3642,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 200,
+        "lightness": 0.33
+      },
+      "filename": "ISH_CHIC22_1077.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1077",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/4, 1/500, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1077.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1080",
+    "album": "chicago22",
+    "aspectRatio": "2473/3710",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/1000",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1080.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1080-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1080-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1080-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1080-2048.jpg"
+        }
+      ],
+      "width": 2473,
+      "height": 3710,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 217,
+        "lightness": 0.355
+      },
+      "filename": "ISH_CHIC22_1080.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1080",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/1000, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1080.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1087",
+    "album": "chicago22",
+    "aspectRatio": "3404/2269",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/400",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1087.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1087-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1087-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1087-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1087-2048.jpg"
+        }
+      ],
+      "width": 3404,
+      "height": 2269,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 234,
+        "lightness": 0.38
+      },
+      "filename": "ISH_CHIC22_1087.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1087",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/400, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1087.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1094",
+    "album": "chicago22",
+    "aspectRatio": "2/3",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/250",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1094.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1094-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1094-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1094-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1094-2048.jpg"
+        }
+      ],
+      "width": 2944,
+      "height": 4416,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 251,
+        "lightness": 0.28
+      },
+      "filename": "ISH_CHIC22_1094.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1094",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/250, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1094.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1095",
+    "album": "chicago22",
+    "aspectRatio": "4643/3095",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 17-70mm F2.8 B070",
+    "aperture": "f/2.8",
+    "shutter": "1/640",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1095.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1095-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1095-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1095-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1095-2048.jpg"
+        }
+      ],
+      "width": 4643,
+      "height": 3095,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 268,
+        "lightness": 0.305
+      },
+      "filename": "ISH_CHIC22_1095.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1095",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 17-70mm F2.8 B070; f/2.8, 1/640, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1095.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1101",
+    "album": "chicago22",
+    "aspectRatio": "2/3",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 50mm F1.8 OSS",
+    "aperture": "f/1.8",
+    "shutter": "1/200",
+    "iso": "ISO 100",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1101.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1101-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1101-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1101-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1101-2048.jpg"
+        }
+      ],
+      "width": 2854,
+      "height": 4281,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 285,
+        "lightness": 0.33
+      },
+      "filename": "ISH_CHIC22_1101.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1101",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 50mm F1.8 OSS; f/1.8, 1/200, ISO 100."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1101.jpg"
+    }
+  },
+  {
+    "id": "ish-chic22-1119",
+    "album": "chicago22",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-6600",
+    "lens": "E 50mm F1.8 OSS",
+    "aperture": "f/2.8",
+    "shutter": "1/100",
+    "iso": "ISO 320",
+    "location": "Chicago22",
+    "date": "2022-12-03",
+    "tags": [
+      "photo",
+      "chicago22",
+      "2022",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1119.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1119-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1119-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1119-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Chicago22/ISH_CHIC22_1119-2048.jpg"
+        }
+      ],
+      "width": 6000,
+      "height": 4000,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 302,
+        "lightness": 0.355
+      },
+      "filename": "ISH_CHIC22_1119.jpg"
+    },
+    "caption": {
+      "title": "Chicago22 - ISH CHIC22 1119",
+      "paragraphs": [
+        "A frame from Chicago22, captured on 2022-12-03.",
+        "SONY ILCE-6600 with E 50mm F1.8 OSS; f/2.8, 1/100, ISO 320."
+      ],
+      "note": "// generated from Chicago22/ISH_CHIC22_1119.jpg"
+    }
+  },
+  {
+    "id": "ibz-diwali-1072",
+    "album": "diwali",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/320",
+    "iso": "ISO 8000",
+    "location": "Diwali",
+    "date": "2023-11-12",
+    "tags": [
+      "photo",
+      "diwali",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1072.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1072-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1072-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1072-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1072-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 105,
+        "lightness": 0.38
+      },
+      "filename": "IBZ-Diwali-1072.jpg"
+    },
+    "caption": {
+      "title": "Diwali - IBZ Diwali 1072",
+      "paragraphs": [
+        "A frame from Diwali, captured on 2023-11-12.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/320, ISO 8000."
+      ],
+      "note": "// generated from Diwali/IBZ-Diwali-1072.jpg"
+    }
+  },
+  {
+    "id": "ibz-diwali-1077",
+    "album": "diwali",
+    "aspectRatio": "6740/4493",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/10",
+    "shutter": "1/3",
+    "iso": "ISO 64",
+    "location": "Diwali",
+    "date": "2023-11-12",
+    "tags": [
+      "photo",
+      "diwali",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1077.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1077-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1077-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1077-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1077-2048.jpg"
+        }
+      ],
+      "width": 6740,
+      "height": 4493,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 122,
+        "lightness": 0.28
+      },
+      "filename": "IBZ-Diwali-1077.jpg"
+    },
+    "caption": {
+      "title": "Diwali - IBZ Diwali 1077",
+      "paragraphs": [
+        "A frame from Diwali, captured on 2023-11-12.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/10, 1/3, ISO 64."
+      ],
+      "note": "// generated from Diwali/IBZ-Diwali-1077.jpg"
+    }
+  },
+  {
+    "id": "ibz-diwali-1108",
+    "album": "diwali",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/6",
+    "iso": "ISO 80",
+    "location": "Diwali",
+    "date": "2023-11-12",
+    "tags": [
+      "photo",
+      "diwali",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1108.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1108-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1108-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1108-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1108-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 139,
+        "lightness": 0.305
+      },
+      "filename": "IBZ-Diwali-1108.jpg"
+    },
+    "caption": {
+      "title": "Diwali - IBZ Diwali 1108",
+      "paragraphs": [
+        "A frame from Diwali, captured on 2023-11-12.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/6, ISO 80."
+      ],
+      "note": "// generated from Diwali/IBZ-Diwali-1108.jpg"
+    }
+  },
+  {
+    "id": "ibz-diwali-1128",
+    "album": "diwali",
+    "aspectRatio": "3115/4672",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/3.5",
+    "shutter": "1/5",
+    "iso": "ISO 320",
+    "location": "Diwali",
+    "date": "2023-11-12",
+    "tags": [
+      "photo",
+      "diwali",
+      "2023",
+      "portrait",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1128.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1128-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1128-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1128-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1128-2048.jpg"
+        }
+      ],
+      "width": 3115,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 156,
+        "lightness": 0.33
+      },
+      "filename": "IBZ-Diwali-1128.jpg"
+    },
+    "caption": {
+      "title": "Diwali - IBZ Diwali 1128",
+      "paragraphs": [
+        "A frame from Diwali, captured on 2023-11-12.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/3.5, 1/5, ISO 320."
+      ],
+      "note": "// generated from Diwali/IBZ-Diwali-1128.jpg"
+    }
+  },
+  {
+    "id": "ibz-diwali-1129",
+    "album": "diwali",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/3.5",
+    "shutter": "1/5",
+    "iso": "ISO 320",
+    "location": "Diwali",
+    "date": "2023-11-12",
+    "tags": [
+      "photo",
+      "diwali",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1129.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1129-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1129-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1129-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1129-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 173,
+        "lightness": 0.355
+      },
+      "filename": "IBZ-Diwali-1129.jpg"
+    },
+    "caption": {
+      "title": "Diwali - IBZ Diwali 1129",
+      "paragraphs": [
+        "A frame from Diwali, captured on 2023-11-12.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/3.5, 1/5, ISO 320."
+      ],
+      "note": "// generated from Diwali/IBZ-Diwali-1129.jpg"
+    }
+  },
+  {
+    "id": "ibz-diwali-1150",
+    "album": "diwali",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "24-70mm F2.8 DG DN | Art 019",
+    "aperture": "f/2.8",
+    "shutter": "1/6",
+    "iso": "ISO 500",
+    "location": "Diwali",
+    "date": "2023-11-12",
+    "tags": [
+      "photo",
+      "diwali",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1150.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1150-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1150-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1150-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Diwali/IBZ-Diwali-1150-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 190,
+        "lightness": 0.38
+      },
+      "filename": "IBZ-Diwali-1150.jpg"
+    },
+    "caption": {
+      "title": "Diwali - IBZ Diwali 1150",
+      "paragraphs": [
+        "A frame from Diwali, captured on 2023-11-12.",
+        "SONY ILCE-7M4 with 24-70mm F2.8 DG DN | Art 019; f/2.8, 1/6, ISO 500."
+      ],
+      "note": "// generated from Diwali/IBZ-Diwali-1150.jpg"
+    }
+  },
+  {
+    "id": "23-oct-iz-uiucmensclubsoccer-1005",
+    "album": "soccer",
+    "aspectRatio": "6625/4417",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/1600",
+    "iso": "ISO 320",
+    "location": "Soccer",
+    "date": "2023-10-14",
+    "tags": [
+      "photo",
+      "soccer",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1005.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1005-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1005-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1005-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1005-2048.jpg"
+        }
+      ],
+      "width": 6625,
+      "height": 4417,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 212,
+        "lightness": 0.28
+      },
+      "filename": "23-Oct-IZ-UIUCMensClubSoccer-1005.jpg"
+    },
+    "caption": {
+      "title": "Soccer - 23 Oct IZ UIUCMensClubSoccer 1005",
+      "paragraphs": [
+        "A frame from Soccer, captured on 2023-10-14.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/1600, ISO 320."
+      ],
+      "note": "// generated from Soccer/23-Oct-IZ-UIUCMensClubSoccer-1005.jpg"
+    }
+  },
+  {
+    "id": "23-oct-iz-uiucmensclubsoccer-1028",
+    "album": "soccer",
+    "aspectRatio": "5257/3505",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/1000",
+    "iso": "ISO 1250",
+    "location": "Soccer",
+    "date": "2023-10-14",
+    "tags": [
+      "photo",
+      "soccer",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1028.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1028-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1028-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1028-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1028-2048.jpg"
+        }
+      ],
+      "width": 5257,
+      "height": 3505,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 229,
+        "lightness": 0.305
+      },
+      "filename": "23-Oct-IZ-UIUCMensClubSoccer-1028.jpg"
+    },
+    "caption": {
+      "title": "Soccer - 23 Oct IZ UIUCMensClubSoccer 1028",
+      "paragraphs": [
+        "A frame from Soccer, captured on 2023-10-14.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/1000, ISO 1250."
+      ],
+      "note": "// generated from Soccer/23-Oct-IZ-UIUCMensClubSoccer-1028.jpg"
+    }
+  },
+  {
+    "id": "23-oct-iz-uiucmensclubsoccer-1033",
+    "album": "soccer",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/1000",
+    "iso": "ISO 1600",
+    "location": "Soccer",
+    "date": "2023-10-14",
+    "tags": [
+      "photo",
+      "soccer",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1033.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1033-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1033-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1033-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1033-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 246,
+        "lightness": 0.33
+      },
+      "filename": "23-Oct-IZ-UIUCMensClubSoccer-1033.jpg"
+    },
+    "caption": {
+      "title": "Soccer - 23 Oct IZ UIUCMensClubSoccer 1033",
+      "paragraphs": [
+        "A frame from Soccer, captured on 2023-10-14.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/1000, ISO 1600."
+      ],
+      "note": "// generated from Soccer/23-Oct-IZ-UIUCMensClubSoccer-1033.jpg"
+    }
+  },
+  {
+    "id": "23-oct-iz-uiucmensclubsoccer-1070",
+    "album": "soccer",
+    "aspectRatio": "3/2",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/1000",
+    "iso": "ISO 1250",
+    "location": "Soccer",
+    "date": "2023-10-14",
+    "tags": [
+      "photo",
+      "soccer",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1070.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1070-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1070-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1070-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1070-2048.jpg"
+        }
+      ],
+      "width": 5682,
+      "height": 3788,
+      "blurhash": null,
+      "placeholder": {
+        "hue": 263,
+        "lightness": 0.355
+      },
+      "filename": "23-Oct-IZ-UIUCMensClubSoccer-1070.jpg"
+    },
+    "caption": {
+      "title": "Soccer - 23 Oct IZ UIUCMensClubSoccer 1070",
+      "paragraphs": [
+        "A frame from Soccer, captured on 2023-10-14.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/1000, ISO 1250."
+      ],
+      "note": "// generated from Soccer/23-Oct-IZ-UIUCMensClubSoccer-1070.jpg"
+    }
+  },
+  {
+    "id": "23-oct-iz-uiucmensclubsoccer-1083",
+    "album": "soccer",
+    "aspectRatio": "6538/4359",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/1250",
+    "iso": "ISO 640",
+    "location": "Soccer",
+    "date": "2023-10-14",
+    "tags": [
+      "photo",
+      "soccer",
+      "2023",
+      "landscape",
+      "color"
+    ],
+    "image": {
+      "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1083.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1083-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1083-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1083-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1083-2048.jpg"
+        }
+      ],
+      "width": 6538,
+      "height": 4359,
       "blurhash": null,
       "placeholder": {
         "hue": 280,
-        "lightness": 0.24
-      }
+        "lightness": 0.38
+      },
+      "filename": "23-Oct-IZ-UIUCMensClubSoccer-1083.jpg"
     },
-    "caption": null
+    "caption": {
+      "title": "Soccer - 23 Oct IZ UIUCMensClubSoccer 1083",
+      "paragraphs": [
+        "A frame from Soccer, captured on 2023-10-14.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/1250, ISO 640."
+      ],
+      "note": "// generated from Soccer/23-Oct-IZ-UIUCMensClubSoccer-1083.jpg"
+    }
   },
   {
-    "id": "p011",
-    "album": "tokyo",
-    "aspectRatio": "16/9",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ1.4",
-    "shutter": "1/60",
-    "iso": "ISO 3200",
-    "location": "Tokyo · Yurakucho",
-    "date": "2025-04-23",
-    "tags": [
-      "street",
-      "night",
-      "wide"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 310,
-        "lightness": 0.22
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p012",
-    "album": "tokyo",
+    "id": "23-oct-iz-uiucmensclubsoccer-1085",
+    "album": "soccer",
     "aspectRatio": "3/2",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ2.0",
-    "shutter": "1/250",
-    "iso": "ISO 1250",
-    "location": "Tokyo · Akihabara",
-    "date": "2025-04-24",
+    "camera": "SONY ILCE-7M4",
+    "lens": "E 70-180mm F2.8 A056",
+    "aperture": "f/2.8",
+    "shutter": "1/1250",
+    "iso": "ISO 1000",
+    "location": "Soccer",
+    "date": "2023-10-14",
     "tags": [
-      "street",
-      "color",
-      "neon"
+      "photo",
+      "soccer",
+      "2023",
+      "landscape",
+      "color"
     ],
     "image": {
-      "src": null,
+      "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1085.jpg",
+      "variants": [
+        {
+          "width": 480,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1085-480.jpg"
+        },
+        {
+          "width": 960,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1085-960.jpg"
+        },
+        {
+          "width": 1440,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1085-1440.jpg"
+        },
+        {
+          "width": 2048,
+          "src": "https://photos.ishaanzaveri.com/prod/Soccer/23-Oct-IZ-UIUCMensClubSoccer-1085-2048.jpg"
+        }
+      ],
+      "width": 7008,
+      "height": 4672,
       "blurhash": null,
       "placeholder": {
-        "hue": 0,
-        "lightness": 0.34
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p013",
-    "album": "tokyo",
-    "aspectRatio": "2/3",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ1.4",
-    "shutter": "1/60",
-    "iso": "ISO 3200",
-    "location": "Tokyo · Shibuya alley",
-    "date": "2025-04-24",
-    "tags": [
-      "street",
-      "night",
-      "neon"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 290,
+        "hue": 297,
         "lightness": 0.28
-      }
+      },
+      "filename": "23-Oct-IZ-UIUCMensClubSoccer-1085.jpg"
     },
-    "caption": null
-  },
-  {
-    "id": "p014",
-    "album": "rooftops",
-    "aspectRatio": "16/9",
-    "camera": "Fuji X-T5",
-    "lens": "XF 23mm ƒ1.4",
-    "aperture": "ƒ8",
-    "shutter": "1/250",
-    "iso": "ISO 125",
-    "location": "Manhattan · Midtown",
-    "date": "2024-11-03",
-    "tags": [
-      "architecture",
-      "wide",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 200,
-        "lightness": 0.3
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p015",
-    "album": "rooftops",
-    "aspectRatio": "3/2",
-    "camera": "Fuji X-T5",
-    "lens": "XF 23mm ƒ1.4",
-    "aperture": "ƒ5.6",
-    "shutter": "1/500",
-    "iso": "ISO 125",
-    "location": "Manhattan · LES rooftop",
-    "date": "2024-11-03",
-    "tags": [
-      "architecture",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 210,
-        "lightness": 0.34
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p016",
-    "album": "rooftops",
-    "aspectRatio": "4/5",
-    "camera": "Fuji X-T5",
-    "lens": "XF 56mm ƒ1.2",
-    "aperture": "ƒ4",
-    "shutter": "1/250",
-    "iso": "ISO 200",
-    "location": "Brooklyn · Gowanus",
-    "date": "2024-11-05",
-    "tags": [
-      "architecture",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 190,
-        "lightness": 0.28
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p017",
-    "album": "rooftops",
-    "aspectRatio": "3/2",
-    "camera": "Fuji X-T5",
-    "lens": "XF 23mm ƒ1.4",
-    "aperture": "ƒ8",
-    "shutter": "1/125",
-    "iso": "ISO 125",
-    "location": "Queens · LIC",
-    "date": "2024-11-08",
-    "tags": [
-      "architecture",
-      "wide"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 220,
-        "lightness": 0.26
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p018",
-    "album": "rooftops",
-    "aspectRatio": "16/9",
-    "camera": "Fuji X-T5",
-    "lens": "XF 23mm ƒ1.4",
-    "aperture": "ƒ8",
-    "shutter": "1/500",
-    "iso": "ISO 125",
-    "location": "Manhattan · Tribeca",
-    "date": "2024-11-10",
-    "tags": [
-      "architecture",
-      "wide",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 180,
-        "lightness": 0.24
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p019",
-    "album": "rooftops",
-    "aspectRatio": "1/1",
-    "camera": "Fuji X-T5",
-    "lens": "XF 56mm ƒ1.2",
-    "aperture": "ƒ2.8",
-    "shutter": "1/500",
-    "iso": "ISO 125",
-    "location": "Brooklyn · Williamsburg",
-    "date": "2024-11-12",
-    "tags": [
-      "architecture",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 200,
-        "lightness": 0.32
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p020",
-    "album": "portraits",
-    "aspectRatio": "4/5",
-    "camera": "Sony A7iv",
-    "lens": "FE 85 GM",
-    "aperture": "ƒ1.8",
-    "shutter": "1/200",
-    "iso": "ISO 200",
-    "location": "Studio · Bushwick",
-    "date": "2026-03-18",
-    "tags": [
-      "portrait",
-      "color",
-      "studio"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 20,
-        "lightness": 0.34
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p021",
-    "album": "portraits",
-    "aspectRatio": "4/5",
-    "camera": "Sony A7iv",
-    "lens": "FE 85 GM",
-    "aperture": "ƒ1.8",
-    "shutter": "1/200",
-    "iso": "ISO 200",
-    "location": "Studio · Bushwick",
-    "date": "2026-03-18",
-    "tags": [
-      "portrait",
-      "color",
-      "studio"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 10,
-        "lightness": 0.36
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p022",
-    "album": "portraits",
-    "aspectRatio": "4/5",
-    "camera": "Sony A7iv",
-    "lens": "FE 85 GM",
-    "aperture": "ƒ2.0",
-    "shutter": "1/250",
-    "iso": "ISO 400",
-    "location": "Prospect Park",
-    "date": "2026-03-25",
-    "tags": [
-      "portrait",
-      "natural light"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 30,
-        "lightness": 0.3
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p023",
-    "album": "portraits",
-    "aspectRatio": "4/5",
-    "camera": "Sony A7iv",
-    "lens": "FE 85 GM",
-    "aperture": "ƒ1.4",
-    "shutter": "1/500",
-    "iso": "ISO 200",
-    "location": "Prospect Park",
-    "date": "2026-03-25",
-    "tags": [
-      "portrait",
-      "natural light"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 40,
-        "lightness": 0.32
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p024",
-    "album": "portraits",
-    "aspectRatio": "2/3",
-    "camera": "Sony A7iv",
-    "lens": "FE 50 GM",
-    "aperture": "ƒ1.4",
-    "shutter": "1/250",
-    "iso": "ISO 400",
-    "location": "LES rooftop",
-    "date": "2026-04-02",
-    "tags": [
-      "portrait",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 50,
-        "lightness": 0.28
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p025",
-    "album": "bw",
-    "aspectRatio": "3/2",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ2.8",
-    "shutter": "1/250",
-    "iso": "ISO 400",
-    "location": "NYC · Subway",
-    "date": "2025-12-04",
-    "tags": [
-      "street",
-      "b&w"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 220,
-        "lightness": 0.24
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p026",
-    "album": "bw",
-    "aspectRatio": "1/1",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ4.0",
-    "shutter": "1/500",
-    "iso": "ISO 400",
-    "location": "NYC · MoMA",
-    "date": "2025-12-08",
-    "tags": [
-      "architecture",
-      "b&w"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 230,
-        "lightness": 0.18
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p027",
-    "album": "bw",
-    "aspectRatio": "2/3",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ1.7",
-    "shutter": "1/125",
-    "iso": "ISO 800",
-    "location": "NYC · West Village",
-    "date": "2025-12-15",
-    "tags": [
-      "street",
-      "b&w"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 210,
-        "lightness": 0.2
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p028",
-    "album": "bw",
-    "aspectRatio": "4/5",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ2.0",
-    "shutter": "1/200",
-    "iso": "ISO 1600",
-    "location": "NYC · Harlem",
-    "date": "2026-01-09",
-    "tags": [
-      "street",
-      "b&w",
-      "portrait"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 220,
-        "lightness": 0.16
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p029",
-    "album": "bw",
-    "aspectRatio": "3/2",
-    "camera": "Sony A7iv",
-    "lens": "FE 35 GM",
-    "aperture": "ƒ2.8",
-    "shutter": "1/500",
-    "iso": "ISO 400",
-    "location": "NYC · Battery Park",
-    "date": "2026-02-11",
-    "tags": [
-      "landscape",
-      "b&w"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 230,
-        "lightness": 0.22
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p030",
-    "album": "bw",
-    "aspectRatio": "1/1",
-    "camera": "Leica Q3",
-    "lens": "28mm Summilux",
-    "aperture": "ƒ5.6",
-    "shutter": "1/500",
-    "iso": "ISO 200",
-    "location": "NYC · Central Park",
-    "date": "2026-03-04",
-    "tags": [
-      "landscape",
-      "b&w"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 220,
-        "lightness": 0.26
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p031",
-    "album": "iceland",
-    "aspectRatio": "16/9",
-    "camera": "Fuji X-T5",
-    "lens": "XF 16-55",
-    "aperture": "ƒ8",
-    "shutter": "1/250",
-    "iso": "ISO 200",
-    "location": "Iceland · Vík",
-    "date": "2024-09-21",
-    "tags": [
-      "landscape",
-      "wide",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 180,
-        "lightness": 0.34
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p032",
-    "album": "iceland",
-    "aspectRatio": "3/2",
-    "camera": "Fuji X-T5",
-    "lens": "XF 16-55",
-    "aperture": "ƒ11",
-    "shutter": "1/125",
-    "iso": "ISO 200",
-    "location": "Iceland · Reynisfjara",
-    "date": "2024-09-22",
-    "tags": [
-      "landscape",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 200,
-        "lightness": 0.32
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p033",
-    "album": "iceland",
-    "aspectRatio": "4/5",
-    "camera": "Fuji X-T5",
-    "lens": "XF 16-55",
-    "aperture": "ƒ8",
-    "shutter": "1/250",
-    "iso": "ISO 200",
-    "location": "Iceland · Skógafoss",
-    "date": "2024-09-23",
-    "tags": [
-      "landscape",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 170,
-        "lightness": 0.28
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p034",
-    "album": "iceland",
-    "aspectRatio": "16/9",
-    "camera": "Fuji X-T5",
-    "lens": "XF 16-55",
-    "aperture": "ƒ11",
-    "shutter": "1/500",
-    "iso": "ISO 125",
-    "location": "Iceland · Landmannalaugar",
-    "date": "2024-09-25",
-    "tags": [
-      "landscape",
-      "wide",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 190,
-        "lightness": 0.3
-      }
-    },
-    "caption": null
-  },
-  {
-    "id": "p035",
-    "album": "iceland",
-    "aspectRatio": "3/2",
-    "camera": "Fuji X-T5",
-    "lens": "XF 16-55",
-    "aperture": "ƒ5.6",
-    "shutter": "1/60",
-    "iso": "ISO 800",
-    "location": "Iceland · Vatnajökull",
-    "date": "2024-09-27",
-    "tags": [
-      "landscape",
-      "color"
-    ],
-    "image": {
-      "src": null,
-      "blurhash": null,
-      "placeholder": {
-        "hue": 160,
-        "lightness": 0.24
-      }
-    },
-    "caption": null
+    "caption": {
+      "title": "Soccer - 23 Oct IZ UIUCMensClubSoccer 1085",
+      "paragraphs": [
+        "A frame from Soccer, captured on 2023-10-14.",
+        "SONY ILCE-7M4 with E 70-180mm F2.8 A056; f/2.8, 1/1250, ISO 1000."
+      ],
+      "note": "// generated from Soccer/23-Oct-IZ-UIUCMensClubSoccer-1085.jpg"
+    }
   }
 ]
