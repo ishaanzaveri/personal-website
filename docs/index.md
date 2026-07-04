@@ -9,5 +9,6 @@ they're the source of truth the frontend and (eventual) Go backend are built to.
 | [`02-react-components.md`](02-react-components.md) | Full component inventory + tree. |
 | [`03-frontend-guidelines.md`](03-frontend-guidelines.md) | Stack, conventions, a11y, performance. |
 | [`04-hosting-architecture.md`](04-hosting-architecture.md) | Chosen hosting design + phased setup checklist. |
+| [`05-photo-pipeline.md`](05-photo-pipeline.md) | Local photo source layout, derivative generation, mock data, and verification flow. |
 | [`decision-points/architecture.md`](decision-points/architecture.md) | Hosting decision record: every option considered and why the others lost. |
 | [`decision-points/vps.md`](decision-points/vps.md) | The VPS in detail: provider/size/OS choice + a step-by-step setup runbook. |
