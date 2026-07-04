@@ -1,0 +1,8 @@
+# Keep the build context (and image) minimal — deps are installed fresh in the
+# image, and build-time / meta files never belong in it.
+node_modules
+npm-debug.log*
+build-photo-seed.mjs
+Dockerfile
+.dockerignore
+*.md
