@@ -259,7 +259,7 @@ function tagsFor(album, meta) {
 function placeholderFor(album, index) {
   let hash = 0;
   for (const char of album) hash = (hash * 31 + char.charCodeAt(0)) % 360;
-  return { hue: (hash + index * 17) % 360, lightness: 0.28 + (index % 5) * 0.025 };
+  return { hue: (hash + index * 17) % 360, lightness: Number((0.28 + (index % 5) * 0.025).toFixed(3)) };
 }
 
 function frameFor(file, index) {
