@@ -13,7 +13,10 @@ name: Build & publish backend image (mock API)
 
 on:
   push:
-    branches: ["main"]
+    # TEMPORARY: dockerize-mock-server is here so the build can be exercised on
+    # the branch before merge — remove it once verified. `latest` is still only
+    # tagged on the default branch; branch builds only get the sha tag.
+    branches: ["main", "dockerize-mock-server"]
     paths:
       - "frontend/mock-server/**"
       - ".github/workflows/build-mock-backend.yml"
