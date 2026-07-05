@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Dev server proxies the read-only JSON API to the local mock Express server
-// (mock-server/server.js on :8787) so the app fetches from a same-origin /api.
+// The app fetches from the deployed mock API by default (see src/lib/apiClient.ts).
+// When VITE_API_BASE_URL is set to an empty string, requests use a same-origin
+// /api path and this proxy forwards them. Point it at the local mock Express
+// server (mock-server/server.js on :8787) for offline dev, or the deployed host.
 export default defineConfig({
   plugins: [react()],
   server: {
