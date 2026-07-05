@@ -1,5 +1,9 @@
-// Thin fetch wrapper around the read-only JSON API. The dev server proxies
-// /api to the mock Express server (see vite.config.ts).
+// Thin fetch wrapper around the read-only JSON API. Requests go to the deployed
+// mock API at https://mockapi.ishaanzaveri.com/api; override the host with
+// VITE_API_BASE_URL (e.g. an empty string to use the local dev proxy — see
+// vite.config.ts).
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'https://mockapi.ishaanzaveri.com';
 
 export class ApiError extends Error {
   status: number;
@@ -30,7 +34,7 @@ function buildQuery(params?: Params): string {
 }
 
 export async function apiGet<T>(path: string, params?: Params): Promise<T> {
-  const res = await fetch(`/api${path}${buildQuery(params)}`, {
+  const res = await fetch(`${API_BASE}/api${path}${buildQuery(params)}`, {
     headers: { Accept: 'application/json' },
   });
   if (!res.ok) {
