@@ -1,5 +1,16 @@
 [
   {
+    "slug": "personal-website",
+    "name": "personal-website",
+    "blurb": "this site — a terminal/CRT-themed React portfolio with a hand-built Go API behind it. frontend AI-generated, backend written by hand to learn Go.",
+    "stack": ["React", "TypeScript", "Go"],
+    "status": "progress",
+    "metric": "you are here",
+    "readmeUrl": "/api/projects/personal-website/readme",
+    "order": 0,
+    "readme": "# personal-website\n\nThe site you are on. A terminal/CRT-themed React portfolio, plus a hand-built Go API sitting behind it.\n\n## the deal\n\nThe frontend and tooling are AI-generated and reviewed by me. The Go backend is handwritten — writing it is how I am learning Go. A small Express server mocks the API until the real one is ready.\n\nSee the post [why i am finally making my website](./blog/why-i-am-finally-making-my-website)."
+  },
+  {
     "slug": "honeycache",
     "name": "honeycache",
     "blurb": "honeypot cache that watches and learns. single binary, ~2k LOC; it serves real traffic while profiling who is probing it.",

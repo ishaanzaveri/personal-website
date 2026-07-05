@@ -1,86 +1,14 @@
 [
   {
-    "slug": "a-honeypot-cache-that-watches-and-learns",
-    "date": "2026-05-12",
-    "tag": "systems",
-    "title": "a honeypot cache that watches and learns",
-    "blurb": "single binary, ~2k LOC. how the cache decides what is worth keeping, and what that tells you about who is knocking.",
-    "readMinutes": 8,
-    "words": 1840,
-    "commit": "a1b2c3d",
-    "tags": ["cache", "go", "systems", "eviction"],
-    "body": "The cache started as a joke. I wanted to know who was scraping an endpoint, and a cache sits in exactly the right place to find out.\n\n## the first three designs were wrong\n\n1. LRU with a twist — evict the least recently used, but never the suspicious ones. This kept garbage forever.\n2. LFU — frequency is easy to game with a tight loop.\n3. A scoring function nobody could explain.\n\n```go\nfunc (c *Cache) shouldKeep(e *entry) bool {\n  if e.hits < 2 {\n    return false\n  }\n  return !e.sourceLooksLikeEnumeration()\n}\n```\n\n> A cache that forgets on a timer tells you nothing. A cache that forgets on *evidence* tells you who your enemies are.\n\nThe final design keeps a 64-byte rolling profile per client. That is the whole trick.\n\n## what I would change\n\nNext time I would make the profile pluggable from the start. Hard-coding the heuristic was fast to ship and slow to evolve."
-  },
-  {
-    "slug": "reading-kyber-without-hand-waving",
-    "date": "2026-04-28",
-    "tag": "security",
-    "title": "reading kyber without hand-waving",
-    "blurb": "post-quantum KEMs are not magic. a slow walk through ring-LWE for people who can read code but not papers.",
-    "readMinutes": 11,
-    "words": 2530,
-    "commit": "9f8e7d6",
-    "tags": ["crypto", "lattices", "kyber", "security"],
-    "body": "Every explanation of Kyber I found was either three equations or three hundred pages. I wanted the version in between.\n\n## the one idea\n\nLattice crypto hides a secret in *noise*. You publish something close to a lattice point; only the holder of the secret can round back to the exact point.\n\n```\npublic  = A·s + e      // e is small noise\nsecret  = s\n```\n\nThat `e` is the entire game. Too little noise and it's not secure; too much and you can't decrypt.\n\n## where people lose the thread\n\nThe modular reductions. Keep a number line in your head and most of the mystery evaporates."
-  },
-  {
-    "slug": "metering-for-the-highlights",
-    "date": "2026-04-02",
-    "tag": "photo",
-    "title": "metering for the highlights, letting the shadows fall",
-    "blurb": "a short note on exposure discipline for night and neon — and why I stopped trusting the histogram's left side.",
-    "readMinutes": 5,
-    "words": 1150,
-    "commit": "c4d5e6f",
-    "tags": ["exposure", "night", "photo", "process"],
-    "body": "Neon lies to your meter. The camera sees a dark frame and tries to lift it; you end up with grey mush and blown signage.\n\n## the rule\n\nMeter for the brightest thing you care about. Let everything else go dark.\n\n> The shadows are not a problem to be solved. They are most of the photograph.\n\nIn Tokyo this meant shooting two stops under what the camera begged for. The Golden Gai frames in the [photo](./photo) page are all metered this way."
-  },
-  {
-    "slug": "600-lines-of-tracing",
-    "date": "2026-03-15",
-    "tag": "systems",
-    "title": "600 lines of tracing",
-    "blurb": "what you actually need from a distributed tracer, and how little code it takes once you stop trying to support everything.",
-    "readMinutes": 7,
-    "words": 1620,
-    "commit": "1a2b3c4",
-    "tags": ["observability", "go", "systems"],
-    "body": "Tracing has an enormous surface area and a tiny core. The core is: a trace id, a span, a parent pointer, and a clock.\n\n```go\ntype Span struct {\n  TraceID  uint64\n  SpanID   uint64\n  ParentID uint64\n  Start    time.Time\n}\n```\n\n## the part everyone over-builds\n\nTransport. You do not need a collector on day one. A ring buffer and a `/debug/trace` endpoint will carry you further than you think."
-  },
-  {
-    "slug": "notes-on-keeping-a-single-binary",
-    "date": "2026-02-20",
+    "slug": "why-i-am-finally-making-my-website",
+    "date": "2026-07-04",
     "tag": "notes",
-    "title": "notes on keeping a single binary",
-    "blurb": "a running list of the small disciplines that keep a project shippable as one static file.",
-    "readMinutes": 4,
-    "words": 920,
-    "commit": "5e6f7a8",
-    "tags": ["notes", "process", "systems"],
-    "body": "A loose collection, updated when I learn something.\n\n- Embed assets; do not read from disk at runtime unless the user asked.\n- One config struct, one place it is parsed.\n- Logs are an interface, not a `fmt.Println`.\n\n> Every dependency is a promise someone else has to keep."
-  },
-  {
-    "slug": "why-the-blog-is-markdown",
-    "date": "2026-01-30",
-    "tag": "notes",
-    "title": "why the blog is just markdown",
-    "blurb": "the case for a boring content pipeline, and the one place I let myself be fancy.",
+    "title": "why i am finally making my website",
+    "blurb": "a someday project for years. two things changed: AI made the build cheap, and I wanted a real excuse to learn Go.",
     "readMinutes": 3,
-    "words": 700,
-    "commit": "8a9b0c1",
-    "tags": ["notes", "web", "process"],
-    "body": "The body you are reading is a markdown string from an API. That is the whole pipeline.\n\n## the fancy part\n\nThe *rendering* is where the terminal theme earns its keep — line gutters, fenced code with a comment color, a reading-progress bar. But the source is plain text, and that is on purpose."
-  },
-  {
-    "slug": "what-iceland-taught-me-about-wide",
-    "date": "2025-12-18",
-    "tag": "photo",
-    "title": "what iceland taught me about shooting wide",
-    "blurb": "wide lenses promise everything and deliver nothing unless you give the frame a job.",
-    "readMinutes": 6,
-    "words": 1380,
-    "commit": "2c3d4e5",
-    "tags": ["landscape", "photo", "process"],
-    "body": "A 16mm lens will happily include the whole valley and make all of it boring.\n\n## give the frame a job\n\nEvery wide shot needs one near thing and one far thing. The near thing is the assignment; the far thing is the reward.\n\n> Vastness only reads as vast when something small is standing next to it."
+    "words": 540,
+    "commit": "4e8b534",
+    "tags": ["meta", "go", "ai", "web"],
+    "body": "For years my personal website was a someday project. The kind of thing I would scope out, feel the size of, and quietly close the tab.\n\n## what changed\n\nTwo things. First, I can move a lot faster now — with AI doing the heavy lifting on the frontend, the React portfolio you are reading went from *someday* to *this weekend*. The parts that used to eat evenings — layout, tokens, the fiddly responsive work — stopped being the reason not to start.\n\n> The site stopped being a wall and started being an afternoon.\n\nSecond, I wanted an excuse to learn **Go**. Not a tutorial-shaped excuse — a real one, with routes and JSON shapes and edge cases I would have to actually handle.\n\n## the split\n\nSo I drew a line down the middle of the repo:\n\n- The **frontend**, docs, and tooling are AI-generated — directed and reviewed by me, but not hand-typed.\n- The **backend** — the Go API — is mine. Handwritten, on purpose. Writing it *is* the point; letting a model do it would defeat the exercise.\n\n```\nfrontend/   # AI-built React + a mock API stand-in\nbackend/    # handwritten Go — the whole reason\n```\n\nRight now a small Express server mocks the API so the site has something real to fetch while the Go service grows up next to it. Same routes, same JSON, different author.\n\n## why finally\n\nBecause the tradeoff finally made sense: let the machine build the part I have built a hundred times, and spend my own hours on the part I actually want to learn."
   }
 ]
