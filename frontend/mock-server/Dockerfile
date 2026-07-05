@@ -23,6 +23,16 @@ WORKDIR /app
 ENV NODE_ENV=production \
     PORT=8787
 
+# Real commit info for the footer / blog commit refs. Distroless has no git and
+# the build context carries no .git, so the CI build passes HEAD in here:
+#   docker build --build-arg BUILD_COMMIT="$(git rev-parse --short HEAD)" \
+#                --build-arg BUILD_COMMITTED_AT="$(git log -1 --format=%cI)" ...
+# server.js falls back to the seed JSON when these are unset.
+ARG BUILD_COMMIT=""
+ARG BUILD_COMMITTED_AT=""
+ENV BUILD_COMMIT=$BUILD_COMMIT \
+    BUILD_COMMITTED_AT=$BUILD_COMMITTED_AT
+
 # Production deps from the deps stage, then the server + seed data. The
 # build-time seed generator (build-photo-seed.mjs) is intentionally excluded.
 COPY --from=deps /app/node_modules ./node_modules

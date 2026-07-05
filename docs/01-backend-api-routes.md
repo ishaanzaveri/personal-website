@@ -45,7 +45,7 @@ Returns global site config and the landing-page "now" block.
     { "key": "instagram", "label": "instagram", "url": "https://www.instagram.com/ishaanzaveriphotography/" },
     { "key": "github",    "label": "github",    "url": "https://ishaanzaveri.github.io/" }
   ],
-  "build": { "branch": "main", "lastCommit": "2026-05-17T10:00:00Z" }
+  "build": { "branch": "main", "commit": "4e8b534", "lastCommit": "2026-07-04T19:31:41-05:00" }
 }
 ```
 
@@ -54,6 +54,11 @@ Notes
   `tail -f log`).
 - `build.lastCommit` powers the footer "last commit 4h ago" string; compute the
   relative time on the client.
+- `build.commit` / `build.lastCommit` should reflect the deployed HEAD, not a
+  hand-edited value. The backend resolves them from the real commit at startup
+  (the mock server reads `git` in dev and `BUILD_COMMIT` / `BUILD_COMMITTED_AT`
+  env vars baked into its image in prod); the seed JSON is only a fallback. The
+  same short hash is stamped onto each post's `commit`.
 
 ---
 
@@ -65,10 +70,10 @@ The About page renders a markdown source file with a line gutter.
 ```json
 {
   "title": "bio",
-  "subtitle": "ishaan zaveri · 2026-05-17",
+  "subtitle": "developer · photographer · chicago",
   "filename": "bio.md",
   "format": "markdown",
-  "source": "# bio\n## ishaan zaveri · 2026-05-17\n\n> Software developer in Chicago.\n\nI build large-scale traffic management systems at [Parsons](https://www.parsons.com/) …",
+  "source": "# bio\n\n```\n$ whoami\nishaan — developer, photographer, occasional breaker of things\n```\n\n> Software developer in Chicago.\n\nI build large-scale traffic management systems at [Parsons](https://www.parsons.com/) …",
   "encoding": "utf-8",
   "eol": "lf"
 }
