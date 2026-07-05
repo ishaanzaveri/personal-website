@@ -7,13 +7,13 @@
   },
   "now": {
     "updatedCadence": "weekly",
-    "body": "Reading about post-quantum lattices. Editing a recent batch of shots from a late-night walk through Shibuya. Slowly rewriting the cache eviction loop in honeycache.",
-    "tags": ["kyber", "exposure", "ebpf"]
+    "body": "Building a personal website. Reading Security Engineering by Ross Anderson. Editing pictures from my vacation to Seattle.",
+    "tags": ["learning", "security", "editing"]
   },
   "socials": [
     { "key": "linkedin",  "label": "linkedin",  "url": "https://www.linkedin.com/in/ishaanzaveri/" },
     { "key": "instagram", "label": "instagram", "url": "https://www.instagram.com/ishaanzaveriphotography/" },
-    { "key": "github",    "label": "github",    "url": "https://ishaanzaveri.github.io/" }
+    { "key": "website",   "label": "website",   "url": "https://ishaanzaveri.com" }
   ],
-  "build": { "branch": "main", "lastCommit": "2026-05-17T10:00:00Z" }
+  "build": { "branch": "main", "commit": "4e8b534", "lastCommit": "2026-07-04T19:31:41-05:00" }
 }

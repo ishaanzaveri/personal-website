@@ -7,7 +7,7 @@ import { useSite } from '../../lib/queries';
 const EMAIL = 'izaveri01@gmail.com';
 
 const SOCIAL_META: Record<string, { kbd: string; desc: string }> = {
-  github: { kbd: 'gh', desc: 'commits · projects' },
+  website: { kbd: 'ws', desc: 'this site' },
   linkedin: { kbd: 'in', desc: 'work history' },
   instagram: { kbd: 'ig', desc: 'photos · digital' },
 };
