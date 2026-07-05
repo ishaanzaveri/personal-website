@@ -1,7 +1,9 @@
-// Tiny mock API server for local dev. Serves the public, read-only GET routes
-// from ../docs/01-backend-api-routes.md with seed data ported from the prototype.
-// No auth/admin, no /feed.xml, no contact POST, no CORS (the Vite dev proxy makes
-// /api same-origin). Run via `npm run dev` (concurrently) or `npm run dev:api`.
+// Tiny mock API server for local dev and the deployed stand-in. Serves the
+// public, read-only GET routes from ../docs/01-backend-api-routes.md with seed
+// data ported from the prototype. No auth/admin, no /feed.xml, no contact POST.
+// CORS is open (public read-only GETs) so the built site can fetch it directly
+// from another origin; local dev still works via the Vite proxy.
+// Run via `npm run dev` (concurrently) or `npm run dev:api`.
 import express from 'express';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -45,6 +47,21 @@ function asArray(v) {
 function notFound(res, message) {
   res.status(404).json({ error: { code: 'not_found', message } });
 }
+
+// Open CORS for the public read-only API: any origin may GET. No credentials are
+// used, so a wildcard origin is safe and simplest. Answer preflights here so the
+// catch-all 404 below never shadows an OPTIONS request.
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type, Accept');
+  res.set('Access-Control-Max-Age', '86400');
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(204);
+    return;
+  }
+  next();
+});
 
 // Light caching touch, matching the docs' recommendation for public GETs.
 app.use((_req, res, next) => {
