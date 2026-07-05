@@ -1,9 +1,9 @@
 {
   "title": "bio",
-  "subtitle": "ishaan zaveri · 2026-05-17",
+  "subtitle": "developer · photographer · chicago",
   "filename": "bio.md",
   "format": "markdown",
   "encoding": "utf-8",
   "eol": "lf",
-  "source": "# bio\n## ishaan zaveri · 2026-05-17\n\n> Software developer in Chicago. I build, break, then photograph what's left.\n\nI build large-scale traffic management systems at [Parsons](https://www.parsons.com/), where the edge cases tend to involve actual intersections. Before that I spent a lot of time in the guts of caches, schedulers, and the occasional kernel module.\n\nMy work tends to live where **systems** and **security** overlap: making fast things observable, and making observable things hard to abuse.\n\n## what I care about\n\n- Single binaries with small surface area.\n- Tools that fail loudly and recover quietly.\n- Photographs that don't need a caption (the captions are for me).\n\n## elsewhere\n\nOff the clock I shoot mostly `street` and `landscape` — a `Leica Q3` for walking, a `Sony A7iv` when I mean it. The [photo](./photo) page is the real portfolio.\n\n```\n$ whoami\nishaan — developer, photographer, occasional breaker of things\n```\n\nSay hello on the [contact](./contact) page."
+  "source": "# bio\n\n```\n$ whoami\nishaan — developer, photographer, occasional breaker of things\n```\n\n> Software developer in Chicago. I build, break, then photograph what's left.\n\nI build large-scale traffic management systems at [Parsons](https://www.parsons.com/), DevSecOps pipelines, build systems, and the kind of *bug-hunting* that happens before anyone files a ticket. Before that I spent time at [Anchorage Digital](https://www.anchorage.com/) working on **HSM deployment tracking, and code signing**, and [Purdue University](https://purdue.edu) getting my BS in CS.\n\nMy work tends to live where **systems** and **security** overlap: making fast things observable, and making observable things hard to abuse.\n\n## off the clock\n\nBehind a camera — landscapes, portraits, astro, long\nexposures. `Sony a7IV` + `Sigma zooms`. I shoot for\n**movement and time**: anything that asks the shutter\nto stay open.\n\nTravel when I can. Scuba whenever I'm near the ocean."
 }
