@@ -5,9 +5,11 @@
 // from another origin; local dev still works via the Vite proxy.
 // Run via `npm run dev` (concurrently) or `npm run dev:api`.
 import express from 'express';
+import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
+const HERE = fileURLToPath(new URL('.', import.meta.url));
 const load = (name) =>
   JSON.parse(readFileSync(fileURLToPath(new URL(`./data/${name}.json`, import.meta.url)), 'utf-8'));
 
@@ -17,6 +19,31 @@ const PROJECTS = load('projects');
 const POSTS = load('posts');
 const FRAMES = load('frames');
 const ALBUMS = load('albums');
+
+// ---- build info ------------------------------------------------------------
+// The footer's "last commit … ago" and each post's `#commit` should reflect the
+// real HEAD, not a hand-edited timestamp. Resolve it once at startup:
+//   1. env vars baked into the image at build time (production — distroless has
+//      no git and no .git in the context; the CI build passes these in), then
+//   2. live git in the working tree (local dev), then
+//   3. whatever the seed JSON shipped (last resort).
+function gitField(fmt) {
+  try {
+    return execFileSync('git', ['log', '-1', `--format=${fmt}`], {
+      cwd: HERE,
+      encoding: 'utf-8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    return '';
+  }
+}
+
+const commit = process.env.BUILD_COMMIT || gitField('%h') || SITE.build.commit;
+const lastCommit = process.env.BUILD_COMMITTED_AT || gitField('%cI') || SITE.build.lastCommit;
+SITE.build = { ...SITE.build, commit, lastCommit };
+// Keep the blog's commit refs honest against the same HEAD.
+for (const post of POSTS) post.commit = commit;
 
 const PORT = process.env.PORT || 8787;
 const app = express();
