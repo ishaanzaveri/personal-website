@@ -9,49 +9,5 @@
     "readmeUrl": "/api/projects/personal-website/readme",
     "order": 0,
     "readme": "# personal-website\n\nThe site you are on. A terminal/CRT-themed React portfolio, plus a hand-built Go API sitting behind it.\n\n## the deal\n\nThe frontend and tooling are AI-generated and reviewed by me. The Go backend is handwritten — writing it is how I am learning Go. A small Express server mocks the API until the real one is ready.\n\nSee the post [why i am finally making my website](./blog/why-i-am-finally-making-my-website)."
-  },
-  {
-    "slug": "frame-exif",
-    "name": "frame-exif",
-    "blurb": "tiny service that ingests RAW/JPEG, extracts EXIF, generates thumbnails + blurhash, and writes the photo API this site reads.",
-    "stack": ["Go", "libvips"],
-    "status": "shipped",
-    "metric": "35 frames · 6 albums",
-    "readmeUrl": "/api/projects/frame-exif/readme",
-    "order": 1,
-    "readme": "# frame-exif\n\nThe pipeline behind the [photo](./photo) page. Drop a file in, get back structured EXIF, responsive variants, and a blurhash placeholder.\n\n## flow\n\n1. Watch an inbox directory.\n2. Parse EXIF (camera, lens, aperture, shutter, ISO).\n3. Emit `webp`/`avif` variants + a blurhash.\n4. Write the `/api/frames` record."
-  },
-  {
-    "slug": "tinytrace",
-    "name": "tinytrace",
-    "blurb": "a 600-line distributed tracer. no agents, no sidecars — just a header, a ring buffer, and a flamegraph you can read.",
-    "stack": ["Go", "observability"],
-    "status": "shipped",
-    "metric": "600 LOC · 0 deps",
-    "readmeUrl": "/api/projects/tinytrace/readme",
-    "order": 2,
-    "readme": "# tinytrace\n\nDistributed tracing for people who think OpenTelemetry is a lot. One header, one ring buffer, one flamegraph."
-  },
-  {
-    "slug": "crt-term",
-    "name": "crt-term",
-    "blurb": "the terminal theme this whole site is built on, packaged as CSS variables + a scanline shader you can drop into anything.",
-    "stack": ["CSS", "design"],
-    "status": "progress",
-    "metric": "tokens · v1",
-    "readmeUrl": "/api/projects/crt-term/readme",
-    "order": 3,
-    "readme": "# crt-term\n\nThe design tokens powering this site, extracted into a portable theme: dark surfaces, a restrained text ramp, flat signal colors, and an optional scanline overlay."
-  },
-  {
-    "slug": "old-scheduler",
-    "name": "old-scheduler",
-    "blurb": "an experimental userspace scheduler from a previous life. archived, but the ideas about latency budgets aged well.",
-    "stack": ["C", "Linux"],
-    "status": "archived",
-    "metric": "archived 2023",
-    "readmeUrl": "/api/projects/old-scheduler/readme",
-    "order": 4,
-    "readme": "# old-scheduler\n\nArchived. A userspace cooperative scheduler that tried to enforce per-task latency budgets. Superseded, but I still reach for these ideas."
   }
 ]

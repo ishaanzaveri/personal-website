@@ -111,7 +111,7 @@ export default function Home() {
 
       {/* selected work */}
       <section className={`${styles.section} section-in`}>
-        <SectionH num="01" title="selected work" side={<Link to="/blog">{projects.length} of 12 →</Link>} />
+        <SectionH num="01" title="selected work" side={<Link to="/blog">{projects.length} total →</Link>} />
         <div className={styles.workGrid}>
           {projects.map((p, i) => (
             <Tile key={p.slug} className={styles.workCard}>
