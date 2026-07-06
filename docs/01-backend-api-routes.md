@@ -98,20 +98,20 @@ Query params:
 ```json
 [
   {
-    "slug": "honeycache",
-    "name": "honeycache",
-    "blurb": "honeypot cache that watches and learns. single binary, ~2k LOC…",
-    "stack": ["C", "eBPF", "sqlite"],
-    "status": "shipped",
-    "metric": "2.1k samples · 412 ★",
-    "readmeUrl": "/api/projects/honeycache/readme",
-    "order": 1
+    "slug": "personal-website",
+    "name": "personal-website",
+    "blurb": "this site — a terminal/CRT-themed React portfolio with a hand-built Go API behind it…",
+    "stack": ["React", "TypeScript", "Go"],
+    "status": "progress",
+    "metric": "you are here",
+    "readmeUrl": "/api/projects/personal-website/readme",
+    "order": 0
   }
 ]
 ```
 
-The home page shows the first 3 and labels it "3 of 12 →"; the client derives that
-total from the array length.
+The home page shows the first 3 and links to the full work view; the client derives
+totals from the array length when needed.
 
 ### `GET /api/projects/:slug`
 Single project detail (for the "cat readme →" action).
