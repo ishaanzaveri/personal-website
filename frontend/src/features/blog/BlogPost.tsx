@@ -90,17 +90,18 @@ export default function BlogPost() {
       {/* condensed frozen title pane */}
       <div
         style={{
-          position: 'sticky',
+          position: 'fixed',
           top: navH - 8,
+          left: 'max(20px, calc((100vw - var(--doc-max)) / 2 + var(--doc-pad)))',
+          right: 'max(20px, calc((100vw - var(--doc-max)) / 2 + var(--doc-pad)))',
           zIndex: 45,
           background: 'var(--bg-2)',
           borderBottom: '1px solid var(--rule)',
-          marginBottom: frozen ? 24 : 0,
           maxHeight: frozen ? 60 : 0,
           opacity: frozen ? 1 : 0,
           overflow: 'hidden',
           pointerEvents: frozen ? 'auto' : 'none',
-          transition: 'max-height 220ms var(--ease), opacity 180ms var(--ease), margin-bottom 220ms var(--ease)',
+          transition: 'max-height 220ms var(--ease), opacity 180ms var(--ease)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, height: 60 }}>
