@@ -40,6 +40,8 @@ function Dot({ color }: { color: string }) {
 export default function About() {
   usePageTitle('about · bio');
   const { data, isLoading, isError, error, refetch } = useAbout();
+  const title = data?.title.trim();
+  const subtitle = data?.subtitle.trim();
 
   return (
     <div>
@@ -47,10 +49,12 @@ export default function About() {
         <div style={{ color: 'var(--text-dim)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
           ◢ about
         </div>
-        <h1 style={{ fontSize: 36, fontWeight: 700, letterSpacing: '-0.015em', margin: '14px 0 0', lineHeight: 1.1 }}>
-          {data?.title ?? 'bio'}
-        </h1>
-        <p style={{ color: 'var(--text-mid)', fontSize: 13, margin: '10px 0 0' }}>{data?.subtitle ?? ' '}</p>
+        {title && (
+          <h1 style={{ fontSize: 36, fontWeight: 700, letterSpacing: '-0.015em', margin: '14px 0 0', lineHeight: 1.1 }}>
+            {title}
+          </h1>
+        )}
+        {subtitle && <p style={{ color: 'var(--text-mid)', fontSize: 13, margin: '10px 0 0' }}>{subtitle}</p>}
       </header>
 
       <Bracket style={{ padding: 0, overflow: 'hidden' }}>
