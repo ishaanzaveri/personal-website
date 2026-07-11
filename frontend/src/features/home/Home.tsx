@@ -132,7 +132,9 @@ export default function Home() {
               </div>
               <div className={styles.workFoot}>
                 <span>{p.metric}</span>
-                <span style={{ color: 'var(--teal-hi)' }}>cat readme →</span>
+                <Link to={`/work/${p.slug}`} className={styles.workReadmeLink} aria-label={`cat readme for ${p.name}`}>
+                  cat readme →
+                </Link>
               </div>
             </Tile>
           ))}
