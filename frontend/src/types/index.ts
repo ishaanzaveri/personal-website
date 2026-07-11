@@ -36,6 +36,14 @@ export interface Project {
 
 export type PostTag = 'systems' | 'security' | 'photo' | 'notes';
 
+export interface SelectedWorkMeta {
+  enabled: boolean;
+  status: ProjectStatus;
+  metric: string;
+  stack: string[];
+  order: number;
+}
+
 /** List shape from /api/posts. */
 export interface PostSummary {
   slug: string;
@@ -44,6 +52,7 @@ export interface PostSummary {
   title: string;
   blurb: string;
   readMinutes: number;
+  selectedWork?: SelectedWorkMeta;
 }
 
 /** Full post from /api/posts/:slug. */

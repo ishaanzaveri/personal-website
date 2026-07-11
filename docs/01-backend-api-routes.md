@@ -86,9 +86,11 @@ Notes
 
 ---
 
-## 3. Projects ("selected work")
+## 3. Projects (legacy)
 
-Powers the "selected work" grid on the landing page and a future `./work` page.
+Legacy project records. The landing page's "selected work" grid is blog-backed:
+posts opt in via `selectedWork` metadata on `GET /api/posts` and click through to
+`/blog/:slug`.
 
 ### `GET /api/projects`
 Query params:
@@ -114,7 +116,7 @@ The home page shows the first 3 and links to the full work view; the client deri
 totals from the array length when needed.
 
 ### `GET /api/projects/:slug`
-Single project detail (for the "cat readme →" action).
+Single legacy project detail.
 
 `status` is an enum: `shipped`, `progress`, `archived` — maps to the `Status`
 component's three states.
@@ -139,7 +141,14 @@ Query params:
     "tag": "systems",
     "title": "a honeypot cache that watches and learns",
     "blurb": "single binary, ~2k LOC. how the cache decides what is worth keeping…",
-    "readMinutes": 8
+    "readMinutes": 8,
+    "selectedWork": {
+      "enabled": true,
+      "status": "shipped",
+      "metric": "~2k LOC",
+      "stack": ["Go", "Systems"],
+      "order": 0
+    }
   }
 ]
 ```
@@ -147,6 +156,9 @@ Query params:
 Notes
 - The filter pills show per-tag counts, e.g. `systems (8)`. Since the blog page
   fetches the full list, the client derives those counts from the array.
+- `selectedWork` is optional. When `selectedWork.enabled` is true, the Home page
+  includes that post in the "selected work" grid and links `cat readme →` to the
+  post's `/blog/:slug` page.
 - `readMinutes` is an integer; the UI renders `8 min`. The BlogPost view also
   derives an approximate word count (`readMinutes * 230`) — optionally return a
   real `words` field instead.

@@ -6,6 +6,13 @@
     "title": "why i am finally making my website",
     "blurb": "a someday project for years. two things changed: AI made the build cheap, and I wanted a real excuse to learn Go.",
     "readMinutes": 3,
+    "selectedWork": {
+      "enabled": true,
+      "status": "progress",
+      "metric": "you are here",
+      "stack": ["React", "TypeScript", "Go"],
+      "order": 0
+    },
     "words": 540,
     "commit": "4e8b534",
     "tags": ["meta", "go", "ai", "web"],
