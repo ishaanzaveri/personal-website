@@ -14,6 +14,16 @@ const SIZES: Record<FramePlateIntent, string> = {
   thumb: '(max-width: 759px) 33vw, 160px',
 };
 
+const OBJECT_FIT: Record<FramePlateIntent, CSSProperties['objectFit']> = {
+  masonry: 'cover',
+  home: 'cover',
+  albumHero: 'cover',
+  albumPeek: 'cover',
+  modal: 'contain',
+  detail: 'contain',
+  thumb: 'cover',
+};
+
 // Frame placeholder surface: a deterministic gradient + subtle diagonal grain.
 // When real images land, render the <img> (with srcset) and keep this as the
 // blurhash/LQIP loading shim.
@@ -45,7 +55,7 @@ export function FramePlate({
         alt={frameAlt(frame)}
         loading={loading ?? (intent === 'modal' || intent === 'detail' || intent === 'albumHero' ? 'eager' : 'lazy')}
         decoding="async"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', ...style }}
+        style={{ width: '100%', height: '100%', objectFit: OBJECT_FIT[intent], display: 'block', ...style }}
       />
     );
   }

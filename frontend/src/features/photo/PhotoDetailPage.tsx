@@ -87,9 +87,17 @@ export default function PhotoDetailPage() {
       </div>
 
       <div style={{ background: '#02050a', border: '1px solid var(--rule)', padding: 'clamp(24px, 5vw, 60px)', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ position: 'relative', aspectRatio: f.aspectRatio, maxWidth: '100%', width: 980, maxHeight: 620, boxShadow: '0 30px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px var(--rule-hi)' }}>
-          <FramePlate frame={f} intent="detail" />
-        </div>
+        <FramePlate
+          frame={f}
+          intent="detail"
+          style={{
+            width: 'auto',
+            height: 'auto',
+            maxWidth: '100%',
+            maxHeight: 'min(calc(100vh - 260px), 660px)',
+            boxShadow: '0 30px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px var(--rule-hi)',
+          }}
+        />
       </div>
 
       <div style={{ maxWidth: 760, margin: '40px auto 0', textAlign: 'center' }}>
