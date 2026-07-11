@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Bracket, Btn, Cursor, Kbd, Prompt, SectionH, Status, Tag, Tile } from '../../components/primitives';
 import { FramePlate } from '../../components/FramePlate';
 import { usePageTitle } from '../../hooks/usePageTitle';
-import { useFrames, useProjects, usePosts, useSite } from '../../lib/queries';
+import { useFrames, usePosts, useSite } from '../../lib/queries';
 import { tagColorOf } from '../../lib/tagColors';
 import styles from './Home.module.css';
 
@@ -23,9 +23,13 @@ export default function Home() {
   usePageTitle('cat manifest');
   const navigate = useNavigate();
   const { data: site } = useSite();
-  const { data: projects = [] } = useProjects(undefined, 3);
   const { data: frames } = useFrames({ limit: 6 });
-  const { data: posts = [] } = usePosts(undefined, 5);
+  const { data: posts = [] } = usePosts();
+  const selectedWork = posts
+    .filter((post) => post.selectedWork?.enabled)
+    .sort((a, b) => (a.selectedWork?.order ?? 0) - (b.selectedWork?.order ?? 0))
+    .slice(0, 3);
+  const recentPosts = posts.slice(0, 5);
 
   const cmd = site?.hero.prompts[0] ?? 'cat manifest';
   const tagline = site?.hero.tagline ?? "I build, break, then photograph what's left.";
@@ -111,28 +115,28 @@ export default function Home() {
 
       {/* selected work */}
       <section className={`${styles.section} section-in`}>
-        <SectionH num="01" title="selected work" side={<Link to="/blog">{projects.length} total →</Link>} />
+        <SectionH num="01" title="selected work" side={<Link to="/blog">{selectedWork.length} total →</Link>} />
         <div className={styles.workGrid}>
-          {projects.map((p, i) => (
-            <Tile key={p.slug} className={styles.workCard}>
+          {selectedWork.map((post, i) => (
+            <Tile key={post.slug} className={styles.workCard}>
               <div className={styles.workHead}>
                 <span className={styles.workNum}>/{String(i + 1).padStart(2, '0')}</span>
-                <Status kind={p.status} />
+                <Status kind={post.selectedWork?.status} />
               </div>
               <div>
-                <h3 className={styles.workName}>./{p.name}</h3>
-                <p className={styles.workBlurb}>{p.blurb}</p>
+                <h3 className={styles.workName}>./{post.title}</h3>
+                <p className={styles.workBlurb}>{post.blurb}</p>
               </div>
               <div className={styles.workStack}>
-                {p.stack.map((s) => (
+                {(post.selectedWork?.stack ?? []).map((s) => (
                   <Tag key={s} color="var(--text-mid)">
                     {s}
                   </Tag>
                 ))}
               </div>
               <div className={styles.workFoot}>
-                <span>{p.metric}</span>
-                <Link to={`/work/${p.slug}`} className={styles.workReadmeLink} aria-label={`cat readme for ${p.name}`}>
+                <span>{post.selectedWork?.metric}</span>
+                <Link to={`/blog/${post.slug}`} className={styles.workReadmeLink} aria-label={`cat readme for ${post.title}`}>
                   cat readme →
                 </Link>
               </div>
@@ -176,7 +180,7 @@ export default function Home() {
             <span>~/site/blog</span>
             <span>ls -t posts/</span>
           </div>
-          {posts.map((p) => (
+          {recentPosts.map((p) => (
             <Link key={p.slug} to={`/blog/${p.slug}`} className={`post-row ${styles.postRow}`}>
               <span className={styles.postDate}>{p.date}</span>
               <span className={styles.postTag} style={{ color: tagColorOf(p.tag) }}>
