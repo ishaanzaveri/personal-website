@@ -67,6 +67,16 @@
   color: var(--text-dim);
   letter-spacing: 0.04em;
 }
+.workReadmeLink {
+  color: var(--teal-hi);
+  cursor: pointer;
+}
+.workReadmeLink:hover,
+.workReadmeLink:focus-visible {
+  color: var(--text-hi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 .masonry { column-count: 3; column-gap: 8px; }
 @media (max-width: 760px) { .masonry { column-count: 2; } }
