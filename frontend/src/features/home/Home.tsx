@@ -16,7 +16,7 @@ const JUMP = [
   { to: '/about', label: './about', hint: '// bio · cv' },
   { to: '/blog', label: './blog', hint: '// writing' },
   { to: '/photo', label: './photo', hint: '// frames' },
-  { to: '/contact', label: './contact', hint: '// email · pgp' },
+  { to: '/contact', label: './contact', hint: '// email · socials' },
 ];
 
 export default function Home() {
@@ -191,7 +191,6 @@ export default function Home() {
             </Link>
           ))}
           <div className={styles.blogFoot}>
-            <span>// rss available at /feed.xml</span>
             <Link to="/blog" style={{ color: 'var(--teal-hi)' }}>
               more →
             </Link>

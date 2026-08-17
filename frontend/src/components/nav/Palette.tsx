@@ -14,7 +14,7 @@ const ITEMS: Item[] = [
   { to: '/about', label: './about', hint: 'bio · cv · work history' },
   { to: '/blog', label: './blog', hint: 'writing · notes · systems' },
   { to: '/photo', label: './photo', hint: 'gallery · 35 frames · 6 albums' },
-  { to: '/contact', label: './contact', hint: 'email · pgp · socials' },
+  { to: '/contact', label: './contact', hint: 'email · socials' },
 ];
 
 // Fuzzy "jump to" overlay opened with ⌘/Ctrl-K.

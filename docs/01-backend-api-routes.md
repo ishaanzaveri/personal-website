@@ -186,12 +186,6 @@ the client renders it (and must sanitize the output before injecting HTML).
 the constructs the prototype's `POST_BODY` already covers). `commit` can be a real
 git short-hash or a stable hash of the slug.
 
-### `GET /feed.xml`
-RSS feed. The UI advertises `/feed.xml` ("plain RSS, no tracking") in two places.
-Serve `application/rss+xml`, newest first, full or summary content.
-
----
-
 ## 5. Photography
 
 This is the richest data domain. Today it lives in `src/photo/data.jsx` as
@@ -310,15 +304,12 @@ but if you add one:
 
 ### `POST /api/contact`
 ```json
-{ "name": "…", "email": "…", "message": "…", "pgp": false }
+{ "name": "…", "email": "…", "message": "…" }
 ```
 - Validate + rate-limit (this is the only unauthenticated write path).
 - Add spam protection (honeypot field, hCaptcha/Turnstile, or signed nonce).
 - Return `202 Accepted` and deliver async (email/webhook). Never echo the message
   back unsanitized.
-
-### `GET /api/pgp` / `GET /pgp.asc`
-Serve the public PGP key as `text/plain` for the `./pgp.asc` button.
 
 ---
 
@@ -361,12 +352,10 @@ Auth
 | GET | `/api/projects/:slug` | Project detail / readme |
 | GET | `/api/posts` | Blog list (+ tag counts) |
 | GET | `/api/posts/:slug` | Blog post (block body) |
-| GET | `/feed.xml` | RSS feed |
 | GET | `/api/albums` | Album list |
 | GET | `/api/albums/:id` | Album + its frames |
 | GET | `/api/frames` | Photo list (filter/search) |
 | GET | `/api/frames/:id` | Single frame + caption/EXIF |
 | GET | `/api/frames/meta` | Tag/location/camera facets |
 | POST | `/api/contact` | Contact message (optional) |
-| GET | `/api/pgp`, `/pgp.asc` | Public PGP key |
 | * | `/api/admin/**` | Authenticated authoring |

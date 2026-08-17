@@ -30,7 +30,7 @@ export default function Contact() {
           <Cursor />
         </h1>
         <p style={{ color: 'var(--text-mid)', fontSize: 14, maxWidth: 620, margin: '14px 0 0', lineHeight: 1.6 }}>
-          Plain text reaches me. PGP encouraged for anything sensitive.
+          Plain text reaches me.
         </p>
       </header>
 
@@ -43,9 +43,6 @@ export default function Contact() {
           <div style={{ marginTop: 16, display: 'flex', gap: 8 }}>
             <Btn variant="pri" onClick={() => copy(EMAIL)}>
               {copied ? 'copied ✓' : 'copy email'}
-            </Btn>
-            <Btn variant="ghost" onClick={() => window.open('/pgp.asc', '_blank')}>
-              ./pgp.asc
             </Btn>
           </div>
           <div aria-live="polite" style={{ marginTop: 10, fontSize: 11, color: 'var(--teal-hi)', minHeight: 14 }}>
