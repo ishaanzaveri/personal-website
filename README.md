@@ -33,7 +33,7 @@ chrome around the content.
 | **About** | Bio rendered from markdown with a line gutter + byte count — the punctuation is deliberately visible. |
 | **Blog** | Tag-filterable post list (`systems / security / photo / notes`) and full markdown posts with fenced code. |
 | **Photo** | The real portfolio. Albums, an all-photos gallery, search/filter, a portal modal, and a full-detail page with EXIF + editorial captions. |
-| **Contact** | Email + copy button, socials, PGP key. Optional contact form (the only write path). |
+| **Contact** | Email + copy button and socials. Optional contact form (the only write path). |
 
 Content is **data-driven** — nothing is hardcoded in the JSX. Every view fetches
 from the API described in [`docs/01-backend-api-routes.md`](docs/01-backend-api-routes.md).

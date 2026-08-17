@@ -27,7 +27,7 @@ The Vite dev server proxies `/api` → the mock server on `:8787`.
 ## Mock API server
 
 `mock-server/` is a tiny Express stub serving the public, read-only GET routes from
-`../docs/01-backend-api-routes.md` (no auth/admin, RSS feed, or contact POST yet).
+`../docs/01-backend-api-routes.md` (no auth/admin or contact POST yet).
 Seed data lives in `mock-server/data/`. The photo seed is generated from the
 prototype's values:
 
@@ -54,5 +54,5 @@ src/
   BlogPost `PostCode` syntax panels) are a later pass.
 - Real images: frames use the deterministic OKLCH gradient shim (`FramePlate`);
   `image.src` from the API takes over once photos exist.
-- Auth/admin surface, RSS `/feed.xml`, and the contact POST path.
+- Auth/admin surface and the contact POST path.
 ```

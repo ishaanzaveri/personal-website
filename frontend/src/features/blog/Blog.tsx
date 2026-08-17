@@ -41,8 +41,7 @@ export default function Blog() {
           <Cursor />
         </h1>
         <p style={{ color: 'var(--text-mid)', fontSize: mobile ? 13 : 14, maxWidth: 680, margin: '14px 0 0', lineHeight: 1.7 }}>
-          Notes from the desk. Mostly systems and security, sometimes photo, occasionally just words.{' '}
-          <span style={{ color: 'var(--text-dim)', fontStyle: 'italic' }}>// rss at /feed.xml</span>
+          Notes from the desk. Mostly systems and security, sometimes photo, occasionally just words.
         </p>
       </header>
 
@@ -89,12 +88,6 @@ export default function Blog() {
           <div className={styles.footer}>
             <span>
               // {filtered.length} of {posts.length} posts
-            </span>
-            <span>
-              <a href="/feed.xml" style={{ color: 'var(--teal-hi)' }}>
-                /feed.xml
-              </a>{' '}
-              · plain RSS, no tracking
             </span>
           </div>
         </>

@@ -117,8 +117,8 @@ from them.
 ### `Contact`
 - **Source:** `src/Contact.jsx`
 - **Props:** none
-- **Behavior:** email display with copy-to-clipboard (`copied ✓` toast state),
-  PGP button, and a socials list. Built from two `Bracket`s + `Btn` + `Kbd`.
+- **Behavior:** email display with copy-to-clipboard (`copied ✓` toast state)
+  and a socials list. Built from two `Bracket`s + `Btn` + `Kbd`.
 
 ---
 

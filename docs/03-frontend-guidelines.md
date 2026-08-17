@@ -152,9 +152,8 @@ for a portfolio. Fix with routing + SSG/SSR:
 - Per-route `<title>` and meta description.
 - Open Graph / Twitter cards (especially for blog posts and photo detail pages —
   use the frame image as the OG image).
-- `/feed.xml` RSS (already advertised in the UI).
-- `sitemap.xml` and structured data (`Article` for posts, `ImageObject` for
-  frames).
+- Structured data (`Article` for posts, `ImageObject` for frames).
+- A permissive `robots.txt` so crawlers can access every public route.
 - Pre-render content so crawlers see real HTML, not an empty `#root`.
 
 ---
