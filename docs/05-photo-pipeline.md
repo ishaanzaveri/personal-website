@@ -80,7 +80,7 @@ written under `images-web/prod/<Album Folder>/`. Upload the contents of
 
 ## Mock Data Generation
 
-`photos:seed` scans the same `images/` tree and writes:
+`photos:seed` scans the same `images/` tree, requires generated local derivatives, and writes:
 
 - `frontend/mock-server/data/frames.json`
 - `frontend/mock-server/data/albums.json`
@@ -89,12 +89,15 @@ Each frame includes:
 
 - stable `id` from the filename stem
 - `album` from the album folder slug
-- EXIF-derived camera, lens, aperture, shutter, ISO, date, width, and height
+- EXIF-derived camera, lens, aperture, shutter, ISO, and date
+- width and height read from the canonical auto-oriented derivative
 - `aspectRatio` from image dimensions
 - generated tags from album, year, orientation, and `photo`/`color`
 - generated caption text
 - `image.src` pointing at the canonical Cloudflare URL
-- `image.variants` for responsive `srcset`
+- `image.variants` for responsive `srcset`, using each output file’s actual pixel width
+  (suffixes are square bounding-box sizes, not width descriptors; duplicate widths
+  from small originals are omitted)
 
 Missing EXIF values are allowed. The script writes safe display fallbacks such as
 `unknown camera`, `unknown lens`, or `unknown date` rather than failing the run.
@@ -108,8 +111,10 @@ The frontend reads the mock API exactly like it will read the backend API later.
 - `srcSet` from `image.variants`
 - `sizes` based on display context: masonry, home strip, album hero, modal,
   detail page, or thumbnail
-- `width` and `height` from the source dimensions
-- placeholder gradient fallback when `image.src` is missing
+- `width` and `height` from the canonical derivative dimensions
+- placeholder gradient while images load and when `image.src` is missing or fails
+- optional author-written `image.alt`; otherwise a caption or honest location/date
+  fallback, never an invented description of the scene
 
 Gallery thumbnails stay lazy-loaded. Album hero, modal, and detail-page primary
 images are eager-loaded.
@@ -125,6 +130,7 @@ images are eager-loaded.
 7. Open `/photo` and confirm images load from
    `https://photos.ishaanzaveri.com/prod/...` with `srcset` variants.
 
-`npm run lint` currently references `eslint`, but the repo does not install or
-configure ESLint yet. Treat that as a separate tooling task before making lint a
-required verification gate.
+Run pipeline regression checks with `node --test scripts/photo-pipeline.test.mjs`
+from `frontend/` (requires ImageMagick). After updating the pipeline, regenerate
+assets and seed together from the originals before publishing the corrected
+metadata. Existing remote images are not rewritten by a frontend deployment.
