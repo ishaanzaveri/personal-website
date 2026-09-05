@@ -1,42 +1,57 @@
 #!/usr/bin/env bash
-#
-# Poll GHCR for a newer mock-api image and redeploy only if the digest changed.
-#
-# This is the box side of the pull-based deploy: CI just publishes the image to
-# GHCR; this script — driven by the systemd timer from install-timer.sh — pulls
-# it down and restarts the container when there's something new. Safe to run by
-# hand or on a schedule; it's a no-op when the image is already up to date.
-#
-# Prereqs on the box:
-#   - Docker Engine + compose plugin
-#   - the invoking user is in the `docker` group
-#   - `docker login ghcr.io` has been run once (GHCR packages are private)
+# Reconcile the running mock API with GHCR; wait for health and roll back failures.
 set -euo pipefail
-
-# Operate relative to this script so cwd / the caller's directory don't matter.
 cd "$(dirname "$(readlink -f "$0")")"
 
 COMPOSE_FILE="docker-compose.yml"
 SERVICE="mock-api"
-
+WAIT_SECONDS="${DEPLOY_WAIT_SECONDS:-120}"
 log() { printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*"; }
+compose() { docker compose -f "$COMPOSE_FILE" "$@"; }
 
-# Single source of truth for the image ref: read it straight from the compose file.
-image="$(docker compose -f "$COMPOSE_FILE" config --images "$SERVICE" | head -n1)"
+# Serialize timer and manual runs. flock is included in Ubuntu's util-linux.
+exec 9>".update.lock"
+flock -n 9 || { log 'another update is running'; exit 0; }
 
-before="$(docker image inspect --format '{{.Id}}' "$image" 2>/dev/null || true)"
+image="$(compose config --images "$SERVICE")"
+container="$(compose ps --all --quiet "$SERVICE")"
+running=""
+health=""
+if [ -n "$container" ]; then
+  running="$(docker inspect --format '{{.Image}}' "$container")"
+  health="$(docker inspect --format '{{.State.Status}}/{{if .State.Health}}{{.State.Health.Status}}{{end}}' "$container")"
+fi
 
 log "checking $image"
-docker compose -f "$COMPOSE_FILE" pull --quiet "$SERVICE"
-
-after="$(docker image inspect --format '{{.Id}}' "$image" 2>/dev/null || true)"
-
-if [ "$before" = "$after" ]; then
-  log "up to date (${after:-none}) — nothing to do"
+compose pull --quiet "$SERVICE"
+desired="$(docker image inspect --format '{{.Id}}' "$image")"
+if [ "$running" = "$desired" ] && [ "$health" = 'running/healthy' ]; then
+  log "up to date ($desired) and healthy"
   exit 0
 fi
 
-log "new image: ${before:-none} -> ${after} — redeploying"
-docker compose -f "$COMPOSE_FILE" up -d --remove-orphans
-docker image prune -f >/dev/null
-log "redeploy complete"
+# Keep the previous image reachable even after a successful pull moves :latest.
+rollback="${image%:*}:rollback"
+if [ -n "$running" ] && [ "$health" = 'running/healthy' ]; then
+  docker image tag "$running" "$rollback"
+fi
+
+log "reconciling ${running:-missing} -> $desired"
+if compose up -d --no-deps --force-recreate --wait --wait-timeout "$WAIT_SECONDS" "$SERVICE"; then
+  log 'deploy healthy'
+  exit 0
+fi
+
+log 'deploy failed; attempting rollback'
+if [ -n "$running" ] && [ "$health" = 'running/healthy' ]; then
+  # Restore the local deployment tag. The next poll pulls GHCR again and retries.
+  docker image tag "$rollback" "$image"
+  if compose up -d --no-deps --force-recreate --wait --wait-timeout "$WAIT_SECONDS" "$SERVICE"; then
+    log "restored $running; update will be retried on the next poll"
+  else
+    log 'rollback failed; operator attention required'
+  fi
+else
+  log 'no previously healthy container is available for rollback'
+fi
+exit 1
