@@ -1,9 +1,10 @@
-// Thin fetch wrapper around the read-only JSON API. Requests go to the deployed
+// Thin fetch wrapper around the read-only JSON API. Development uses the local
+// Vite proxy by default; production uses the deployed host. Requests go to the deployed
 // mock API at https://mockapi.ishaanzaveri.com/api; override the host with
 // VITE_API_BASE_URL (e.g. an empty string to use the local dev proxy — see
 // vite.config.ts).
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'https://mockapi.ishaanzaveri.com';
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? (import.meta.env.DEV ? '' : 'https://mockapi.ishaanzaveri.com');
 
 export class ApiError extends Error {
   status: number;

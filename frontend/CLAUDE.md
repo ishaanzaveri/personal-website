@@ -1,8 +1,8 @@
 # CLAUDE.md — Frontend
 
 Guidance for working in `frontend/`. This is the production frontend for a
-terminal/CRT-themed personal portfolio. The folder is currently empty — the app
-is built from the spec in `../docs/`, not yet implemented.
+terminal/CRT-themed personal portfolio. The app is implemented and runs against the Express mock API; `../docs/`
+defines the frontend and future handwritten Go API contract.
 
 ## Source of truth
 
@@ -104,8 +104,8 @@ transpilation.
 
 ## Photo data notes
 
-There are **no real images yet** — the prototype draws deterministic OKLCH
-gradient placeholders (`FramePlate`/`frameBg`) from each frame's `hue`/`lightness`.
+Real photos are served from the image CDN. The deterministic OKLCH
+gradient (`FramePlate`/`frameBg`) remains the loading and failure placeholder.
 Keep that gradient as the blurhash/LQIP loading shim; `image.src` from the API is
 the real source once photos exist. EXIF (camera/lens/aperture/shutter/iso) should
 be parsed server-side, not hand-entered.
