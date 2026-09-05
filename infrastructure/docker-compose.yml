@@ -17,8 +17,7 @@
 
 services:
   mock-api:
-    # Pinned by the deploy workflow to a specific SHA tag; :latest here is the
-    # human-friendly default for a manual `docker compose pull`.
+    # The timer reconciles this published tag with the running image digest.
     image: ghcr.io/ishaanzaveri/personal-website/mock-api:latest
     container_name: mock-api
     restart: unless-stopped
