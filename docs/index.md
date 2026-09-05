@@ -12,3 +12,5 @@ they're the source of truth the frontend and (eventual) Go backend are built to.
 | [`05-photo-pipeline.md`](05-photo-pipeline.md) | Local photo source layout, derivative generation, mock data, and verification flow. |
 | [`decision-points/architecture.md`](decision-points/architecture.md) | Hosting decision record: every option considered and why the others lost. |
 | [`decision-points/vps.md`](decision-points/vps.md) | The VPS in detail: provider/size/OS choice + a step-by-step setup runbook. |
+
+- [`06-page-metadata.md`](06-page-metadata.md) — build snapshots, per-route metadata, and prerendered content.

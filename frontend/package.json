@@ -14,7 +14,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test:e2e": "playwright test",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "postbuild": "node scripts/prerender.mjs",
+    "test:metadata": "node --test scripts/metadata.test.mjs"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.0.20",
