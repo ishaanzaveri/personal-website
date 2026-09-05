@@ -31,8 +31,9 @@ the pull half is the timer below.
   service is bound to `127.0.0.1:8080` only; the box keeps zero open inbound
   ports and the Cloudflare Tunnel routes `api.<domain>` here. See
   [`../docs/decision-points/vps.md`](../docs/decision-points/vps.md) §4.
-- **`update.sh`** — polls GHCR; runs `docker compose pull` and, only if the
-  image digest actually changed, `docker compose up -d`. A no-op otherwise.
+- **`update.sh`** — polls GHCR; runs `docker compose pull` and, when the running image differs or the container is unhealthy/missing,
+  recreates it and waits for health. Failed updates restore the previously
+  healthy image and return failure so the timer logs the problem.
 - **`install-timer.sh`** — installs the `mock-api-update` systemd service +
   timer that runs `update.sh` every 5 minutes.
 
@@ -82,3 +83,20 @@ journalctl -u mock-api-update.service -f     # watch deploy logs
 
 To deploy manually without waiting for the timer, just run `./update.sh` (or
 `docker compose pull && docker compose up -d`) from this directory.
+
+## Recovery and validation
+
+The updater requires Docker Compose with `up --wait --wait-timeout` support and
+Ubuntu `flock`. Manual and timer runs share a lock. A successful pull alone never
+marks a deployment complete: the running container must use the desired image
+and pass its Docker healthcheck.
+
+A failed deployment rolls back to the previously healthy image, retained under
+the local `:rollback` tag. The next timer run retries the published image. With
+no previously healthy container, the script reports failure for operator action.
+Images are not pruned automatically; remove old images manually once recovery
+is verified. `DEPLOY_WAIT_SECONDS` defaults to 120.
+
+Run `python3 infrastructure/test_update.py` from the repository root to exercise
+reconciliation, missing/unhealthy containers, pull failures, and rollback using
+a fake Docker CLI. These tests do not contact a registry or operate containers.
