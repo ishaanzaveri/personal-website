@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import site from '../mock-server/data/site.json';
+import site from '../mock-server/data/site.json' with { type: 'json' };
 
 test('contact email follows the API and reports a request failure', async ({ page }) => {
   await page.route('**/api/site', route => route.fulfill({ json: { ...site, email: 'hello@example.com' } }));
@@ -27,4 +27,15 @@ test('skip link moves focus to main content', async ({ page }) => {
   await page.getByRole('link', { name: 'skip to content' }).focus();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('main')).toBeFocused();
+});
+
+test('palette arrows and Escape do not navigate the underlying photo', async ({ page }) => {
+  await page.goto('/photo/ish-bgr23-slayer-1006');
+  await expect(page.getByRole('heading', { name: 'BGR - ISH BGR23 Slayer 1006' })).toBeVisible();
+  await page.keyboard.press('Control+k');
+  await expect(page.getByRole('dialog', { name: 'Jump to page' })).toBeVisible();
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page).toHaveURL(/\/photo\/ish-bgr23-slayer-1006$/);
 });

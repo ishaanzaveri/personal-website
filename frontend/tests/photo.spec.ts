@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import frames from '../mock-server/data/frames.json';
-import albums from '../mock-server/data/albums.json';
-import site from '../mock-server/data/site.json';
+import frames from '../mock-server/data/frames.json' with { type: 'json' };
+import albums from '../mock-server/data/albums.json' with { type: 'json' };
+import site from '../mock-server/data/site.json' with { type: 'json' };
 
 const portrait = { ...frames[0], id: 'portrait', aspectRatio: '2/3', image: { ...frames[0].image, src: '/fixture-portrait.svg', variants: [], width: 200, height: 300, alt: 'Test portrait' } };
 const album = { ...albums[0], id: portrait.album, coverFrameId: portrait.id };
