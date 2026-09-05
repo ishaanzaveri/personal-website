@@ -42,7 +42,7 @@ from the API described in [`docs/01-backend-api-routes.md`](docs/01-backend-api-
 
 ## Stack
 
-**Frontend (building):**
+**Frontend:**
 Vite · React 18 · TypeScript · react-router · TanStack Query · CSS Modules +
 design tokens · self-hosted JetBrains Mono · `react-markdown` (+ `remark-gfm`,
 `rehype-sanitize`).
@@ -104,7 +104,7 @@ personal-website/
 
 ## Getting started
 
-**Requirements:** Node 18+ (frontend). Go will be added when the backend starts.
+**Requirements:** Node 22.14 (see `.nvmrc`) (frontend). Go will be added when the backend starts.
 
 ```bash
 cd frontend
