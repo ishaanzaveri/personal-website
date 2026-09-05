@@ -1,5 +1,6 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
+import { ignorePhotoShortcut } from './keyboard';
 import { FramePlate } from '../../components/FramePlate';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 import type { Frame } from '../../types';
@@ -58,6 +59,7 @@ export function PhotoModal({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (ignorePhotoShortcut(e, containerRef.current)) return;
       if (e.key === 'ArrowLeft') onPrev();
       else if (e.key === 'ArrowRight') onNext();
     };

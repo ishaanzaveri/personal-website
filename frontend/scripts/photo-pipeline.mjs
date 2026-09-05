@@ -194,14 +194,24 @@ function normalizeMagick(data) {
   };
 }
 
-function derivativeSet(album, name) {
+export function derivativeSet(album, name, outputDir = OUTPUT_DIR) {
   const canonical = outputName(name);
+  const dimensions = (filename) => {
+    const file = path.join(outputDir, album, filename);
+    if (!existsSync(file)) throw new Error(`missing derivative ${file}; run photos:assets before photos:seed`);
+    const [width, height] = run('magick', ['identify', '-format', '%w %h', file]).trim().split(/\s+/).map(Number);
+    if (!(width > 0 && height > 0)) throw new Error(`invalid derivative dimensions: ${file}`);
+    return { width, height };
+  };
+  const variants = WIDTHS.map((bound) => {
+    const filename = outputName(name, `-${bound}`);
+    return { width: dimensions(filename).width, src: publicUrl(album, filename) };
+  });
   return {
     src: publicUrl(album, canonical),
-    variants: WIDTHS.map((width) => ({
-      width,
-      src: publicUrl(album, outputName(name, `-${width}`)),
-    })),
+    ...dimensions(canonical),
+    // Small originals can produce equal widths; srcset requires unique descriptors.
+    variants: variants.filter((variant, index) => variants.findIndex((other) => other.width === variant.width) === index),
   };
 }
 
@@ -275,7 +285,7 @@ function frameFor(file, index) {
     album: slugify(file.album),
     albumFolder: file.album,
     filename: outputName(file.name),
-    aspectRatio: parseRatio(meta.width, meta.height),
+    aspectRatio: parseRatio(image.width, image.height),
     camera: meta.camera,
     lens: meta.lens,
     aperture: meta.aperture,
@@ -283,12 +293,12 @@ function frameFor(file, index) {
     iso: meta.iso,
     location: albumTitle,
     date,
-    tags: tagsFor(file.album, meta),
+    tags: tagsFor(file.album, { ...meta, width: image.width, height: image.height }),
     image: {
       src: image.src,
       variants: image.variants,
-      width: meta.width,
-      height: meta.height,
+      width: image.width,
+      height: image.height,
       blurhash: null,
       placeholder: placeholderFor(file.album, index),
     },
@@ -336,6 +346,7 @@ function generateSeed() {
   console.log(`wrote ${cleanedFrames.length} frames and ${albums.length} albums`);
 }
 
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
 const command = process.argv[2];
 try {
   if (command === 'assets') generateAssets();
@@ -350,4 +361,6 @@ try {
 } catch (err) {
   console.error(err instanceof Error ? err.message : err);
   process.exit(1);
+}
+
 }
