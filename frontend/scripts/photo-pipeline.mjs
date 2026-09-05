@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -138,7 +138,7 @@ function formatIso(raw) {
 
 function formatDate(raw) {
   if (!raw) return null;
-  const match = String(raw).match(/^(\d{4})[:\-](\d{2})[:\-](\d{2})/);
+  const match = String(raw).match(/^(\d{4})[:-](\d{2})[:-](\d{2})/);
   return match ? `${match[1]}-${match[2]}-${match[3]}` : null;
 }
 

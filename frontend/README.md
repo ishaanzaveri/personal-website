@@ -52,7 +52,19 @@ src/
 
 - Markdown is rendered generically; the styled treatments (About line-gutter source,
   BlogPost `PostCode` syntax panels) are a later pass.
-- Real images: frames use the deterministic OKLCH gradient shim (`FramePlate`);
-  `image.src` from the API takes over once photos exist.
+- Real images are served from the photo CDN; the local image pipeline generates derivatives and seed metadata.
 - Auth/admin surface and the contact POST path.
 ```
+
+## Validation and runtime
+
+Use the Node version in `../.nvmrc` (`nvm use` from the repo root), then run
+`npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build`. Build caches
+live in `node_modules/.cache` so checks leave tracked files unchanged.
+
+`npm run dev` uses the local mock API by default. Production keeps the deployed
+mock host; `VITE_API_BASE_URL` overrides either environment.
+
+`npm run test:e2e` runs desktop and mobile Chromium regressions against local
+servers. Install Chromium first with `npx playwright install chromium`. CI runs
+these checks on every pull request and saves traces for failures.

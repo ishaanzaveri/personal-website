@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import posts from '../mock-server/data/posts.json' assert { type: 'json' };
-import site from '../mock-server/data/site.json' assert { type: 'json' };
+import posts from '../mock-server/data/posts.json' with { type: 'json' };
+import site from '../mock-server/data/site.json' with { type: 'json' };
 
 const listPosts = posts.map(({ body: _body, words: _words, commit: _commit, tags: _tags, ...rest }) => rest);
 
