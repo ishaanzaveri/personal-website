@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Wordmark, Kbd } from '../primitives';
 import { useViewport } from '../../hooks/useViewport';
@@ -15,6 +16,7 @@ export function Nav() {
   const { mobile } = useViewport();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const closeMenu = useCallback(() => setOpen(false), []);
 
   return (
     <nav className={styles.nav}>
@@ -57,26 +59,23 @@ export function Nav() {
         </>
       )}
 
-      {mobile && open && (
-        <div className={styles.drawer}>
-          {[{ to: '/', label: './' }, ...LINKS].map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              end={l.to === '/'}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => `${styles.drawerLink} ${isActive ? styles.drawerLinkActive : ''}`}
-            >
-              {({ isActive }) => (
-                <>
-                  <span>{l.label}</span>
-                  {isActive && <span style={{ color: 'var(--teal-hi)' }}>● here</span>}
-                </>
-              )}
-            </NavLink>
-          ))}
-        </div>
-      )}
+      {mobile && open && <MobileMenu onClose={closeMenu} />}
     </nav>
+  );
+}
+
+function MobileMenu({ onClose }: { onClose: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useFocusTrap(ref, onClose);
+  return (
+    <div ref={ref} className={styles.drawer} role="dialog" aria-modal="true" aria-label="Site menu">
+      <button className={styles.menuBtn} onClick={onClose}>close menu ×</button>
+      {[{ to: '/', label: './' }, ...LINKS].map((link) => (
+        <NavLink key={link.to} to={link.to} end={link.to === '/'} onClick={onClose}
+          className={({ isActive }) => `${styles.drawerLink} ${isActive ? styles.drawerLinkActive : ''}`}>
+          {link.label}
+        </NavLink>
+      ))}
+    </div>
   );
 }

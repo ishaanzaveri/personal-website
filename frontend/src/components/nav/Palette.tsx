@@ -13,7 +13,7 @@ const ITEMS: Item[] = [
   { to: '/', label: './', hint: 'home · cat manifest' },
   { to: '/about', label: './about', hint: 'bio · cv · work history' },
   { to: '/blog', label: './blog', hint: 'writing · notes · systems' },
-  { to: '/photo', label: './photo', hint: 'gallery · 35 frames · 6 albums' },
+  { to: '/photo', label: './photo', hint: 'gallery · albums' },
   { to: '/contact', label: './contact', hint: 'email · socials' },
 ];
 
@@ -43,6 +43,7 @@ export function Palette({ onClose }: { onClose: () => void }) {
       e.preventDefault();
       setSel((s) => Math.max(s - 1, 0));
     } else if (e.key === 'Enter') {
+      e.preventDefault();
       if (filtered[sel]) go(filtered[sel].to);
     }
   };
@@ -60,7 +61,7 @@ export function Palette({ onClose }: { onClose: () => void }) {
         <div className={styles.head}>
           <span style={{ color: 'var(--teal-hi)' }}>›</span>
           <input
-            autoFocus
+            aria-label="Search pages"
             className={styles.input}
             placeholder="jump to…"
             value={q}

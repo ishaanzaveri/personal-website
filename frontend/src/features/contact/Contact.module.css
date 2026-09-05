@@ -1,0 +1,13 @@
+.header { padding: var(--s-5) 0; }
+.label { color: var(--text-dim); font-size: 11px; letter-spacing: .18em; }
+.title { font-size: 36px; letter-spacing: -.015em; margin: var(--s-4) 0 0; line-height: 1.1; }
+.intro { color: var(--text-mid); margin: var(--s-4) 0 0; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+.email { display: block; margin-top: var(--s-3); font-size: 20px; font-weight: 600; color: var(--text-hi); overflow-wrap: anywhere; }
+.actions { margin-top: var(--s-4); }
+.feedback { margin-top: var(--s-3); font-size: 11px; color: var(--teal-hi); min-height: 1.5em; }
+.socials { margin-top: var(--s-3); display: flex; flex-direction: column; gap: var(--s-3); }
+.social { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: var(--s-3); align-items: baseline; }
+.social a { color: var(--teal-hi); overflow-wrap: anywhere; }
+.description { color: var(--text-dim); font-size: 11px; }
+@media (max-width: 979px) { .grid { grid-template-columns: minmax(0, 1fr); } }

@@ -5,6 +5,7 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import { useFrames, usePosts, useSite } from '../../lib/queries';
 import { tagColorOf } from '../../lib/tagColors';
 import styles from './Home.module.css';
+import { EmptyState, ErrorState, LoadingLines } from '../../components/States';
 
 const HERO_HINTS: Record<string, string> = {
   'cat manifest': '// who I am · what I build',
@@ -22,9 +23,12 @@ const JUMP = [
 export default function Home() {
   usePageTitle('cat manifest');
   const navigate = useNavigate();
-  const { data: site } = useSite();
-  const { data: frames } = useFrames({ limit: 6 });
-  const { data: posts = [] } = usePosts();
+  const siteQuery = useSite();
+  const framesQuery = useFrames({ limit: 6 });
+  const postsQuery = usePosts();
+  const { data: site } = siteQuery;
+  const { data: frames } = framesQuery;
+  const { data: posts = [] } = postsQuery;
   const selectedWork = posts
     .filter((post) => post.selectedWork?.enabled)
     .sort((a, b) => (a.selectedWork?.order ?? 0) - (b.selectedWork?.order ?? 0))
@@ -34,6 +38,9 @@ export default function Home() {
   const cmd = site?.hero.prompts[0] ?? 'cat manifest';
   const tagline = site?.hero.tagline ?? "I build, break, then photograph what's left.";
   const now = site?.now;
+
+  if (siteQuery.isLoading) return <LoadingLines lines={6} />;
+  if (siteQuery.isError) return <ErrorState message={siteQuery.error.message} onRetry={() => siteQuery.refetch()} />;
 
   return (
     <div>
@@ -115,8 +122,11 @@ export default function Home() {
 
       {/* selected work */}
       <section className={`${styles.section} section-in`}>
-        <SectionH num="01" title="selected work" side={<Link to="/blog">{selectedWork.length} total →</Link>} />
+        <SectionH num="01" title="selected work" side={<Link to="/blog">{posts.filter((post) => post.selectedWork?.enabled).length} total →</Link>} />
         <div className={styles.workGrid}>
+          {postsQuery.isLoading && <LoadingLines />}
+          {postsQuery.isError && <ErrorState message={postsQuery.error.message} onRetry={() => postsQuery.refetch()} />}
+          {postsQuery.isSuccess && selectedWork.length === 0 && <EmptyState>// no selected work published yet.</EmptyState>}
           {selectedWork.map((post, i) => (
             <Tile key={post.slug} className={styles.workCard}>
               <div className={styles.workHead}>
@@ -149,6 +159,9 @@ export default function Home() {
       <section className={`${styles.section} section-in`}>
         <SectionH num="02" title="recent frames" side={<Link to="/photo">./photo →</Link>} />
         <div className={styles.masonry}>
+          {framesQuery.isLoading && <LoadingLines />}
+          {framesQuery.isError && <ErrorState message={framesQuery.error.message} onRetry={() => framesQuery.refetch()} />}
+          {framesQuery.isSuccess && frames?.data.length === 0 && <EmptyState>// no frames published yet.</EmptyState>}
           {(frames?.data ?? []).map((f) => (
             <button
               key={f.id}
@@ -180,6 +193,9 @@ export default function Home() {
             <span>~/site/blog</span>
             <span>ls -t posts/</span>
           </div>
+          {postsQuery.isLoading && <LoadingLines />}
+          {postsQuery.isError && <ErrorState message={postsQuery.error.message} onRetry={() => postsQuery.refetch()} />}
+          {postsQuery.isSuccess && recentPosts.length === 0 && <EmptyState>// no writing published yet.</EmptyState>}
           {recentPosts.map((p) => (
             <Link key={p.slug} to={`/blog/${p.slug}`} className={`post-row ${styles.postRow}`}>
               <span className={styles.postDate}>{p.date}</span>

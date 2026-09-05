@@ -16,7 +16,7 @@
   --rule-hi:   #1f3439;   /* hover border, kbd outlines */
 
   /* ---- Text ---- */
-  --text-dim:  #3d5a63;   /* comments, timestamps, muted prompt */
+  --text-dim:  #78949d;   /* comments, timestamps, muted prompt */
   --text-mid:  #6b8a93;   /* secondary copy, captions, metadata */
   --text:      #a8c4cc;   /* default body */
   --text-hi:   #e6f6f9;   /* headlines and emphasis (use sparingly) */

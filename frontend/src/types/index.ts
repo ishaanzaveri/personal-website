@@ -1,6 +1,7 @@
 // API data contracts — mirror ../docs/01-backend-api-routes.md.
 
 export interface Site {
+  email?: string;
   version: string;
   updated: string;
   hero: { prompts: string[]; tagline: string };

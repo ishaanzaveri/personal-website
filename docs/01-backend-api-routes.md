@@ -29,6 +29,7 @@ Returns global site config and the landing-page "now" block.
 
 ```json
 {
+  "email": "izaveri01@gmail.com",
   "version": "1.0",
   "updated": "2026-05-17",
   "hero": {
