@@ -2,18 +2,43 @@
   "version": "1.0",
   "updated": "2026-05-17",
   "hero": {
-    "prompts": ["cat manifest", "whoami", "tail -f log"],
+    "prompts": [
+      "cat manifest",
+      "whoami",
+      "tail -f log"
+    ],
     "tagline": "I build, break, then photograph what's left."
   },
   "now": {
     "updatedCadence": "weekly",
     "body": "Building a personal website. Reading Security Engineering by Ross Anderson. Editing pictures from my vacation to Seattle.",
-    "tags": ["learning", "security", "editing"]
+    "tags": [
+      "learning",
+      "security",
+      "editing"
+    ]
   },
   "socials": [
-    { "key": "linkedin",  "label": "linkedin",  "url": "https://www.linkedin.com/in/ishaanzaveri/" },
-    { "key": "instagram", "label": "instagram", "url": "https://www.instagram.com/ishaanzaveriphotography/" },
-    { "key": "website",   "label": "website",   "url": "https://ishaanzaveri.com" }
+    {
+      "key": "linkedin",
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/ishaanzaveri/"
+    },
+    {
+      "key": "instagram",
+      "label": "instagram",
+      "url": "https://www.instagram.com/ishaanzaveriphotography/"
+    },
+    {
+      "key": "website",
+      "label": "website",
+      "url": "https://ishaanzaveri.com"
+    }
   ],
-  "build": { "branch": "main", "commit": "4e8b534", "lastCommit": "2026-07-04T19:31:41-05:00" }
+  "build": {
+    "branch": "main",
+    "commit": "4e8b534",
+    "lastCommit": "2026-07-04T19:31:41-05:00"
+  },
+  "email": "izaveri01@gmail.com"
 }
