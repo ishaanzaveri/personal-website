@@ -78,7 +78,7 @@ export function PhotoSubNav({
     { id: 'albums' as const, path: './photo/albums', label: 'albums', count: albumCount },
   ];
   return (
-    <div style={{ display: 'flex', alignItems: 'stretch', borderBottom: '1px solid var(--rule)', marginBottom: 24 }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', borderBottom: '1px solid var(--rule)', marginBottom: 24 }}>
       {tabs.map((t) => {
         const on = t.id === active;
         return (
@@ -150,7 +150,7 @@ export function SearchBand({
           onChange={(e) => onQuery(e.target.value)}
           placeholder="search photos · tag, location, camera, caption…"
           aria-label="search photos"
-          style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: 'var(--text-hi)', fontFamily: 'inherit', fontSize: 14, padding: '12px 14px' }}
+          style={{ flex: 1, minWidth: 0, background: 'transparent', border: 'none', outline: 'none', color: 'var(--text-hi)', fontFamily: 'inherit', fontSize: 14, padding: '12px 14px' }}
         />
         {query ? (
           <button onClick={() => onQuery('')} aria-label="clear search" style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: '0 14px', fontFamily: 'inherit', fontSize: 13 }}>
@@ -210,7 +210,7 @@ export function SearchBand({
 
 export function ResultMeta({ count, total, cols }: { count: number; total?: number; cols: number }) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.06em', margin: '4px 2px 14px' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'space-between', alignItems: 'baseline', fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.06em', margin: '4px 2px 14px' }}>
       <span>
         ▸{' '}
         <span style={{ color: 'var(--teal-hi)' }}>

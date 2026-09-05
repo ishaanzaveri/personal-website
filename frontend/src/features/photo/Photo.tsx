@@ -9,6 +9,7 @@ import { ErrorState, LoadingLines } from '../../components/States';
 import type { Album, Frame } from '../../types';
 import { HeroStat, MasonryFrame, NoResults, PhotoSubNav, ResultMeta, SearchBand } from './shared';
 import { PhotoModal } from './PhotoModal';
+import styles from './Photo.module.css';
 
 type Mode = 'gallery' | 'albums' | 'album';
 
@@ -23,8 +24,10 @@ export default function Photo({ mode }: { mode: Mode }) {
   const query = params.get('q') ?? '';
   const activeTags = params.getAll('tag');
 
-  const { data: facets } = useFrameFacets();
-  const { data: albumsResp } = useAlbums();
+  const facetsQuery = useFrameFacets();
+  const { data: facets } = facetsQuery;
+  const albumsQuery = useAlbums();
+  const { data: albumsResp } = albumsQuery;
   const albums = albumsResp?.data ?? [];
 
   const framesParams = useMemo(
@@ -82,8 +85,12 @@ export default function Photo({ mode }: { mode: Mode }) {
   const album = albums.find((a) => a.id === albumId);
   const totalFrames = albums.reduce((sum, a) => sum + a.count, 0);
 
+  const failedQuery = albumsQuery.isError ? albumsQuery : mode !== 'albums' && facetsQuery.isError ? facetsQuery : null;
+  if (isError || failedQuery) return <ErrorState message={failedQuery?.error?.message ?? error?.message} onRetry={() => { void refetch(); void albumsQuery.refetch(); void facetsQuery.refetch(); }} />;
+  if (isLoading || albumsQuery.isLoading || (mode !== 'albums' && facetsQuery.isLoading)) return <LoadingLines lines={6} />;
+
   return (
-    <div>
+    <div className={styles.page}>
       <PhotoSubNav
         active={mode === 'album' ? 'albums' : mode}
         crumb={mode === 'album' ? album?.title : null}
@@ -91,8 +98,6 @@ export default function Photo({ mode }: { mode: Mode }) {
         albumCount={albumsResp?.meta.total ?? albums.length}
         onNav={onNav}
       />
-
-      {isError && <ErrorState message={error?.message} onRetry={() => refetch()} />}
 
       {mode === 'gallery' && (
         <GalleryView
@@ -171,8 +176,7 @@ function GalleryView(props: {
           <Cursor />
         </h1>
         <p style={{ color: 'var(--text-mid)', fontSize: 13, margin: '8px 0 0', maxWidth: 700, lineHeight: 1.7 }}>
-          Everything I've shot, in one place. Search by tag, location, camera, or caption — click any frame to open it.{' '}
-          <span style={{ color: 'var(--text-dim)', fontStyle: 'italic' }}>// placeholder frames — real shots later.</span>
+          Everything I've shot, in one place. Search by tag, location, camera, or caption — click any frame to open it.
         </p>
       </header>
 
@@ -226,6 +230,8 @@ function AlbumsView({ albums, frames, isLoading }: { albums: Album[]; frames: Fr
 
       {isLoading ? (
         <LoadingLines lines={6} />
+      ) : albums.length === 0 ? (
+        <p>// no albums published yet.</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
           {albums.map((a) => (
@@ -244,7 +250,7 @@ function AlbumTeaserBlock({ album, frames, onOpen }: { album: Album; frames: Fra
   if (!hero) return null;
   return (
     <section>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 24, alignItems: 'baseline', marginBottom: 14, borderBottom: '1px dashed var(--rule)', paddingBottom: 12 }}>
+      <div className={styles.teaserHeading}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, flexWrap: 'wrap' }}>
           <div>
             <div style={{ color: 'var(--teal)', fontSize: 10, letterSpacing: '0.2em' }}>▸ /albums/{album.id}</div>
@@ -313,16 +319,16 @@ function AlbumView(props: {
 
   return (
     <div>
-      <div style={{ position: 'relative', border: '1px solid var(--rule-hi)', overflow: 'hidden', marginBottom: 22, aspectRatio: '21/9', minHeight: 360 }}>
-        {hero && <FramePlate frame={hero} intent="albumHero" />}
+      <div className={styles.albumHero}>
+        {hero && <div className={styles.heroImage}><FramePlate frame={hero} intent="albumHero" /></div>}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(4,7,10,0.85) 0%, rgba(4,7,10,0.45) 50%, transparent 100%)' }} />
-        <div style={{ position: 'absolute', top: 24, left: 28, right: 28, bottom: 24, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div className={styles.heroContent}>
           <div>
             <div style={{ color: 'var(--teal-hi)', fontSize: 11, letterSpacing: '0.2em' }}>▸ ALBUM · /albums/{album.id}</div>
             <h1 style={{ color: 'var(--text-hi)', fontSize: 40, fontWeight: 700, letterSpacing: '-0.015em', margin: '8px 0 0', lineHeight: 1.05 }}>{album.title}</h1>
             <div style={{ color: 'var(--text)', fontSize: 14, marginTop: 8, maxWidth: 600 }}>{album.subtitle}</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, auto)', gap: 24, fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.06em' }}>
+          <div className={styles.heroStats}>
             <HeroStat label="LOCATION" value={album.location} />
             <HeroStat label="SHOT" value={album.date} />
             <HeroStat label="FRAMES" value={album.count} accent />
