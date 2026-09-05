@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FramePlate } from '../../components/FramePlate';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { useAlbum, useFrame } from '../../lib/queries';
 import { captionFor } from '../../lib/format';
 import { ErrorState, LoadingLines } from '../../components/States';
+import styles from './Photo.module.css';
+import { ignorePhotoShortcut } from './keyboard';
 import type { Frame } from '../../types';
 
 function BigStat({ label, value, small, last }: { label: string; value: string; small?: boolean; last?: boolean }) {
@@ -20,29 +22,29 @@ export default function PhotoDetailPage() {
   const { id = '' } = useParams();
   const navigate = useNavigate();
   const { data: frame, isLoading, isError, error, refetch } = useFrame(id);
-  const { data: album } = useAlbum(frame?.album ?? '');
+  const { data: album, isLoading: albumLoading, isError: albumError, refetch: refetchAlbum } = useAlbum(frame?.album ?? '');
   usePageTitle(frame ? `photo · ${frame.id}` : 'photo');
 
-  const list: Frame[] = album?.frames ?? (frame ? [frame] : []);
+  const list: Frame[] = useMemo(() => album?.frames ?? (frame ? [frame] : []), [album, frame]);
   const index = list.findIndex((f) => f.id === id);
   const total = list.length;
 
-  const step = (dir: number) => {
+  const step = useCallback((dir: number) => {
     if (index < 0 || total === 0) return;
     navigate(`/photo/${list[(index + dir + total) % total].id}`);
-  };
-  const back = () => navigate('/photo');
+  }, [index, total, list, navigate]);
+  const back = useCallback(() => navigate('/photo'), [navigate]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (ignorePhotoShortcut(e)) return;
       if (e.key === 'Escape') back();
       else if (e.key === 'ArrowLeft') step(-1);
       else if (e.key === 'ArrowRight') step(1);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, total]);
+  }, [back, step]);
 
   if (isLoading) return <LoadingLines lines={10} style={{ paddingTop: 40 }} />;
   if (isError || !frame)
@@ -60,9 +62,11 @@ export default function PhotoDetailPage() {
   const related = list.filter((x) => x.id !== f.id).slice(0, 6);
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 22, fontSize: 11, color: 'var(--text-dim)', letterSpacing: '0.08em' }}>
-        <span style={{ display: 'flex', gap: 14, alignItems: 'baseline' }}>
+    <div className={styles.detail}>
+      {albumLoading && <LoadingLines lines={1} />}
+      {albumError && <ErrorState message="could not load album navigation" onRetry={() => refetchAlbum()} />}
+      <div className={styles.detailNav}>
+        <span className={styles.breadcrumb}>
           <button onClick={back} style={{ color: 'var(--teal-hi)', cursor: 'pointer', background: 'transparent', border: 'none', fontFamily: 'inherit', fontSize: 11 }}>
             ← back
           </button>
@@ -108,7 +112,7 @@ export default function PhotoDetailPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 760, margin: '28px auto 0', padding: '14px 0', borderTop: '1px solid var(--rule)', borderBottom: '1px solid var(--rule)', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', textAlign: 'center' }}>
+      <div className={styles.detailStats}>
         <BigStat label="ƒ" value={f.aperture.replace('ƒ', '')} />
         <BigStat label="SHUTTER" value={f.shutter} />
         <BigStat label="ISO" value={f.iso.replace('ISO ', '')} />

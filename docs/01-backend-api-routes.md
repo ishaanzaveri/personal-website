@@ -359,3 +359,11 @@ Auth
 | GET | `/api/frames/meta` | Tag/location/camera facets |
 | POST | `/api/contact` | Contact message (optional) |
 | * | `/api/admin/**` | Authenticated authoring |
+
+### Photo image descriptions and dimensions
+
+`Frame.image.alt` is an optional author-written visual description. Omit it until
+reviewed; the frontend falls back to an authored caption or location/date metadata.
+`image.width` and `image.height` describe the auto-oriented canonical derivative.
+Each `image.variants[].width` is the actual output pixel width, not its resize
+bounding box. Variant widths must be positive and unique.

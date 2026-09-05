@@ -74,6 +74,8 @@ export interface Album {
 }
 
 export interface FrameImage {
+  /** Author-provided visual description; omit until reviewed. */
+  alt?: string;
   src: string | null;
   variants?: { width: number; src: string }[];
   width?: number;

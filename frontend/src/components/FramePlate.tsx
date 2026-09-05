@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { useState, type CSSProperties } from 'react';
 import type { Frame } from '../types';
 import { frameBg, frameAlt } from '../lib/format';
 
@@ -24,21 +24,25 @@ const OBJECT_FIT: Record<FramePlateIntent, CSSProperties['objectFit']> = {
   thumb: 'cover',
 };
 
-// Frame placeholder surface: a deterministic gradient + subtle diagonal grain.
-// When real images land, render the <img> (with srcset) and keep this as the
-// blurhash/LQIP loading shim.
-export function FramePlate({
-  frame,
-  intent = 'masonry',
-  loading,
-  style,
-}: {
+export function FramePlate(props: FramePlateProps) {
+  return <FrameSurface key={props.frame.image.src ?? props.frame.id} {...props} />;
+}
+
+interface FramePlateProps {
   frame: Frame;
   intent?: FramePlateIntent;
   loading?: 'eager' | 'lazy';
   style?: CSSProperties;
-}) {
-  if (frame.image.src) {
+}
+
+function FrameSurface({
+  frame,
+  intent = 'masonry',
+  loading,
+  style,
+}: FramePlateProps) {
+  const [failed, setFailed] = useState(false);
+  if (frame.image.src && !failed) {
     const srcSet = frame.image.variants
       ?.filter((variant) => variant.src && variant.width > 0)
       .sort((a, b) => a.width - b.width)
@@ -55,16 +59,19 @@ export function FramePlate({
         alt={frameAlt(frame)}
         loading={loading ?? (intent === 'modal' || intent === 'detail' || intent === 'albumHero' ? 'eager' : 'lazy')}
         decoding="async"
-        style={{ width: '100%', height: '100%', objectFit: OBJECT_FIT[intent], display: 'block', ...style }}
+        onError={() => setFailed(true)}
+        style={{ width: '100%', height: '100%', objectFit: OBJECT_FIT[intent], background: frameBg(frame), display: 'block', ...style }}
       />
     );
   }
   return (
     <div
       role="img"
-      aria-label={frameAlt(frame)}
+      aria-label={failed ? `${frameAlt(frame)} — image unavailable` : frameAlt(frame)}
       style={{
         position: 'relative',
+        aspectRatio: frame.aspectRatio,
+        minHeight: 120,
         width: '100%',
         height: '100%',
         background: frameBg(frame),
@@ -72,6 +79,7 @@ export function FramePlate({
         ...style,
       }}
     >
+      {failed && <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: 'var(--text-hi)', fontSize: 11 }}>// image unavailable</span>}
       <div
         aria-hidden
         style={{

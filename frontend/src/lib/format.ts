@@ -23,7 +23,8 @@ export function frameBg(frame: Frame): string {
   const { hue: h, lightness: l } = frame.image.placeholder;
   const isBW = (frame.tags || []).includes('b&w');
   const c = isBW ? 0 : 0.07;
-  const angle = 135 + ((parseInt(frame.id.slice(1), 10) * 7) % 40);
+  const seed = Array.from(frame.id).reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const angle = 135 + ((seed * 7) % 40);
   return `linear-gradient(${angle}deg,
     oklch(${(l + 0.06).toFixed(2)} ${c.toFixed(2)} ${h}) 0%,
     oklch(${l.toFixed(2)} ${(c * 0.85).toFixed(2)} ${(h + 20) % 360}) 55%,
@@ -47,5 +48,8 @@ export function captionFor(frame: Frame): { title: string; paragraphs: string[];
 // Alt text for a frame image (real photos should carry a description; fall
 // back to the synthesized caption title).
 export function frameAlt(frame: Frame): string {
-  return captionFor(frame).title;
+  const description = frame.image.alt?.trim();
+  if (description) return description;
+  if (frame.caption?.title && !frame.caption.note?.startsWith('// generated from ')) return frame.caption.title;
+  return `Photograph from ${frame.location}, ${frame.date}`;
 }
