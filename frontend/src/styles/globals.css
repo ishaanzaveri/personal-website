@@ -83,6 +83,11 @@ a { cursor: pointer; }
   outline-offset: 2px;
 }
 
+/* Main receives focus for route announcements and the skip link, not interaction. */
+#main-content:focus {
+  outline: none;
+}
+
 /* Generic markdown rendering (styling refined in a later pass). */
 .markdown-body { color: var(--text); font-size: 14px; line-height: 1.75; }
 .markdown-body > :first-child { margin-top: 0; }
