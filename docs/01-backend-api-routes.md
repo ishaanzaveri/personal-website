@@ -327,8 +327,14 @@ authenticated authoring surface. Keep it entirely separate from the public API.
 - `PUT /api/admin/site` / `PUT /api/admin/about`
 
 Auth
-- Single author → a simple session cookie or a personal access token is enough.
-- Protect with CSRF on cookie-based writes; gate behind your own login.
+- Proposed design: [backend-terminated mTLS admin PRD](07-admin-mtls-prd.md).
+  One owner, explicitly enrolled hardware-key client certificates, no website
+  username/password or bearer-token fallback. This is not implemented yet.
+- Serve the UI and `/api/admin/**` only on the dedicated admin origin/listener,
+  never through the public API listener or its Cloudflare Tunnel. The protected
+  `GET /api/admin/auth` bootstrap endpoint is specified in the PRD.
+- Check credential authorization on every admin request. Protect all writes
+  against CSRF even without cookie-based authentication.
 
 ---
 
