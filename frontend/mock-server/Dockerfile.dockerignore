@@ -1,0 +1,16 @@
+**
+!database/
+!database/db.mjs
+!database/import.mjs
+!database/cli.mjs
+!database/migrations/
+!database/migrations/*.sql
+!frontend/
+!frontend/mock-server/
+!frontend/mock-server/package.json
+!frontend/mock-server/package-lock.json
+!frontend/mock-server/server.js
+!frontend/mock-server/repository.js
+!frontend/mock-server/reading-stats.js
+!frontend/mock-server/data/
+!frontend/mock-server/data/*.json

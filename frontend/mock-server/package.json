@@ -2,13 +2,19 @@
   "name": "mock-api-server",
   "version": "0.1.0",
   "private": true,
-  "description": "Node/Express stand-in for the Go backend — serves the read-only GET routes from JSON seed files. See ../../docs/01-backend-api-routes.md.",
+  "description": "Node/Express stand-in for the Go backend — serves read-only GET routes from shared SQLite storage.",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "remark-gfm": "^4.0.0",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5"
+  },
+  "engines": {
+    "node": "^22.14.0 || >=24.0.0"
   }
 }

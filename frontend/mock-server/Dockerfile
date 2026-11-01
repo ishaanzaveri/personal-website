@@ -1,5 +1,5 @@
 # Container image for the mock API server — the Node/Express stand-in for the
-# Go backend. It serves the same read-only GET routes from JSON seed files.
+# Go backend. It serves the same read-only GET routes from SQLite.
 #
 # This is the *mock* backend. The real Go API in ../../backend/ is handwritten
 # and is NOT built here — see AGENTS.md. This image exists so the public site
@@ -8,26 +8,28 @@
 # Runtime posture follows docs/decision-points/vps.md §3: distroless base (no
 # shell, no package manager, minimal attack surface), single static-ish process.
 #
-# Build context is this directory (frontend/mock-server):
-#   docker build -t mock-api frontend/mock-server
+# Build context is the repository root:
+#   docker build -f frontend/mock-server/Dockerfile -t mock-api .
 
-# ---- deps: install production node_modules (express only) ------------------
+# ---- deps: install production node_modules ---------------------------------
 FROM node:22-alpine AS deps
-WORKDIR /app
-COPY package.json ./
-RUN npm install --omit=dev --no-audit --no-fund
+WORKDIR /app/frontend/mock-server
+COPY frontend/mock-server/package.json frontend/mock-server/package-lock.json ./
+RUN npm ci --omit=dev --no-audit --no-fund
+RUN mkdir /data && chown 65532:65532 /data
 
 # ---- runtime: distroless node, no shell / package manager ------------------
 FROM gcr.io/distroless/nodejs22-debian12 AS runtime
-WORKDIR /app
+WORKDIR /app/frontend/mock-server
 ENV NODE_ENV=production \
-    PORT=8787
+    PORT=8787 \
+    DATABASE_PATH=/data/site.sqlite
 
 # Real commit info for the footer / blog commit refs. Distroless has no git and
 # the build context carries no .git, so the CI build passes HEAD in here:
 #   docker build --build-arg BUILD_COMMIT="$(git rev-parse --short HEAD)" \
 #                --build-arg BUILD_COMMITTED_AT="$(git log -1 --format=%cI)" ...
-# server.js falls back to the seed JSON when these are unset.
+# server.js falls back to local git, then an unknown commit when these are unset.
 ARG BUILD_COMMIT=""
 ARG BUILD_COMMITTED_AT=""
 ENV BUILD_COMMIT=$BUILD_COMMIT \
@@ -35,9 +37,12 @@ ENV BUILD_COMMIT=$BUILD_COMMIT \
 
 # Production deps from the deps stage, then the server + seed data. The
 # build-time seed generator (build-photo-seed.mjs) is intentionally excluded.
-COPY --from=deps /app/node_modules ./node_modules
-COPY server.js ./
-COPY data ./data
+COPY --from=deps /app/frontend/mock-server/node_modules ./node_modules
+COPY frontend/mock-server/server.js frontend/mock-server/repository.js frontend/mock-server/reading-stats.js ./
+COPY frontend/mock-server/data ./data
+COPY database/db.mjs database/import.mjs database/cli.mjs /app/database/
+COPY database/migrations /app/database/migrations
+COPY --from=deps --chown=65532:65532 /data /data
 
 # Run as the image's built-in unprivileged user (uid 65532).
 USER nonroot
