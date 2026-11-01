@@ -1,9 +1,10 @@
 # Backend API Routes
 
-This document specifies the backend API needed to drive the website. Today every
-page renders from hardcoded arrays inside the JSX (`src/Home.jsx`, `src/Blog.jsx`,
-`src/photo/data.jsx`, etc.). To make the site data-driven and maintainable, those
-arrays should move behind a small read-mostly API.
+This document specifies the API driving the website. React fetches content from
+the Express stand-in, which reads the shared SQLite database. JSON seed files
+initialize an empty database and support explicit imports; they are not queried
+at request time. The eventual handwritten Go API will use the same schema and
+response shapes. See [database schema and workflow](07-database-schema.md).
 
 The site is a personal portfolio — it is **read-heavy and single-author**. The
 public surface is entirely `GET`; the only write path is the contact form (and it
@@ -58,7 +59,9 @@ Notes
 - `build.commit` / `build.lastCommit` should reflect the deployed HEAD, not a
   hand-edited value. The backend resolves them from the real commit at startup
   (the mock server reads `git` in dev and `BUILD_COMMIT` / `BUILD_COMMITTED_AT`
-  env vars baked into its image in prod); the seed JSON is only a fallback. The
+  env vars baked into its image in prod). Without either, the stand-in returns
+  `unknown` for the commit and the site's updated date at midnight UTC for the
+  timestamp. Build information is not persisted in the content database. The
   same short hash is stamped onto each post's `commit`.
 
 ---
@@ -160,9 +163,11 @@ Notes
 - `selectedWork` is optional. When `selectedWork.enabled` is true, the Home page
   includes that post in the "selected work" grid and links `cat readme →` to the
   post's `/blog/:slug` page.
-- `readMinutes` is an integer; the UI renders `8 min`. The BlogPost view also
-  derives an approximate word count (`readMinutes * 230`) — optionally return a
-  real `words` field instead.
+- `words` and `readMinutes` are computed from `body`, not stored in SQLite.
+  Count whitespace-delimited words in parsed Markdown text, including code and
+  image alt text, excluding formatting, link destinations, reference definitions,
+  and raw HTML nodes. Reading time is `max(1, ceil(words / 230))`. The list exposes
+  `readMinutes`; detail additionally exposes `words`.
 
 ### `GET /api/posts/:slug`
 Full post, used by the `BlogPost` detail view. `body` is a raw markdown string;
@@ -189,8 +194,8 @@ git short-hash or a stable hash of the slug.
 
 ## 5. Photography
 
-This is the richest data domain. Today it lives in `src/photo/data.jsx` as
-`FRAMES`, `ALBUMS`, and derived lookups.
+This is the richest data domain. Albums, frames, image metadata/variants, tags,
+and captions live in related SQLite tables. Image bytes remain on the photo CDN.
 
 ### `GET /api/albums`
 ```json

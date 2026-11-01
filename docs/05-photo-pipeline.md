@@ -4,6 +4,10 @@ The photo page is driven by local source images, generated web derivatives, and
 mock JSON that matches the eventual backend contract. The Go backend does not
 participate in this pipeline.
 
+The Express API now reads SQLite. Generated JSON is an import artifact, not the
+runtime content source. After initial database creation, explicitly import new
+photo metadata with `npm run db:import -- --photos` from `frontend/`.
+
 ## Directory Layout
 
 ```text
@@ -125,12 +129,20 @@ images are eager-loaded.
 2. Run `cd frontend && npm run photos:assets`.
 3. Upload `images-web/prod/` to Cloudflare.
 4. Run `cd frontend && npm run photos:seed`.
-5. Run `cd frontend && npm run build`.
-6. Run `cd frontend && npm run dev`.
-7. Open `/photo` and confirm images load from
+5. Run `npm run db:import -- --photos` (or let the first API start initialize an
+   entirely empty database from all seed files).
+6. Run `npm run build`.
+7. Run `npm run dev`.
+8. Open `/photo` and confirm images load from
    `https://photos.ishaanzaveri.com/prod/...` with `srcset` variants.
 
 Run pipeline regression checks with `node --test scripts/photo-pipeline.test.mjs`
 from `frontend/` (requires ImageMagick). After updating the pipeline, regenerate
 assets and seed together from the originals before publishing the corrected
 metadata. Existing remote images are not rewritten by a frontend deployment.
+
+Imports update generated metadata but preserve existing captions and alt text,
+including deliberately empty values. To replace those fields from the JSON as
+well, explicitly pass `--overwrite-editorial`. Imports do not delete records
+missing from the input. See [database workflow](07-database-schema.md) for
+transactional removals, deployment, and backups.

@@ -56,8 +56,11 @@ deliberately **not locked in yet**; picking them is part of the learning (see
 below).
 
 Today the frontend develops against an **Express mock server**
-(`frontend/mock-server/`) that serves the same routes from JSON seed files. It's
-a stand-in for the Go backend, not the real thing.
+(`frontend/mock-server/`) that serves the same routes from **SQLite**. It imports
+the JSON seeds only when initializing an empty database; later changes use an
+explicit import. It is a stand-in for the Go backend, not the real thing. The
+[database schema and workflow](docs/07-database-schema.md) are shared so the Go
+implementation can use the same database without redesigning storage.
 
 ---
 
@@ -93,9 +96,10 @@ managed database — is written up in full:
 personal-website/
 ├─ frontend/          # React app (built) + Express mock API + design tokens
 │  ├─ src/            # app shell, primitives, feature pages, hooks, lib, styles
-│  ├─ mock-server/    # Express stub of the API (JSON seed data) — placeholder for Go
+│  ├─ mock-server/    # Express + SQLite stand-in, JSON import fixtures
 │  └─ CLAUDE.md       # frontend build guide + conventions
-├─ backend/           # the Go API (empty — next milestone)
+├─ database/          # shared SQLite migrations, import/backup tools, local DB
+├─ backend/           # the Go API (handwritten by the owner)
 ├─ docs/              # the contract: API routes, components, guidelines, hosting
 └─ LICENSE            # AGPL-3.0
 ```
