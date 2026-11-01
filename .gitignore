@@ -6,6 +6,12 @@ dist/
 build/
 *.tsbuildinfo
 
+# SQLite runtime data and consistent backup snapshots
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+
 # Local photo sources and generated upload artifacts
 images/
 images-web/
