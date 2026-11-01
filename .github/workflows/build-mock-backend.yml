@@ -16,6 +16,7 @@ on:
     branches: ["main"]
     paths:
       - "frontend/mock-server/**"
+      - "database/**"
       - ".github/workflows/build-mock-backend.yml"
   workflow_dispatch: {}
 
@@ -56,10 +57,20 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha,format=long
 
+      - name: Read deployed commit metadata
+        id: commit
+        run: |
+          echo "sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          echo "date=$(git log -1 --format=%cI)" >> "$GITHUB_OUTPUT"
+
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: frontend/mock-server
+          context: .
+          file: frontend/mock-server/Dockerfile
+          build-args: |
+            BUILD_COMMIT=${{ steps.commit.outputs.sha }}
+            BUILD_COMMITTED_AT=${{ steps.commit.outputs.date }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

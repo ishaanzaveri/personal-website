@@ -12,8 +12,8 @@
 # every 5 min and redeploys when a new image lands. To deploy by hand:
 #   docker compose pull && docker compose up -d
 #
-# NOTE: this runs the *mock* backend. Swap the image / add a SQLite volume when
-# the handwritten Go API in ../backend/ is ready.
+# NOTE: this runs the *mock* backend against the shared SQLite schema. Keep the
+# persistent volume when replacing the image with the handwritten Go API.
 
 services:
   mock-api:
@@ -24,7 +24,13 @@ services:
     environment:
       # Container-internal port; the mock server reads PORT (defaults to 8787).
       PORT: "8787"
+      DATABASE_PATH: /data/site.sqlite
+    volumes:
+      - mock-api-data:/data
     ports:
       # host 127.0.0.1:8080 -> container 8787. Bound to loopback so nothing is
       # exposed publicly; the Cloudflare Tunnel routes api.<domain> here.
       - "127.0.0.1:8080:8787"
+
+volumes:
+  mock-api-data:

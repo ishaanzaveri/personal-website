@@ -1,203 +1,104 @@
-// Tiny mock API server for local dev and the deployed stand-in. Serves the
-// public, read-only GET routes from ../docs/01-backend-api-routes.md with seed
-// data ported from the prototype. No auth/admin or contact POST.
-// CORS is open (public read-only GETs) so the built site can fetch it directly
-// from another origin; local dev still works via the Vite proxy.
-// Run via `npm run dev` (concurrently) or `npm run dev:api`.
 import express from 'express';
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { openDatabase } from '../../database/db.mjs';
+import { seedIfEmpty } from '../../database/import.mjs';
+import { createRepository } from './repository.js';
 
 const HERE = fileURLToPath(new URL('.', import.meta.url));
-const load = (name) =>
-  JSON.parse(readFileSync(fileURLToPath(new URL(`./data/${name}.json`, import.meta.url)), 'utf-8'));
 
-const SITE = load('site');
-const ABOUT = load('about');
-const PROJECTS = load('projects');
-const POSTS = load('posts');
-const FRAMES = load('frames');
-const ALBUMS = load('albums');
-
-// ---- build info ------------------------------------------------------------
-// The footer's "last commit … ago" and each post's `#commit` should reflect the
-// real HEAD, not a hand-edited timestamp. Resolve it once at startup:
-//   1. env vars baked into the image at build time (production — distroless has
-//      no git and no .git in the context; the CI build passes these in), then
-//   2. live git in the working tree (local dev), then
-//   3. whatever the seed JSON shipped (last resort).
-function gitField(fmt) {
+function gitField(format) {
   try {
-    return execFileSync('git', ['log', '-1', `--format=${fmt}`], {
-      cwd: HERE,
-      encoding: 'utf-8',
-      stdio: ['ignore', 'pipe', 'ignore'],
+    return execFileSync('git', ['log', '-1', `--format=${format}`], {
+      cwd: HERE, encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'],
     }).trim();
   } catch {
     return '';
   }
 }
 
-const commit = process.env.BUILD_COMMIT || gitField('%h') || SITE.build.commit;
-const lastCommit = process.env.BUILD_COMMITTED_AT || gitField('%cI') || SITE.build.lastCommit;
-SITE.build = { ...SITE.build, commit, lastCommit };
-// Keep the blog's commit refs honest against the same HEAD.
-for (const post of POSTS) post.commit = commit;
+export function createApp(database, build = {}) {
+  const repository = createRepository(database);
+  const site = repository.site();
+  const buildInfo = {
+    branch: process.env.BUILD_BRANCH || 'main',
+    commit: process.env.BUILD_COMMIT || gitField('%h') || 'unknown',
+    lastCommit: process.env.BUILD_COMMITTED_AT || gitField('%cI') || `${site.updated}T00:00:00Z`,
+    ...build,
+  };
+  const app = express();
+  app.set('query parser', 'simple');
+  const notFound = (response, message) => response.status(404).json({ error: { code: 'not_found', message } });
 
-const PORT = process.env.PORT || 8787;
-const app = express();
+  app.use((request, response, next) => {
+    response.set('Access-Control-Allow-Origin', '*');
+    response.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    response.set('Access-Control-Allow-Headers', 'Content-Type, Accept');
+    response.set('Access-Control-Max-Age', '86400');
+    if (request.method === 'OPTIONS') return response.sendStatus(204);
+    response.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=86400');
+    next();
+  });
 
-// ---- helpers ---------------------------------------------------------------
+  app.use('/api', (request, response, next) => {
+    for (const key of ['status', 'limit', 'sort', 'album', 'q']) {
+      if (request.query[key] !== undefined && typeof request.query[key] !== 'string') {
+        return response.status(400).json({ error: { code: 'invalid_query', message: `${key} must be a single value` } });
+      }
+    }
+    if (request.query.tag !== undefined && typeof request.query.tag !== 'string' &&
+        !(request.path.replace(/\/+$/, '') === '/frames' && Array.isArray(request.query.tag) && request.query.tag.every((tag) => typeof tag === 'string'))) {
+      return response.status(400).json({ error: { code: 'invalid_query', message: 'tag must be a string (repeatable for frames)' } });
+    }
+    next();
+  });
 
-const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
-const byDateAsc = (a, b) => -byDateDesc(a, b);
-
-// `sort` defaults to -date (newest first, the UI's "ls -t"); `date` flips it.
-function applySort(list, sort) {
-  const sorted = [...list];
-  sorted.sort(sort === 'date' ? byDateAsc : byDateDesc);
-  return sorted;
+  app.get('/api/site', (_request, response) => response.json({ ...repository.site(), build: buildInfo }));
+  app.get('/api/about', (_request, response) => response.json(repository.about()));
+  app.get('/api/projects', (request, response) => response.json(repository.projects(request.query)));
+  app.get('/api/projects/:slug', (request, response) => {
+    const project = repository.project(request.params.slug);
+    return project ? response.json(project) : notFound(response, `no project '${request.params.slug}'`);
+  });
+  app.get('/api/posts', (request, response) => response.json(repository.posts(request.query)));
+  app.get('/api/posts/:slug', (request, response) => {
+    const post = repository.post(request.params.slug);
+    return post ? response.json({ ...post, commit: buildInfo.commit }) : notFound(response, `no post '${request.params.slug}'`);
+  });
+  app.get('/api/albums', (_request, response) => response.json(repository.albums()));
+  app.get('/api/albums/:id', (request, response) => {
+    const album = repository.album(request.params.id);
+    return album ? response.json(album) : notFound(response, `no album '${request.params.id}'`);
+  });
+  app.get('/api/frames/meta', (_request, response) => response.json(repository.facets()));
+  app.get('/api/frames', (request, response) => response.json(repository.frames(request.query)));
+  app.get('/api/frames/:id', (request, response) => {
+    const frame = repository.frame(request.params.id);
+    return frame ? response.json(frame) : notFound(response, `no frame '${request.params.id}'`);
+  });
+  app.use('/api', (_request, response) => notFound(response, 'unknown endpoint'));
+  app.use((error, _request, response, _next) => {
+    console.error(error);
+    response.set('Cache-Control', 'no-store');
+    response.status(500).json({ error: { code: 'internal_error', message: 'unable to read content' } });
+  });
+  return app;
 }
 
-function applyLimit(list, limit) {
-  const n = Number.parseInt(limit, 10);
-  return Number.isFinite(n) && n > 0 ? list.slice(0, n) : list;
-}
-
-// Normalize a repeatable query param into an array (?tag=a&tag=b or ?tag=a).
-function asArray(v) {
-  if (v == null) return [];
-  return Array.isArray(v) ? v : [v];
-}
-
-function notFound(res, message) {
-  res.status(404).json({ error: { code: 'not_found', message } });
-}
-
-// Open CORS for the public read-only API: any origin may GET. No credentials are
-// used, so a wildcard origin is safe and simplest. Answer preflights here so the
-// catch-all 404 below never shadows an OPTIONS request.
-app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.set('Access-Control-Allow-Headers', 'Content-Type, Accept');
-  res.set('Access-Control-Max-Age', '86400');
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(204);
-    return;
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const database = openDatabase();
+  try {
+    if (seedIfEmpty(database)) console.log('initialized SQLite content from JSON seeds');
+    const server = createApp(database).listen(process.env.PORT || 8787, () => {
+      console.log(`mock-api listening on http://localhost:${process.env.PORT || 8787} (SQLite)`);
+    });
+    for (const signal of ['SIGINT', 'SIGTERM']) {
+      process.once(signal, () => server.close(() => { database.close(); }));
+    }
+    server.on('error', (error) => { database.close(); throw error; });
+  } catch (error) {
+    database.close();
+    throw error;
   }
-  next();
-});
-
-// Light caching touch, matching the docs' recommendation for public GETs.
-app.use((_req, res, next) => {
-  res.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=86400');
-  next();
-});
-
-// ---- site / about ----------------------------------------------------------
-
-app.get('/api/site', (_req, res) => res.json(SITE));
-app.get('/api/about', (_req, res) => res.json(ABOUT));
-
-// ---- projects --------------------------------------------------------------
-
-// List omits the heavy `readme`; detail includes it.
-const projectListItem = ({ readme, ...rest }) => rest;
-
-app.get('/api/projects', (req, res) => {
-  let list = PROJECTS.map(projectListItem);
-  if (req.query.status) list = list.filter((p) => p.status === req.query.status);
-  list.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-  res.json(applyLimit(list, req.query.limit ?? 12));
-});
-
-app.get('/api/projects/:slug', (req, res) => {
-  const project = PROJECTS.find((p) => p.slug === req.params.slug);
-  if (!project) return notFound(res, `no project '${req.params.slug}'`);
-  res.json(project);
-});
-
-// ---- blog ------------------------------------------------------------------
-
-const postListItem = ({ body, words, commit, tags, ...rest }) => rest;
-
-app.get('/api/posts', (req, res) => {
-  let list = POSTS.map(postListItem);
-  if (req.query.tag && req.query.tag !== 'all') {
-    list = list.filter((p) => p.tag === req.query.tag);
-  }
-  list = applySort(list, req.query.sort);
-  res.json(applyLimit(list, req.query.limit));
-});
-
-app.get('/api/posts/:slug', (req, res) => {
-  const post = POSTS.find((p) => p.slug === req.params.slug);
-  if (!post) return notFound(res, `no post '${req.params.slug}'`);
-  res.json(post);
-});
-
-// ---- photography -----------------------------------------------------------
-
-app.get('/api/albums', (_req, res) => {
-  res.json({ data: ALBUMS, meta: { total: ALBUMS.length } });
-});
-
-app.get('/api/albums/:id', (req, res) => {
-  const album = ALBUMS.find((a) => a.id === req.params.id);
-  if (!album) return notFound(res, `no album '${req.params.id}'`);
-  const frames = applySort(FRAMES.filter((f) => f.album === album.id), '-date');
-  res.json({ ...album, frames, meta: { total: frames.length } });
-});
-
-// Free-text search across id, camera, lens, location, EXIF, tags (mirrors filterFrames).
-function matchesQuery(frame, q) {
-  if (!q) return true;
-  const caption = frame.caption
-    ? [frame.caption.title, ...(frame.caption.paragraphs || []), frame.caption.note].filter(Boolean)
-    : [];
-  const hay = [
-    frame.id, frame.camera, frame.lens, frame.aperture, frame.shutter,
-    frame.iso, frame.location, frame.date, frame.image?.filename, frame.image?.src,
-    ...(frame.tags || []), ...caption,
-  ].join(' ').toLowerCase();
-  return hay.includes(q.toLowerCase());
 }
-
-// NOTE: register /api/frames/meta before /api/frames/:id so it isn't shadowed.
-app.get('/api/frames/meta', (_req, res) => {
-  const tags = [...new Set(FRAMES.flatMap((f) => f.tags))].sort();
-  const locations = [...new Set(FRAMES.map((f) => f.location.split(' · ')[0]))].sort();
-  const cameras = [...new Set(FRAMES.map((f) => f.camera))].sort();
-  res.json({ tags, locations, cameras });
-});
-
-app.get('/api/frames', (req, res) => {
-  const tags = asArray(req.query.tag);
-  const q = req.query.q || '';
-  let list = FRAMES;
-  if (req.query.album) list = list.filter((f) => f.album === req.query.album);
-  // `total` is the scope size (after album scoping, before tag/q filters), so
-  // the gallery can show "N frames / total".
-  const total = list.length;
-  if (tags.length) list = list.filter((f) => tags.some((t) => f.tags.includes(t))); // OR-match
-  if (q) list = list.filter((f) => matchesQuery(f, q));
-  list = applySort(list, req.query.sort);
-  list = applyLimit(list, req.query.limit);
-  res.json({ data: list, meta: { total, filteredBy: { tag: tags, q } } });
-});
-
-app.get('/api/frames/:id', (req, res) => {
-  const frame = FRAMES.find((f) => f.id === req.params.id);
-  if (!frame) return notFound(res, `no frame '${req.params.id}'`);
-  res.json(frame);
-});
-
-// ---- fallthrough -----------------------------------------------------------
-
-app.use('/api', (_req, res) => notFound(res, 'unknown endpoint'));
-
-app.listen(PORT, () => {
-  console.log(`mock-api listening on http://localhost:${PORT}`);
-});
