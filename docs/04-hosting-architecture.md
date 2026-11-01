@@ -4,6 +4,14 @@ This is the hosting architecture for the site: **Cloudflare Pages + R2 + a small
 VPS running the Go backend**, tied together with a Cloudflare Tunnel. It
 optimizes, in order, for **cost, security, and ease of maintenance**.
 
+> **Planned admin exception:** this document describes the public-site baseline.
+> The proposed [backend mTLS admin PRD](07-admin-mtls-prd.md) adds a separate
+> DNS-only admin hostname with TLS terminating directly in Go. When explicitly
+> enabled, it opens inbound TCP 443 on the admin host and exposes that host's IP;
+> the zero-inbound-port and Cloudflare-edge-protection assumptions below do not
+> apply to that ingress. The public site/API keep their existing paths. No
+> deployment or firewall change is made by the PRD itself.
+
 For the full comparison of alternatives and the reasoning behind rejecting them,
 see the decision record in
 [`decision-points/architecture.md`](./decision-points/architecture.md).
